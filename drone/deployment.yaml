@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: runner
+  template:
+    metadata:
+      labels:
+        name: runner
+    spec:
+      containers:
+        - name: runner
+          image: drone/drone-runner-kube
+          ports:
+            - name: rpc
+              containerPort: 3000
+          env:
+            - name: DRONE_RPC_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: drone
+                  key: DRONE_RPC_SECRET
+            - name: DRONE_RPC_HOST
+              value: drone
+            - name: DRONE_RPC_PROTO
+              value: http
+            - name: DRONE_NAMESPACE_DEFAULT
+              value: drone

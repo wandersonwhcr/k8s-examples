@@ -6,4 +6,6 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 3000
+      targetPort: http
+  selector:
+    name: gogs

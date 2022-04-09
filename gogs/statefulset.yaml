@@ -18,6 +18,9 @@ spec:
       containers:
         - name: gogs
           image: "gogs/gogs:0.12"
+          ports:
+            - name: http
+              containerPort: 3000
           volumeMounts:
             - name: gogs-data
               mountPath: /data

@@ -1,0 +1,35 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sleep
+spec:
+  selector:
+    matchLabels:
+      app: sleep
+  template:
+    metadata:
+      labels:
+        app: sleep
+    spec:
+      containers:
+        - name: alpine
+          image: "alpine:3.15"
+          command: ["sleep.sh"]
+          env:
+            - name: SLEEP_STARTUP
+              value: "10"
+          volumeMounts:
+            - name: sleep
+              mountPath: /usr/local/bin
+          readinessProbe:
+            exec:
+              command: ["test", "-f", "/tmp/healthy"]
+            initialDelaySeconds: 0
+            periodSeconds: 1
+      volumes:
+        - name: sleep
+          configMap:
+            name: sleep
+            defaultMode: 0777

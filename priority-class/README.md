@@ -6,6 +6,8 @@ and `normal` and two deployments homonyms using priority related. Each
 deployment limits memory container resource to 512M. Kubernetes will schedule
 only two high deployment `PriorityClass` because its memory limits.
 
+Priority classes only works with scheduling and will not check for readiness.
+
 ```
 k3d cluster create example \
     --servers 1 \

@@ -5,6 +5,7 @@ kind: Deployment
 metadata:
   name: normal
 spec:
+  replicas: 10
   selector:
     matchLabels:
       app: normal
@@ -34,5 +35,3 @@ spec:
             name: sleep
             defaultMode: 0777
       priorityClassName: normal
-      nodeSelector:
-        priority: normal

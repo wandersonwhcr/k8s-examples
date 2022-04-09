@@ -1,5 +1,11 @@
 # priority-class
 
+This example creates a k3d cluster disabling master nodes scheduling and
+limiting agents memory to 1G. After that, it creates two priority classes `high`
+and `normal` and creates two deployments with same names and using priority
+related. Each deployment limits memory container resource to 512M. Kubernetes
+will schedule only two high deployment pods because `PriorityClass`.
+
 ```
 k3d cluster create example \
     --servers 1 \

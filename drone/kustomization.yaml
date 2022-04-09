@@ -1,7 +1,16 @@
 namespace: drone
 
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: drone
+    envs:
+      - .env
+
 resources:
   - namespace.yaml
   - role.yaml
   - rolebinding.yaml
   - service.yaml
+  - statefulset.yaml

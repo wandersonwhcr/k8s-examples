@@ -9,4 +9,12 @@ k3d cluster create example \
 
 kubectl apply \
     --kustomize ../gogs
+
+cat > .env <<EOF
+DRONE_GOGS_SERVER=http://gogs.example.localhost
+DRONE_RPC_SECRET=`openssl rand -hex 16`
+EOF
+
+kubectl apply \
+    --kustomize .
 ```

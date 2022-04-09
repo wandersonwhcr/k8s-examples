@@ -31,7 +31,7 @@ spec:
                   name: drone
                   key: DRONE_RPC_SECRET
             - name: DRONE_SERVER_HOST
-              value: drone
+              value: drone.drone.svc
             - name: DRONE_SERVER_PROTO
               value: http
             - name: DRONE_LOGS_DEBUG

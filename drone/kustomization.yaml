@@ -1,0 +1,6 @@
+namespace: drone
+
+resources:
+  - namespace.yaml
+  - role.yaml
+  - rolebinding.yaml

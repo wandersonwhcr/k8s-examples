@@ -8,4 +8,5 @@ configMapGenerator:
 
 resources:
   - priority-class.yaml
+  - deployment-high.yaml
   - deployment-normal.yaml

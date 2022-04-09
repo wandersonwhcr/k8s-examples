@@ -13,11 +13,3 @@ kind: PriorityClass
 metadata:
   name: normal
 value: 1000
-
----
-
-apiVersion: scheduling.k8s.io/v1
-kind: PriorityClass
-metadata:
-  name: low
-value: 1000

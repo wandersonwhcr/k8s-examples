@@ -7,5 +7,5 @@ k3d cluster create example \
     --no-lb
 
 kubectl apply \
-    --kustomize k8s
+    --kustomize .
 ```

@@ -13,7 +13,6 @@ spec:
       labels:
         app: high
     spec:
-      priorityClassName: high
       containers:
         - name: alpine
           image: "alpine:3.15"
@@ -34,3 +33,6 @@ spec:
           configMap:
             name: sleep
             defaultMode: 0777
+      priorityClassName: high
+      nodeSelector:
+        priority: high

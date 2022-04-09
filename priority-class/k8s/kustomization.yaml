@@ -1,2 +1,10 @@
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: sleep
+    files:
+      - assets/sleep.sh
+
 resources:
   - priority-class.yaml

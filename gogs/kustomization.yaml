@@ -1,0 +1,4 @@
+namespace: gogs
+
+resources:
+  - namespace.yaml

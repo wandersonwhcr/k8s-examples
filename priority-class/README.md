@@ -5,7 +5,7 @@ A `PriorityClass` Example
 ```
 k3d cluster create example \
     --servers 1 \
-    --agents 1 \
+    --agents 0 \
     --port 80:80@loadbalancer
 
 kubectl apply \

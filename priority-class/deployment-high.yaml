@@ -23,4 +23,4 @@ spec:
               memory: "512M"
             limits:
               memory: "512M"
-      priorityClassName: normal
+      priorityClassName: high

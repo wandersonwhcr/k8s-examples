@@ -8,13 +8,15 @@ k3d cluster create example \
     --registry-create registry.example.localhost:5000
 
 kubectl apply \
-    --kustomize ../gogs
+    --kustomize .
 
 cat > .env <<EOF
 DRONE_GOGS_SERVER=http://gogs.gogs.svc
 DRONE_RPC_SECRET=`openssl rand -hex 16`
 EOF
+```
 
+```
 kubectl apply \
-    --kustomize .
+    --kustomize ../gogs
 ```

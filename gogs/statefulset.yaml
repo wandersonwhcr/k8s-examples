@@ -1,0 +1,32 @@
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: gogs
+spec:
+  serviceName: gogs
+  replicas: 1
+  selector:
+    matchLabels:
+      name: gogs
+  template:
+    metadata:
+      labels:
+        name: gogs
+    spec:
+      containers:
+        - name: gogs
+          image: "gogs/gogs:0.12"
+          volumeMounts:
+            - name: gogs-data
+              mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: gogs-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1G

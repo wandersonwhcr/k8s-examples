@@ -19,7 +19,7 @@ spec:
           command: ["sleep.sh"]
           env:
             - name: SLEEP_STARTUP
-              value: "10"
+              value: "30"
           volumeMounts:
             - name: sleep
               mountPath: /usr/local/bin

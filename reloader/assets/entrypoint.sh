@@ -5,6 +5,6 @@ set -xe
 trap exit 1 2 15
 
 date
-env
+env | grep ^APP_
 sleep infinity &
 wait $!

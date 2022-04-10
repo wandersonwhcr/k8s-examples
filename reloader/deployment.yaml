@@ -17,6 +17,17 @@ spec:
         - name: alpine
           image: "alpine:3.15"
           command: ["entrypoint.sh"]
+          env:
+            - name: APP_STAGE
+              valueFrom:
+                secretKeyRef:
+                  name: debug-env
+                  key: APP_STAGE
+            - name: APP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: debug-env
+                  key: APP_URL
           volumeMounts:
             - name: entrypoint
               mountPath: /usr/local/bin

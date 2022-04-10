@@ -14,3 +14,8 @@ configMapGenerator:
   - name: entrypoint
     files:
       - assets/entrypoint.sh
+
+secretGenerator:
+  - name: debug-env
+    envs:
+      - .env

@@ -2,3 +2,5 @@ namespace: prometheus
 
 resources:
   - namespace.yaml
+  - clusterrole.yaml
+  - clusterrolebinding.yaml

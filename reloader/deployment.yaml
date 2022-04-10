@@ -4,6 +4,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: debug
+  namespace: debug
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   selector:
     matchLabels:

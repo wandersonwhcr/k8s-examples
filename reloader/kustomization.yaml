@@ -12,10 +12,12 @@ generatorOptions:
 
 configMapGenerator:
   - name: entrypoint
+    namespace: debug
     files:
       - assets/entrypoint.sh
 
 secretGenerator:
-  - name: debug-env
+  - name: debug
+    namespace: debug
     envs:
       - .env

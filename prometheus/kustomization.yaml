@@ -1,0 +1,4 @@
+namespace: prometheus
+
+resources:
+  - namespace.yaml

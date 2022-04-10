@@ -6,11 +6,14 @@ k3d cluster create example \
     --agents 1 \
     --no-lb
 
-cat > .env <<EOF
+cat > ./debug/.env <<EOF
 APP_STAGE=qa
 APP_URL=https://debug.qa.example.com
 EOF
 
 kubectl apply \
-    --kustomize .
+    --kustomize ./reloader
+
+kubectl apply \
+    --kustomize ./debug
 ```

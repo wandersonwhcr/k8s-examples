@@ -1,7 +1,4 @@
-namespace: reloader
-
-bases:
-  - https://github.com/stakater/Reloader/deployments/kubernetes
+namespace: debug
 
 resources:
   - namespace.yaml
@@ -12,12 +9,10 @@ generatorOptions:
 
 configMapGenerator:
   - name: entrypoint
-    namespace: debug
     files:
       - assets/entrypoint.sh
 
 secretGenerator:
   - name: debug
-    namespace: debug
     envs:
       - .env

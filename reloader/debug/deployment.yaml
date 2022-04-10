@@ -4,7 +4,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: debug
-  namespace: debug
   annotations:
     reloader.stakater.com/auto: "true"
 spec:
@@ -24,12 +23,12 @@ spec:
             - name: APP_STAGE
               valueFrom:
                 secretKeyRef:
-                  name: debug-env
+                  name: debug
                   key: APP_STAGE
             - name: APP_URL
               valueFrom:
                 secretKeyRef:
-                  name: debug-env
+                  name: debug
                   key: APP_URL
           volumeMounts:
             - name: entrypoint

@@ -1,0 +1,7 @@
+namespace: reloader
+
+bases:
+  - https://github.com/stakater/Reloader/deployments/kubernetes
+
+resources:
+  - namespace.yaml

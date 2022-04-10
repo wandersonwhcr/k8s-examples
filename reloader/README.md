@@ -1,5 +1,11 @@
 # reloader
 
+This example shows how to use [stakater/Reloader](https://github.com/stakater/Reloader)
+to automatically rollout deployments when `Secret` is changed. First, it
+installs Reloader on cluster and define a debug application that uses a secret
+to initialize environment variables. When this environment is modified and
+applied, Reloader will rollout deployment.
+
 ```
 k3d cluster create example \
     --servers 1 \

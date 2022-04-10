@@ -4,7 +4,9 @@ resources:
   - clusterrole.yaml
   - clusterrolebinding.yaml
   - namespace.yaml
+  - service.yaml
   - deployment.yaml
+  - ingress.yaml
 
 generatorOptions:
   disableNameSuffixHash: true

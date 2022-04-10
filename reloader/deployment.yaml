@@ -1,0 +1,27 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debug
+spec:
+  selector:
+    matchLabels:
+      app: debug
+  template:
+    metadata:
+      labels:
+        app: debug
+    spec:
+      containers:
+        - name: alpine
+          image: "alpine:3.15"
+          command: ["entrypoint.sh"]
+          volumeMounts:
+            - name: entrypoint
+              mountPath: /usr/local/bin
+      volumes:
+        - name: entrypoint
+          configMap:
+            name: entrypoint
+            defaultMode: 0777

@@ -5,3 +5,12 @@ bases:
 
 resources:
   - namespace.yaml
+  - deployment.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: entrypoint
+    files:
+      - assets/entrypoint.sh

@@ -1,6 +1,15 @@
 namespace: prometheus
 
 resources:
-  - namespace.yaml
   - clusterrole.yaml
   - clusterrolebinding.yaml
+  - namespace.yaml
+  - deployment.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: config
+    files:
+      - assets/prometheus.yml

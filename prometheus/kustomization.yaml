@@ -5,7 +5,7 @@ resources:
   - clusterrolebinding.yaml
   - namespace.yaml
   - service.yaml
-  - deployment.yaml
+  - statefulset.yaml
 
 generatorOptions:
   disableNameSuffixHash: true

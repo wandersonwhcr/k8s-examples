@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: prometheus
 spec:
+  serviceName: prometheus
   selector:
     matchLabels:
       name: prometheus
@@ -19,9 +20,20 @@ spec:
             - name: http
               containerPort: 9090
           volumeMounts:
+            - name: data
+              mountPath: /prometheus
             - name: config
               mountPath: /etc/prometheus
       volumes:
         - name: config
           configMap:
             name: config
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1G

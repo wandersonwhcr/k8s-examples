@@ -1,5 +1,8 @@
 # prometheus
 
+This example creates a cluster with 1 server and 3 agents (4 nodes) and installs
+Prometheus to scrap metrics from nodes, services and pods.
+
 ```
 k3d cluster create example \
     --servers 1 \

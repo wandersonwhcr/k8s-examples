@@ -17,6 +17,14 @@ scrape_configs:
   #     - role: ingress
   #   scheme: https
 
-  - job_name: service
+  - job_name: services
     kubernetes_sd_configs:
       - role: service
+
+  - job_name: pods
+    kubernetes_sd_configs:
+      - role: pod
+
+  - job_name: endpoints
+    kubernetes_sd_configs:
+      - role: endpoints

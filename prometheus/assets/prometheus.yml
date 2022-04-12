@@ -11,3 +11,12 @@ scrape_configs:
       ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
     authorization:
       credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+  # - job_name: ingress
+  #   kubernetes_sd_configs:
+  #     - role: ingress
+  #   scheme: https
+  #   tls_config:
+  #     ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+  #   authorization:
+  #     credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token

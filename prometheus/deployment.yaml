@@ -10,6 +10,7 @@ spec:
     metadata:
       labels:
         name: prometheus
+        prometheus.io/scrape: "true"
     spec:
       containers:
         - name: prometheus

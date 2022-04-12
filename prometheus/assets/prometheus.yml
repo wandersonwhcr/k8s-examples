@@ -20,11 +20,19 @@ scrape_configs:
   - job_name: services
     kubernetes_sd_configs:
       - role: service
+    relabel_configs:
+      - source_labels: [ __meta_kubernetes_service_label_prometheus_io_scrape ]
+        regex: "true"
+        action: keep
 
   - job_name: pods
     kubernetes_sd_configs:
       - role: pod
+    relabel_configs:
+      - source_labels: [ __meta_kubernetes_pod_label_prometheus_io_scrape ]
+        regex: "true"
+        action: keep
 
-  - job_name: endpoints
-    kubernetes_sd_configs:
-      - role: endpoints
+  # - job_name: endpoints
+  #   kubernetes_sd_configs:
+  #     - role: endpoints

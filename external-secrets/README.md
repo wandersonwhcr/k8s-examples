@@ -1,5 +1,12 @@
 # external-secrets
 
+This example uses External Secrets to create secrets automatically using
+external resources. First, we create a store called `my-secrets-store` to serve
+the `env.json` file that contains the environment variables. After, we define a
+`ClusterSecretStore` as backend to retrieve the defined JSON from store. After,
+we create a `ExternalSecret` resource to define a secret `env` automatically on
+namespace.
+
 ```
 k3d cluster create example \
     --servers 1 \

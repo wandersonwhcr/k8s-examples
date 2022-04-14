@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example
+spec:
+  selector:
+    matchLabels:
+      app: example
+  template:
+    metadata:
+      labels:
+        app: example
+    spec:
+      containers:
+        - name: alpine
+          image: alpine:3.15
+          command: ["sh"]
+          args: ["-c", "env | sort && sleep infinity"]
+          envFrom:
+            - secretRef:
+                name: env

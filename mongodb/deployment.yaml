@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express
+spec:
+  selector:
+    matchLabels:
+      name: express
+  template:
+    metadata:
+      labels:
+        name: express
+    spec:
+      containers:
+        - name: express
+          image: "mongo-express:0.54"
+          ports:
+            - name: http
+              containerPort: 8081
+          env:
+            - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+              value: root
+            - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+              value: root
+            - name: ME_CONFIG_MONGODB_SERVER
+              value: mongodb
+            - name: ME_CONFIG_BASICAUTH_USERNAME
+              value: admin
+            - name: ME_CONFIG_BASICAUTH_PASSWORD
+              value: admin

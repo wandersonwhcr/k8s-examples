@@ -1,0 +1,7 @@
+namespace: mongodb
+
+resources:
+  - namespace.yaml
+  - service.yaml
+  - statefulset.yaml
+  - deployment.yaml

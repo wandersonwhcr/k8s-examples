@@ -1,0 +1,4 @@
+namespace: minio
+
+resources:
+  - namespace.yaml

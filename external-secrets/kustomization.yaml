@@ -1,0 +1,6 @@
+namespace: example
+resources:
+  - namespace.yaml
+  - cluster-secret-store.yaml
+  - external-secret.yaml
+  - deployment.yaml

@@ -1,0 +1,11 @@
+server {
+    listen 80;
+
+    auth_basic "Secrets";
+    auth_basic_user_file /etc/nginx/htpasswd;
+
+    location / {
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+    }
+}

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minio
+spec:
+  serviceName: minio
+  replicas: 1
+  selector:
+    matchLabels:
+      name: minio
+  template:
+    metadata:
+      labels:
+        name: minio
+    spec:
+      containers:
+        - name: minio
+          image: "minio/minio"
+          ports:
+            - name: http
+              containerPort: 9000
+            - name: console
+              containerPort: 9001
+          args: ["server", "/data", "--console-address", ":9001"]
+          volumeMounts:
+            - name: minio-data
+              mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: minio-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1G

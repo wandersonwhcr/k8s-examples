@@ -1,0 +1,4 @@
+namespace: mongodb
+
+resources:
+  - namespace.yaml

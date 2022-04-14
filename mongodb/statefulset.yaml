@@ -18,7 +18,7 @@ spec:
           image: "mongo:5.0"
           ports:
             - name: mongodb
-              containerPort: 27018
+              containerPort: 27017
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
               value: root
@@ -36,4 +36,3 @@ spec:
         resources:
           requests:
             storage: 1G
-

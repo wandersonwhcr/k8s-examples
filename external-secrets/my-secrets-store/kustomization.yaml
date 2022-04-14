@@ -1,0 +1,5 @@
+namespace: my-secrets-store
+
+resources:
+  - namespace.yaml
+  - deployment.yaml

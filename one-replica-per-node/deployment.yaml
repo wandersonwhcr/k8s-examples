@@ -20,8 +20,5 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             - topologyKey: "kubernetes.io/hostname"
               labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - example
+                matchLabels:
+                  app: example

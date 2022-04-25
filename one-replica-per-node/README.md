@@ -7,6 +7,10 @@ Basically, it defines a rule that avoids pod schedule if some pod is running
 according to match expression by key. In this example, it checks if pods of the
 same deployment are running by node hostname, avoiding schedule.
 
+This config will improve reliability if cluster nodes stop constantly, because
+if one node stops, it will guarantee that other replicas are running on other
+nodes.
+
 ```
 k3d cluster create example \
     --servers 1 \

@@ -3,7 +3,7 @@
 This example shows how to use anti affinity to run one deployment replica per
 cluster node.
 
-Basically, it defines a rule that avoids pod schedule if some pod is running
+Basically, it defines a rule that avoids pod scheduling if some pod is running
 according to match expression by key. In this example, it checks if pods of the
 same deployment are running by node hostname, avoiding schedule.
 
@@ -11,7 +11,7 @@ This config will improve reliability if cluster nodes stop constantly, because
 if one node stops, it will guarantee that other replicas are running on other
 nodes.
 
-The last point is this example cluster has 3 agents, there is not autoscaling,
+One issue to avoid: this cluster example has 3 agents, there is not autoscaling,
 and our deployment has 3 replicas. If you need to rollout this deployment, it
 will not schedule new pods because there is not available nodes according to
 anti affinity rules.

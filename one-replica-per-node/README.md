@@ -11,11 +11,6 @@ This config will improve reliability if cluster nodes stop constantly, because
 if one node stops, it will guarantee that other replicas are running on other
 nodes.
 
-One issue to avoid: this cluster example has 3 agents, there is not autoscaling,
-and our deployment has 3 replicas. If you need to rollout this deployment, it
-will not schedule new pods because there is not available nodes according to
-anti affinity rules.
-
 ```
 k3d cluster create example \
     --servers 1 \
@@ -29,6 +24,19 @@ kubectl taint nodes \
 kubectl apply \
     --kustomize .
 ```
+
+```
+$ kubectl get pods --namespace example --output wide
+NAME                       READY   STATUS    RESTARTS   AGE   IP          NODE                  NOMINATED NODE   READINESS GATES
+example-7cfd9ffb4-b5th2    1/1     Running   0          18m   10.42.1.8   k3d-example-agent-2   <none>           <none>
+example-7cfd9ffb4-ss9k7    1/1     Running   0          18m   10.42.3.8   k3d-example-agent-0   <none>           <none>
+example-7cfd9ffb4-jhcwr    1/1     Running   0          18m   10.42.2.9   k3d-example-agent-1   <none>           <none>
+```
+
+One issue to avoid: this cluster example has 3 agents, there is not autoscaling,
+and our deployment has 3 replicas. If you need to rollout this deployment, it
+will not schedule new pods because there is not available nodes according to
+anti affinity rules.
 
 ```
 $ kubectl rollout restart deployment example --namespace example

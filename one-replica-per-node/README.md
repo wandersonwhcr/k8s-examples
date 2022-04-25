@@ -1,5 +1,12 @@
 # one-replica-per-node
 
+This example shows how to use anti affinity to run one deployment replica per
+cluster node.
+
+Basically, it defines a rule that avoids pod schedule if some pod is running
+according to match expression by key. In this example, it checks if pods of the
+same deployment are running by node hostname, avoiding schedule.
+
 ```
 k3d cluster create example \
     --servers 1 \

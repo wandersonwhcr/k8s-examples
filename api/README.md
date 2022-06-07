@@ -22,6 +22,8 @@ EOF
 
 ```sh
 # List Pods from Namespace
-
 curl "https://kubernetes.default/api/v1/namespaces/$NAMESPACE/pods"
+
+# List Jobs from Namespace
+curl "https://kubernetes.default/apis/batch/v1/namespaces/$NAMESPACE/jobs"
 ```

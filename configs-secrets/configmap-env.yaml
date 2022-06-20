@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: env
 data:
-  APP_NAME: foobar
+  APP_NAME: example
   APP_ENV: staging
   APP_DEBUG: "true"

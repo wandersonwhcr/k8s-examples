@@ -8,3 +8,5 @@ resources:
   - secret-env.yaml
   - secret-env-token.yaml
   - secret-htpasswd.yaml
+  - deployment.yaml
+  - service.yaml

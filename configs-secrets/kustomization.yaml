@@ -6,3 +6,4 @@ resources:
   - configmap-env-port.yaml
   - configmap-template.yaml
   - secret-env.yaml
+  - secret-env-token.yaml

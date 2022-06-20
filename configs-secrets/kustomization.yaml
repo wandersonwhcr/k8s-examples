@@ -2,3 +2,4 @@ namespace: example
 
 resources:
   - namespace.yaml
+  - configmap-env.yaml

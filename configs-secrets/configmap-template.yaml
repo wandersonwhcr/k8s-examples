@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: template
+data:
+  default.conf.template: |
+    server {
+      listen ${PORT};
+      location / {
+        add_header Content-Type 'application/json;charset=utf-8';
+        return 200 '{"name":"${APP_NAME}"}';
+      }
+    }
+  00-foobar.conf.template: |
+    server {
+      listen ${PORT};
+      server_name foobar.example.svc.cluster.local;
+      location / {
+        add_header Content-Type 'text/plain;charset=utf-8';
+        return 200 'Hello from ${APP_NAME}!';
+      }
+    }

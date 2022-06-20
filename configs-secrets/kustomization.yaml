@@ -5,3 +5,4 @@ resources:
   - configmap-env.yaml
   - configmap-env-port.yaml
   - configmap-template.yaml
+  - secret-env.yaml

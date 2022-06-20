@@ -16,6 +16,8 @@ data:
       listen ${PORT};
       server_name foobar.example.svc.cluster.local;
       location / {
+        auth_basic 'Application Area';
+        auth_basic_user_file '/etc/nginx/.htpasswd';
         add_header Content-Type 'text/plain;charset=utf-8';
         return 200 'Hello from ${APP_NAME}!';
       }

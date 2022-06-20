@@ -7,3 +7,4 @@ resources:
   - configmap-template.yaml
   - secret-env.yaml
   - secret-env-token.yaml
+  - secret-htpasswd.yaml

@@ -1,4 +1,4 @@
-# configs-secrets
+# configmaps-secrets
 
 This example shows how to use `ConfigMap` and `Secret` injected in `Deployment`
 as environment variables or volumes.

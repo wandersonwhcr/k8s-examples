@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: example
+  template:
+    metadata:
+      labels:
+        name: example
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.21
+          ports:
+            - name: http
+              containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: env
+            - secretRef:
+                name: env
+          env:
+            - name: APP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: env-port
+                  key: APP_PORT
+            - name: APP_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: env-token
+                  key: APP_TOKEN
+          volumeMounts:
+            - name: template
+              mountPath: /etc/nginx/templates
+            - name: htpasswd
+              mountPath: /etc/nginx/auth
+      volumes:
+        - name: template
+          configMap:
+            name: template
+        - name: htpasswd
+          secret:
+            secretName: htpasswd
+            items:
+              - key: htpasswd
+                path: htpasswd

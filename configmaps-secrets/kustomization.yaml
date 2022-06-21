@@ -1,0 +1,12 @@
+namespace: example
+
+resources:
+  - namespace.yaml
+  - configmap-env.yaml
+  - configmap-env-port.yaml
+  - configmap-template.yaml
+  - secret-env.yaml
+  - secret-env-token.yaml
+  - secret-htpasswd.yaml
+  - deployment.yaml
+  - service.yaml

@@ -1,7 +1,7 @@
 # configs-secrets
 
-This example shows how to use `ConfigMap` and `Secret` with `Deployment`
-injected as environment variables or volumes.
+This example shows how to use `ConfigMap` and `Secret` injected in `Deployment`
+as environment variables or volumes.
 
 ```
 k3d cluster create example

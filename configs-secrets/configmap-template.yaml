@@ -12,7 +12,7 @@ data:
         try_files DUMMY @return200; # workaround
       }
       location @return200 {
-        add_header Content-Type 'application/json;charset=utf-8';
+        default_type 'application/json';
         return 200 '{"name":"${APP_NAME}"}';
       }
     }

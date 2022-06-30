@@ -1,5 +1,8 @@
 namespace: example
 
 resources:
-  - namespace.yaml
+  - configmap.yaml
   - deployment.yaml
+  - namespace.yaml
+  - service.yaml
+  - statefulset.yaml

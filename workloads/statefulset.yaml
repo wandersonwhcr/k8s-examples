@@ -1,16 +1,17 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: server
+  name: cache
 spec:
+  serviceName: cache
   replicas: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: server
+      app.kubernetes.io/name: cache
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: server
+        app.kubernetes.io/name: cache
     spec:
       containers:
         - name: nginx
@@ -27,4 +28,4 @@ spec:
       volumes:
         - name: templates
           configMap:
-            name: server-templates
+            name: cache-templates

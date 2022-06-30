@@ -27,6 +27,7 @@ data:
       listen ${NGINX_PORT};
 
       location / {
+        add_header X-Cache-Name "${HOSTNAME}";
         proxy_pass http://server;
       }
     }

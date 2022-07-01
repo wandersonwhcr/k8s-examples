@@ -25,7 +25,18 @@ spec:
           volumeMounts:
             - name: templates
               mountPath: /etc/nginx/templates
+            - name: cache
+              mountPath: /var/cache/nginx
       volumes:
         - name: templates
           configMap:
             name: cache-templates
+  volumeClaimTemplates:
+    - metadata:
+        name: cache
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi

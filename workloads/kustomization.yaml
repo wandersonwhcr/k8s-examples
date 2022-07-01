@@ -4,6 +4,7 @@ resources:
   - configmap.yaml
   - daemonset.yaml
   - deployment.yaml
+  - job.yaml
   - namespace.yaml
   - service.yaml
   - statefulset.yaml

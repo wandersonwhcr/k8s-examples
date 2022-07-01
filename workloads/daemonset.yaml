@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: collector
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: collector
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: collector
+    spec:
+      containers:
+        - name: fluentd
+          image: fluentd:v1.14-1
+          volumeMounts:
+            - name: containers
+              mountPath: /var/log/containers
+      volumes:
+        - name: containers
+          hostPath:
+            path: /var/log/containers

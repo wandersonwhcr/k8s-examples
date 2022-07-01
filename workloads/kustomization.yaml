@@ -2,6 +2,7 @@ namespace: example
 
 resources:
   - configmap.yaml
+  - daemonset.yaml
   - deployment.yaml
   - namespace.yaml
   - service.yaml

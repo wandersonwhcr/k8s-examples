@@ -8,6 +8,10 @@ ports:
   - port: 80:80
     nodeFilters:
       - loadbalancer
+registries:
+  create:
+    name: k3d-example-registry
+    hostPort: "5000"
 options:
   k3d:
     wait: true

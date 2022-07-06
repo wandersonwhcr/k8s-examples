@@ -1,0 +1,4 @@
+namespace: example
+
+resources:
+  - namespace.yaml

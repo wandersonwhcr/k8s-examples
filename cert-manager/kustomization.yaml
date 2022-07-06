@@ -2,3 +2,5 @@ namespace: example
 
 resources:
   - namespace.yaml
+  - issuer.yaml
+  - certificate.yaml

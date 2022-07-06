@@ -5,7 +5,7 @@ metadata:
 spec:
   isCA: true
   commonName: root-ca
-  secretName: root-ca-certificate
+  secretName: root-ca
   privateKey:
     algorithm: RSA
     size: 4096

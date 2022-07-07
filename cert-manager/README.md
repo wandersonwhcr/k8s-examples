@@ -31,3 +31,7 @@ Thu Jul  7 00:51:17 UTC 2022
 {"hostname": "nginx-9474bc8c9-cj2f4"} nginx.example
 {"hostname": "nginx-9474bc8c9-cj2f4"} nginx.example.svc.cluster.local
 ```
+
+## TODO
+
+* Use SSL between Traefik and Pods

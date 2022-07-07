@@ -4,9 +4,9 @@ generatorOptions:
 namespace: example
 
 configMapGenerator:
-  - name: crawler-entrypoint
+  - name: crawler-bin
     files:
-      - assets/crawler-entrypoint.sh
+      - entrypoint.sh=assets/crawler-entrypoint.sh
 
 resources:
   - certificate.yaml

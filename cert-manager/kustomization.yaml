@@ -4,3 +4,4 @@ resources:
   - namespace.yaml
   - issuer.yaml
   - certificate.yaml
+  - deployment.yaml

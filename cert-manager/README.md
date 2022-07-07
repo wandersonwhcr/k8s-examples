@@ -15,3 +15,19 @@ kubectl apply \
 kubectl apply \
     --kustomize .
 ```
+
+```console
+$ kubectl logs --follow deployment/crawler
+Thu Jul  7 00:51:07 UTC 2022
+{"hostname": "nginx-9474bc8c9-pqnfx"} nginx
+{"hostname": "nginx-9474bc8c9-ld7gd"} nginx.example
+{"hostname": "nginx-9474bc8c9-cj2f4"} nginx.example.svc.cluster.local
+Thu Jul  7 00:51:12 UTC 2022
+{"hostname": "nginx-9474bc8c9-ld7gd"} nginx
+{"hostname": "nginx-9474bc8c9-cj2f4"} nginx.example
+{"hostname": "nginx-9474bc8c9-cj2f4"} nginx.example.svc.cluster.local
+Thu Jul  7 00:51:17 UTC 2022
+{"hostname": "nginx-9474bc8c9-pqnfx"} nginx
+{"hostname": "nginx-9474bc8c9-cj2f4"} nginx.example
+{"hostname": "nginx-9474bc8c9-cj2f4"} nginx.example.svc.cluster.local
+```

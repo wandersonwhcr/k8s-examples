@@ -6,3 +6,4 @@ resources:
   - deployment.yaml
   - issuer.yaml
   - namespace.yaml
+  - service.yaml

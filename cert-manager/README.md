@@ -5,7 +5,7 @@ Root Certificate Authority. Also, this example generates a certificate from Root
 CA and installs it on Nginx, using a client to make HTTP requests to this web
 server via cURL.
 
-```console
+```
 k3d cluster create \
     --config ../k3d-example.yaml
 

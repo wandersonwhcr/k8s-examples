@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crawler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: crawler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: crawler
+    spec:
+      containers:
+        - name: alpine
+          image: alpine:3.16
+          command: ["/usr/local/bin/crawler-entrypoint.sh"]
+          volumeMounts:
+            - name: entrypoint
+              mountPath: /usr/local/bin
+            - name: certificate
+              mountPath: /etc/ssl/crawler
+      volumes:
+        - name: certificate
+          secret:
+            secretName: root-ca
+            items:
+              - key: ca.crt
+                path: ca.crt
+        - name: entrypoint
+          configMap:
+            name: crawler-entrypoint
+            defaultMode: 0777

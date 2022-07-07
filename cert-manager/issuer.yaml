@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: self-signed
+spec:
+  selfSigned: {}
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: root-ca
+spec:
+  ca:
+    secretName: root-ca

@@ -1,0 +1,18 @@
+generatorOptions:
+  disableNameSuffixHash: true
+
+namespace: example
+
+configMapGenerator:
+  - name: crawler-bin
+    files:
+      - entrypoint.sh=assets/crawler-entrypoint.sh
+
+resources:
+  - certificate.yaml
+  - configmap.yaml
+  - crawler.yaml
+  - deployment.yaml
+  - issuer.yaml
+  - namespace.yaml
+  - service.yaml

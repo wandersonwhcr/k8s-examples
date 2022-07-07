@@ -16,12 +16,17 @@ spec:
         - name: nginx
           image: nginx:1.23
           ports:
-            - name: http
-              containerPort: 80
+            - name: https
+              containerPort: 443
           volumeMounts:
             - name: certificate
               mountPath: /etc/nginx/certificates
+            - name: templates
+              mountPath: /etc/nginx/templates
       volumes:
         - name: certificate
           secret:
             secretName: nginx-certificate
+        - name: templates
+          configMap:
+            name: nginx-templates

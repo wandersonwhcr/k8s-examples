@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-templates
+data:
+  default.conf.template: |
+    server {
+      listen 443 ssl;
+
+      ssl_certificate     /etc/nginx/certificates/tls.crt;
+      ssl_certificate_key /etc/nginx/certificates/tls.key;
+
+      default_type 'application/json';
+      return 200 '{"hostname": "${HOSTNAME}"}';
+    }

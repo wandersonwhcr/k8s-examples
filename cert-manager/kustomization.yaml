@@ -1,7 +1,8 @@
 namespace: example
 
 resources:
-  - namespace.yaml
-  - issuer.yaml
   - certificate.yaml
+  - configmap.yaml
   - deployment.yaml
+  - issuer.yaml
+  - namespace.yaml

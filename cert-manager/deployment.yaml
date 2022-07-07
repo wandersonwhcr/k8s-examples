@@ -21,6 +21,7 @@ spec:
           volumeMounts:
             - name: certificate
               mountPath: /etc/nginx/certificates
+              readOnly: true
             - name: templates
               mountPath: /etc/nginx/templates
       volumes:

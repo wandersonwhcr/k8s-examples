@@ -17,10 +17,11 @@ spec:
           image: alpine:3.16
           command: ["/usr/local/bin/entrypoint.sh"]
           volumeMounts:
-            - name: bin
-              mountPath: /usr/local/bin
             - name: certificate
               mountPath: /etc/ssl/root-ca
+              readOnly: true
+            - name: bin
+              mountPath: /usr/local/bin
       volumes:
         - name: certificate
           secret:

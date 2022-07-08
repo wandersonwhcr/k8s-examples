@@ -2,3 +2,4 @@ namespace: kube-system
 
 resources:
   - helmchartconfigs.yaml
+  - ingress.yaml

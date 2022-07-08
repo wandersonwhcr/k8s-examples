@@ -6,3 +6,6 @@ spec:
   valuesContent: |-
     additionalArguments:
       - "--log.level=DEBUG"
+    ports:
+      traefik:
+        expose: true

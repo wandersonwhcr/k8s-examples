@@ -12,6 +12,6 @@ while true; do
         curl --silent --cacert /etc/ssl/root-ca/ca.crt "https://$DOMAINNAME";
         echo " $DOMAINNAME"
     done
-    sleep 5
+    sleep 5 &
     wait $!
 done

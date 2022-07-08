@@ -1,0 +1,11 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+spec:
+  valuesContent: |-
+    additionalArguments:
+      - "--log.level=DEBUG"
+    ports:
+      traefik:
+        expose: true

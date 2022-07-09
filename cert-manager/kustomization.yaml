@@ -13,6 +13,7 @@ resources:
   - configmap.yaml
   - crawler.yaml
   - deployment.yaml
+  - ingress.yaml
   - issuer.yaml
   - namespace.yaml
   - service.yaml

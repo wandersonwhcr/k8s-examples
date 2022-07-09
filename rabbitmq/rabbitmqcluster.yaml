@@ -3,8 +3,16 @@ kind: RabbitmqCluster
 metadata:
   name: hello-world
 spec:
+  replicas: 3
   resources:
     requests:
-      memory: 1Gi
+      memory: 512M
     limits:
-      memory: 1Gi
+      memory: 512M
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - topologyKey: "kubernetes.io/hostname"
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: hello-world

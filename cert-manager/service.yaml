@@ -1,7 +1,20 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: ServersTransport
+metadata:
+  name: nginx
+spec:
+  serverName: nginx.example
+  rootCAsSecrets:
+    - nginx-certificate
+
+---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: nginx
+  annotations:
+    traefik.ingress.kubernetes.io/service.serverstransport: example-nginx@kubernetescrd
 spec:
   selector:
     app.kubernetes.io/name: nginx

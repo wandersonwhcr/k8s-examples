@@ -11,7 +11,7 @@ configMapGenerator:
 resources:
   - certificate.yaml
   - configmap.yaml
-  # - crawler.yaml
+  - crawler.yaml
   - deployment.yaml
   - ingress.yaml
   - issuer.yaml

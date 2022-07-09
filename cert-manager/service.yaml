@@ -3,7 +3,7 @@ kind: ServersTransport
 metadata:
   name: nginx
 spec:
-  serverName: nginx.example
+  serverName: nginx.example.svc
   rootCAsSecrets:
     - nginx-certificate
 

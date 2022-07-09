@@ -6,7 +6,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-    - host: nginx.example
+    - host: nginx.example.localhost
       http:
         paths:
           - pathType: Prefix

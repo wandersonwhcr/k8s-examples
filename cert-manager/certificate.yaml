@@ -28,7 +28,7 @@ spec:
   dnsNames:
     - nginx
     - nginx.example
-    - nginx.example.svc.cluster.local
+    - nginx.example.svc
   privateKey:
     algorithm: RSA
     size: 4096

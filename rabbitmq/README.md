@@ -6,4 +6,7 @@ k3d cluster create \
 
 kubectl apply \
     --filename https://github.com/rabbitmq/cluster-operator/releases/download/v1.14.0/cluster-operator.yml
+
+kubectl apply \
+    --kustomize .
 ```

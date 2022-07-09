@@ -6,7 +6,7 @@ spec:
   valuesContent: |-
     additionalArguments:
       - "--log.level=DEBUG"
-      - "--serversTransport.insecureSkipVerify=true"
+      # - "--serversTransport.insecureSkipVerify=true"
     ports:
       traefik:
         expose: true

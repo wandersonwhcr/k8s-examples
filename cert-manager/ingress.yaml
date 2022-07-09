@@ -1,16 +1,46 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: nginx
 spec:
-  rules:
-    - host: nginx.example
-      http:
-        paths:
-          - pathType: Prefix
-            path: /
-            backend:
-              service:
-                name: nginx
-                port:
-                  name: https # MUST Traefik Skip Verify
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`nginx.example`)
+      services:
+        - kind: Service
+          name: nginx
+          port: 443
+          scheme: https
+          serversTransport: nginx
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: ServersTransport
+metadata:
+  name: nginx
+spec:
+  serverName: nginx.example
+  rootCAsSecrets:
+    - nginx-certificate
+
+# ---
+#
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: nginx
+# spec:
+#   rules:
+#     - host: nginx.example
+#       http:
+#         paths:
+#           - pathType: Prefix
+#             path: /
+#             backend:
+#               service:
+#                 name: nginx
+#                 port:
+#                   name: https # MUST Traefik Skip Verify

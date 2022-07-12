@@ -1,6 +1,7 @@
 namespace: example
 
 resources:
+  - exchange.yaml
   - namespace.yaml
   - pdb.yaml
   - policy.yaml

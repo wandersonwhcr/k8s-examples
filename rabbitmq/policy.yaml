@@ -1,0 +1,12 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Policy
+metadata:
+  name: my-policy
+spec:
+  name: my-policy
+  pattern: "^my-queue$"
+  applyTo: queues
+  definition:
+    queue-mode: lazy
+  rabbitmqClusterReference:
+    name: hello-world

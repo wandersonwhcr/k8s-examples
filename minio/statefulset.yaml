@@ -19,7 +19,7 @@ spec:
           ports:
             - name: http
               containerPort: 9000
-            - name: console
+            - name: http-console
               containerPort: 9001
           args: ["server", "/data", "--console-address", ":9001"]
           env:

@@ -1,0 +1,9 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: User
+metadata:
+  name: my-user
+spec:
+  tags:
+    - management
+  rabbitmqClusterReference:
+    name: hello-world

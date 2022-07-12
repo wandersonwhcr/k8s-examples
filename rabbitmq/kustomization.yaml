@@ -8,3 +8,5 @@ resources:
   - policy.yaml
   - queue.yaml
   - rabbitmqcluster.yaml
+  - secret.yaml
+  - user.yaml

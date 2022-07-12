@@ -11,5 +11,9 @@ k3d cluster create \
 kubectl apply \
     --kustomize .
 
-kubectl port-forward service/minio 9001
+kubectl port-forward \
+    service/minio 9001 \
+    --namespace minio
 ```
+
+* [MinIO Console](http://localhost:9001)

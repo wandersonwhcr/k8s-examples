@@ -1,6 +1,7 @@
 namespace: example
 
 resources:
+  - binding.yaml
   - exchange.yaml
   - namespace.yaml
   - pdb.yaml

@@ -5,10 +5,8 @@ the default root username and password based on AWS access key id and secret
 access keys examples.
 
 ```
-k3d cluster create example \
-    --servers 1 \
-    --agents 1 \
-    --no-lb
+k3d cluster create \
+    --config ../k3d-example.yaml
 
 kubectl apply \
     --kustomize .

@@ -5,13 +5,15 @@ the default root username and password based on AWS access key id and secret
 access keys examples.
 
 ```
-k3d cluster create example \
-    --servers 1 \
-    --agents 1 \
-    --no-lb
+k3d cluster create \
+    --config ../k3d-example.yaml
 
 kubectl apply \
     --kustomize .
 
-kubectl port-forward service/minio 9001
+kubectl port-forward \
+    service/minio http-console \
+    --namespace minio
 ```
+
+* [MinIO Console](http://localhost:9001)

@@ -7,11 +7,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: minio
+      app.kubernetes.io/name: minio
   template:
     metadata:
       labels:
-        name: minio
+        app.kubernetes.io/name: minio
     spec:
       containers:
         - name: minio
@@ -19,14 +19,12 @@ spec:
           ports:
             - name: http
               containerPort: 9000
-            - name: console
+            - name: http-console
               containerPort: 9001
           args: ["server", "/data", "--console-address", ":9001"]
-          env:
-            - name: MINIO_ROOT_USER
-              value: AKIAIOSFODNN7EXAMPLE
-            - name: MINIO_ROOT_PASSWORD
-              value: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+          envFrom:
+            - secretRef:
+                name: minio-env
           volumeMounts:
             - name: minio-data
               mountPath: /data

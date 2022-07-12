@@ -2,5 +2,6 @@ namespace: minio
 
 resources:
   - namespace.yaml
+  - secret.yaml
   - service.yaml
   - statefulset.yaml

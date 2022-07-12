@@ -34,21 +34,11 @@ RabbitMQ Topology Operator will update credentials in cluster.
 
 ```mermaid
 flowchart BT
-    S[Secret]
-    U[User]
-    Pe[Permission]
-
-    Q[Queue]
-    E[Exchange]
-    B[Binding]
-    Po[Policy]
-
-    U  --> S
-    Pe --> U
-    B  --> Q
-    B  --> E
-
-    Po --> Q
+    User --> Secret
+    Permission --> User
+    Binding --> Queue
+    Binding --> Exchange
+    Policy --> Queue
 ```
 
 ## References

@@ -30,6 +30,27 @@ described in RabbitMQ documentation). To improve reliability, you SHOULD create
 will use it and not change it. When `User-user-credentials` secret changes,
 RabbitMQ Topology Operator will update credentials in cluster.
 
+### Topology Dependencies
+
+```mermaid
+flowchart BT
+    S[Secret]
+    U[User]
+    Pe[Permission]
+
+    Q[Queue]
+    E[Exchange]
+    B[Binding]
+    Po[Policy]
+
+    U  --> S
+    Pe --> U
+    B  --> Q
+    B  --> E
+
+    Po --> Q
+```
+
 ## References
 
 * [RabbitMQ: Using Topology Operator](https://www.rabbitmq.com/kubernetes/operator/using-topology-operator.html)

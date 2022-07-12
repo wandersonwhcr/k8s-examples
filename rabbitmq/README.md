@@ -27,7 +27,7 @@ kubectl apply \
 credentials secret will be not changed even if you change `User` resource
 (contrary to what is written in RabbitMQ documentation). To improve reliability,
 you SHOULD create `USER-user-credentials` secret with `username` and `password`
-data and RabbitMQ will use it and not change it. When `User-user-credentials`
+data and RabbitMQ will use it and not change it. When `USER-user-credentials`
 secret changes, RabbitMQ Topology Operator will update credentials in cluster.
 
 ### Topology Dependencies

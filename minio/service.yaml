@@ -11,4 +11,4 @@ spec:
       port: 9001
       targetPort: http-console
   selector:
-    name: minio
+    app.kubernetes.io/name: minio

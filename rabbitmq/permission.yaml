@@ -1,0 +1,13 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Permission
+metadata:
+  name: my-permission
+spec:
+  vhost: "/"
+  user: my-user
+  permissions:
+    write: ".*"
+    read: ".*"
+    configure: ".*"
+  rabbitmqClusterReference:
+    name: hello-world

@@ -5,6 +5,7 @@ resources:
   - exchange.yaml
   - namespace.yaml
   - pdb.yaml
+  - permission.yaml
   - policy.yaml
   - queue.yaml
   - rabbitmqcluster.yaml

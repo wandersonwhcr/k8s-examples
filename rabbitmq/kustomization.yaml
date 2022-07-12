@@ -3,4 +3,5 @@ namespace: example
 resources:
   - namespace.yaml
   - pdb.yaml
+  - queue.yaml
   - rabbitmqcluster.yaml

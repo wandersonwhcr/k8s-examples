@@ -12,7 +12,7 @@ kubectl apply \
     --kustomize .
 
 kubectl port-forward \
-    service/minio 9001 \
+    service/minio http-console \
     --namespace minio
 ```
 

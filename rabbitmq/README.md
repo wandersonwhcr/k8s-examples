@@ -30,16 +30,8 @@ kubectl apply \
 
 ## Notes
 
-`User` resource uses `spec.importCredentialsSecret` source to initialize
-`USER-user-credentials` credentials secret. When source secret is changed,
-credentials secret will be not changed even if you change `User` resource
-(contrary to what is written in RabbitMQ documentation). To improve reliability,
-you SHOULD create `USER-user-credentials` secret with `username` and `password`
-data and RabbitMQ will use it and not change it. When `USER-user-credentials`
-secret changes, RabbitMQ Topology Operator will update credentials in cluster.
-
-Today, it does not work. If `USER-user-credentials` exists, `User` resource will
-be not created and Kubernetes does not show error messages.
+If `USER-user-credentials` exists, `User` resource will be not created and
+Kubernetes does not show error messages.
 
 ### Topology Dependencies
 

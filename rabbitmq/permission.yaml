@@ -4,7 +4,8 @@ metadata:
   name: my-permission
 spec:
   vhost: "/"
-  user: my-user
+  userReference:
+    name: my-user
   permissions:
     write: ".*"
     read: ".*"

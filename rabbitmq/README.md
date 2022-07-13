@@ -38,6 +38,9 @@ you SHOULD create `USER-user-credentials` secret with `username` and `password`
 data and RabbitMQ will use it and not change it. When `USER-user-credentials`
 secret changes, RabbitMQ Topology Operator will update credentials in cluster.
 
+Today, it does not work. If `USER-user-credentials` exists, `User` resource will
+be not created and Kubernetes does not show error messages.
+
 ### Topology Dependencies
 
 ```mermaid

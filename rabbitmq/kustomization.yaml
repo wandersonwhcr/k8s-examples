@@ -9,5 +9,4 @@ resources:
   - permission.yaml
   - policy.yaml
   - queue.yaml
-  - secret.yaml
   - user.yaml

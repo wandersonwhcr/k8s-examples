@@ -2,12 +2,12 @@ namespace: example
 
 resources:
   - binding.yaml
+  - cluster.yaml
   - exchange.yaml
   - namespace.yaml
   - pdb.yaml
   - permission.yaml
   - policy.yaml
   - queue.yaml
-  - rabbitmqcluster.yaml
   - secret.yaml
   - user.yaml

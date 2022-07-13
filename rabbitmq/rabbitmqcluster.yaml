@@ -8,10 +8,18 @@ spec:
   replicas: 3
   resources:
     requests:
-      memory: 512M
+      memory: 1G
     limits:
-      memory: 512M
+      memory: 1G
   affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node.kubernetes.io/agent
+                operator: In
+                values:
+                  - rabbitmq
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         - topologyKey: "kubernetes.io/hostname"

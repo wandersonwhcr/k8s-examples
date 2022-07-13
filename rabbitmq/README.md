@@ -4,6 +4,14 @@
 k3d cluster create \
     --config ../k3d-example.yaml
 
+k3d node create example-agent-rabbitmq \
+    --cluster example \
+    --replicas 3 \
+    --memory 1G \
+    --role agent \
+    --k3s-node-label node.kubernetes.io/agent=rabbitmq \
+    --wait
+
 # RabbitMQ Cluster Kubernetes Operator
 kubectl apply \
     --filename https://github.com/rabbitmq/cluster-operator/releases/download/v1.14.0/cluster-operator.yml

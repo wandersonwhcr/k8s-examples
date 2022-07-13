@@ -10,3 +10,4 @@ resources:
   - policy.yaml
   - queue.yaml
   - user.yaml
+  - vhost.yaml

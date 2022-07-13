@@ -3,6 +3,7 @@ kind: Policy
 metadata:
   name: my-policy
 spec:
+  vhost: my-vhost
   name: my-policy
   pattern: "^my-queue$"
   applyTo: queues

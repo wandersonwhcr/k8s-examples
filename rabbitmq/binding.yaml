@@ -3,6 +3,7 @@ kind: Binding
 metadata:
   name: my-binding
 spec:
+  vhost: my-vhost
   source: my-exchange
   destination: my-queue
   destinationType: queue

@@ -45,11 +45,13 @@ be not created and Kubernetes does not show error messages.
 
 ```mermaid
 flowchart BT
-    User --> Secret
     Permission --> User
+    Permission --> Vhost
+    Queue --> Vhost
+    Exchange --> Vhost
+    Policy --> Queue
     Binding --> Queue
     Binding --> Exchange
-    Policy --> Queue
 ```
 
 ## References

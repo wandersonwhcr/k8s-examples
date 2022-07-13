@@ -3,7 +3,7 @@ kind: Permission
 metadata:
   name: my-permission
 spec:
-  vhost: "/"
+  vhost: my-vhost
   userReference:
     name: my-user
   permissions:

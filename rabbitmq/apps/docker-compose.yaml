@@ -39,3 +39,19 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: "admin"
       RABBITMQ_DEFAULT_PASS: "123456"
+
+  minio:
+    image: "minio/minio"
+    volumes:
+      - "minio-data:/data"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    entrypoint: ["minio"]
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: "AKIAIOSFODNN7EXAMPLE"
+      MINIO_ROOT_PASSWORD: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+
+volumes:
+  minio-data:

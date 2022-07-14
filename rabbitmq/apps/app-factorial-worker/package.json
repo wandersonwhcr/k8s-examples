@@ -1,4 +1,8 @@
 {
   "name": "app-factorial-worker",
-  "version": "1.0.0-alpha"
+  "version": "1.0.0-alpha",
+  "dependencies": {
+    "amqplib": "^0.10.0",
+    "bson": "^4.6.5"
+  }
 }

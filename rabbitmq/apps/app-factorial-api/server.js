@@ -33,10 +33,14 @@ fastify.post('/factorials', {
   handler: function (req, reply) {
     const id = uuid.v4();
 
-    const message = { id, body: req.body };
-    this.amqp.channel.sendToQueue('factorials', bson.serialize(message));
+    this.amqp.channel.sendToQueue(
+      'factorials',
+      bson.serialize(req.body),
+      { headers: { 'x-resource-id': id } }
+    );
 
     reply.status(202)
+      .header('x-resource-id', id)
       .header('location', '/factorials/' + id)
       .send({ id });
   },

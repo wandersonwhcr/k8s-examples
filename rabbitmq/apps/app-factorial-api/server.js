@@ -1,18 +1,45 @@
-const http = require('http');
-const process = require('process');
-
-const server = http.createServer((req, res) => {
-  res.writeHead(200);
-  res.end('Hello, World');
+const fastify = require('fastify')({
+  logger: true,
+  ajv: {
+    customOptions: {
+      allErrors: true,
+      coerceTypes: false,
+      strict: false,
+    },
+  },
 });
 
-server.listen(process.env.PORT, '0.0.0.0', () => {
-  console.log(new Date(), 'Server Started');
+fastify.post('/factorials', {
+  schema: {
+    body: {
+      type: 'object',
+      required: ['number'],
+      additionalProperties: false,
+      properties: {
+        number: { type: 'integer' },
+      },
+    },
+  },
+  handler: (req, reply) => {
+    console.log(req.body);
+    reply.send({});
+  },
 });
 
-function handler() {
-  process.exit(0);
-}
+fastify.setErrorHandler((error, req, reply) => {
+  fastify.log.error(error);
 
-process.on('SIGINT', handler);
-process.on('SIGTERM', handler);
+  if (error.validation) {
+    reply.status(422)
+      .send(error.validation);
+    return;
+  }
+
+  reply.status(500)
+    .send();
+});
+
+fastify.listen({ host: "0.0.0.0", port: process.env.PORT });
+
+process.on('SIGINT', () => fastify.close());
+process.on('SIGTERM', () => fastify.close());

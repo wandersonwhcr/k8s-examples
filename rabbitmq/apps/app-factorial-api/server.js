@@ -11,6 +11,13 @@ const fastify = require('fastify')({
   },
 });
 
+fastify.register(require('fastify-amqp'), {
+  hostname: process.env.RABBITMQ_HOST,
+  port: process.env.RABBITMQ_PORT,
+  username: process.env.RABBITMQ_USERNAME,
+  password: process.env.RABBITMQ_PASSWORD,
+});
+
 fastify.post('/factorials', {
   schema: {
     body: {

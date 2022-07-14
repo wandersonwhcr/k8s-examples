@@ -3,6 +3,7 @@
   "version": "1.0.0-alpha",
   "dependencies": {
     "fastify": "^4.2.1",
+    "fastify-amqp": "^1.1.0",
     "uuid": "^8.3.2"
   }
 }

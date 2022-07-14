@@ -5,10 +5,20 @@ services:
     volumes:
       - "./app-factorial-api:/app"
     ports:
-      - "3000"
+      - "3000:3000"
     working_dir: "/app"
     user: "${UID:-1000}:${GID:-1000}"
     entrypoint: ["npm"]
     command: ["start"]
     environment:
       PORT: "3000"
+      RABBITMQ_HOST: "rabbitmq"
+      RABBITMQ_PORT: "5672"
+      RABBITMQ_USERNAME: "admin"
+      RABBITMQ_PASSWORD: "123456"
+
+  rabbitmq:
+    image: "rabbitmq:3.10"
+    environment:
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "123456"

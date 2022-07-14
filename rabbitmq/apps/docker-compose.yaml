@@ -4,5 +4,11 @@ services:
     image: "node:16.16-alpine"
     volumes:
       - "./app-factorial-api:/app"
+    ports:
+      - "3000"
     working_dir: "/app"
     user: "${UID:-1000}:${GID:-1000}"
+    entrypoint: ["npm"]
+    command: ["start"]
+    environment:
+      PORT: "3000"

@@ -1,0 +1,8 @@
+services:
+
+  app-factorial-api:
+    image: "node:16.16-alpine"
+    volumes:
+      - "./app-factorial-api:/app"
+    working_dir: "/app"
+    user: "${UID:-1000}:${GID:-1000}"

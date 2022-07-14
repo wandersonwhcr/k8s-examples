@@ -1,3 +1,5 @@
+const uuid = require('uuid');
+
 const fastify = require('fastify')({
   logger: true,
   ajv: {
@@ -21,8 +23,10 @@ fastify.post('/factorials', {
     },
   },
   handler: (req, reply) => {
-    console.log(req.body);
-    reply.send({});
+    const id = uuid.v4();
+    reply.status(202)
+      .header('location', '/factorials/' + id)
+      .send({ id });
   },
 });
 

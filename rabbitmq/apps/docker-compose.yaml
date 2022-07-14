@@ -17,6 +17,20 @@ services:
       RABBITMQ_USERNAME: "admin"
       RABBITMQ_PASSWORD: "123456"
 
+  app-factorial-worker:
+    image: "node:16.16-alpine"
+    volumes:
+      - "./app-factorial-worker:/app"
+    working_dir: "/app"
+    user: "${UID:-1000}:${GID:-1000}"
+    entrypoint: ["npm"]
+    command: ["start"]
+    environment:
+      RABBITMQ_HOST: "rabbitmq"
+      RABBITMQ_PORT: "5672"
+      RABBITMQ_USERNAME: "admin"
+      RABBITMQ_PASSWORD: "123456"
+
   rabbitmq:
     image: "rabbitmq:3.10-management"
     ports:

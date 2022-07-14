@@ -2,6 +2,7 @@
   "name": "app-factorial-api",
   "version": "1.0.0-alpha",
   "dependencies": {
+    "bson": "^4.6.5",
     "fastify": "^4.2.1",
     "fastify-amqp": "^1.1.0",
     "uuid": "^8.3.2"

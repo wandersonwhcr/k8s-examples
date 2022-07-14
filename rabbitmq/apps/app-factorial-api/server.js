@@ -1,3 +1,4 @@
+const bson = require('bson');
 const uuid = require('uuid');
 
 const fastify = require('fastify')({
@@ -29,16 +30,20 @@ fastify.post('/factorials', {
       },
     },
   },
-  handler: (req, reply) => {
+  handler: function (req, reply) {
     const id = uuid.v4();
+
+    const message = { id, body: req.body };
+    this.amqp.channel.sendToQueue('factorials', bson.serialize(message));
+
     reply.status(202)
       .header('location', '/factorials/' + id)
       .send({ id });
   },
 });
 
-fastify.setErrorHandler((error, req, reply) => {
-  fastify.log.error(error);
+fastify.setErrorHandler(function (error, req, reply) {
+  this.log.error(error);
 
   if (error.validation) {
     reply.status(422)

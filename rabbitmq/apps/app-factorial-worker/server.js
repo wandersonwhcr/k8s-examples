@@ -1,4 +1,5 @@
 const amqplib = require('amqplib');
+const aws = require('aws-sdk');
 const bson = require('bson');
 const process = require('process');
 
@@ -11,6 +12,13 @@ function factorial(number) {
 }
 
 async function main() {
+  const s3 = new aws.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    endpoint: process.env.AWS_ENDPOINT,
+    s3ForcePathStyle: true,
+  });
+
   const url = new URL('amqp://localhost');
 
   url.hostname = process.env.RABBITMQ_HOST;
@@ -26,9 +34,19 @@ async function main() {
     const headers = message.properties.headers;
     const body    = bson.deserialize(message.content);
 
-    console.log(new Date(), headers['x-resource-id'], factorial(body.number));
+    body.factorial = factorial(body.number);
+
+    const params = {
+      Bucket: 'factorials',
+      Key: headers['x-resource-id'],
+      Body: bson.serialize(body),
+    };
+
+    s3.putObject(params, (err, data) => {}); // TODO Exception Handling
 
     channel.ack(message);
+
+    console.debug(new Date(), headers['x-resource-id'], body.factorial);
   });
 
   async function handler() {

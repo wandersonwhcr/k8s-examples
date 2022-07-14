@@ -30,6 +30,9 @@ services:
       RABBITMQ_PORT: "5672"
       RABBITMQ_USERNAME: "admin"
       RABBITMQ_PASSWORD: "123456"
+      AWS_ACCESS_KEY_ID: "AKIAIOSFODNN7EXAMPLE"
+      AWS_SECRET_ACCESS_KEY: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+      AWS_ENDPOINT: "http://minio:9000"
 
   rabbitmq:
     image: "rabbitmq:3.10-management"

@@ -14,6 +14,8 @@ curl http://localhost:3000/factorials \
 
 FACTORIAL_ID=`jq --raw-output .id "$TEMPORARY_FILENAME"`
 
+rm "$TEMPORARY_FILENAME"
+
 sleep 1
 
 curl "http://localhost:3000/factorials/$FACTORIAL_ID" \

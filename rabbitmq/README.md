@@ -2,15 +2,14 @@
 
 ```
 k3d cluster create \
-    --config ../k3d-example.yaml
-
-k3d node create example-agent-rabbitmq \
-    --cluster example \
-    --replicas 3 \
-    --memory 1G \
-    --role agent \
-    --k3s-node-label node.kubernetes.io/agent=rabbitmq \
-    --wait
+    --config ../k3d-example.yaml \
+    && sleep 2 \
+    && k3d node create example-agent-rabbitmq \
+        --cluster example \
+        --replicas 3 \
+        --memory 1G \
+        --role agent \
+        --k3s-arg --node-taint=node.kubernetes.io/broker=rabbitmq:NoSchedule
 
 # RabbitMQ Cluster Kubernetes Operator
 kubectl apply \

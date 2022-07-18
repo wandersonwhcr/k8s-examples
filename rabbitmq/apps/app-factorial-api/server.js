@@ -1,5 +1,13 @@
+const aws = require('aws-sdk');
 const bson = require('bson');
 const uuid = require('uuid');
+
+const s3 = new aws.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  endpoint: process.env.AWS_ENDPOINT,
+  s3ForcePathStyle: true,
+});
 
 const fastify = require('fastify')({
   logger: true,
@@ -43,6 +51,28 @@ fastify.post('/factorials', {
       .header('x-resource-id', id)
       .header('location', '/factorials/' + id)
       .send({ id });
+  },
+});
+
+fastify.get('/factorials/:id', {
+  schema: {
+    params: {
+      type: 'object',
+      required: ['id'],
+      additionalProperties: false,
+      properties: {
+        id: { type: 'string', format: 'uuid' },
+      },
+    }
+  },
+  handler: async function (req, reply) {
+    const stream =
+      s3.getObject({ Bucket: 'factorials', Key: req.params.id })
+        .createReadStream()
+        .pipe();
+
+    reply.status(200)
+      .send(stream);
   },
 });
 

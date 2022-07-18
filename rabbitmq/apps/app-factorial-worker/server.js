@@ -39,7 +39,8 @@ async function main() {
     const params = {
       Bucket: 'factorials',
       Key: headers['x-resource-id'],
-      Body: bson.serialize(body),
+      Body: JSON.stringify(body),
+      ContentType: 'application/json',
     };
 
     s3.putObject(params, (err, data) => {}); // TODO Exception Handling

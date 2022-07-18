@@ -66,13 +66,11 @@ fastify.get('/factorials/:id', {
     }
   },
   handler: async function (req, reply) {
-    const stream =
-      s3.getObject({ Bucket: 'factorials', Key: req.params.id })
-        .createReadStream()
-        .pipe();
+    const data = await s3.getObject({ Bucket: 'factorials', Key: req.params.id }).promise();
 
     reply.status(200)
-      .send(stream);
+      .header('content-type', data.ContentType)
+      .send(data.Body);
   },
 });
 
@@ -82,6 +80,12 @@ fastify.setErrorHandler(function (error, req, reply) {
   if (error.validation) {
     reply.status(422)
       .send(error.validation);
+    return;
+  }
+
+  if (error.code == 'NoSuchKey') {
+    reply.status(404)
+      .send();
     return;
   }
 

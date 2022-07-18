@@ -28,6 +28,20 @@ kubectl apply \
     --kustomize .
 ```
 
+```
+# echo "127.0.0.255 k3d-example k3d-example-registry" >> /etc/hosts
+
+docker build ./apps/app-factorial-api \
+    --tag k3d-example-registry:5000/app-factorial-api
+
+docker push k3d-example-registry:5000/app-factorial-api
+
+docker build ./apps/app-factorial-worker \
+    --tag k3d-example-registry:5000/app-factorial-worker
+
+docker push k3d-example-registry:5000/app-factorial-worker
+```
+
 ## Notes
 
 If `USER-user-credentials` exists, `User` resource will be not created and

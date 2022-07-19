@@ -1,7 +1,10 @@
 namespace: app-factorial-api
 
 resources:
+  - deployment.yaml
   - namespace.yaml
   - rabbitmq-exchange.yaml
   - rabbitmq-permission.yaml
   - rabbitmq-user.yaml
+  - secret.yaml
+  - service.yaml

@@ -22,9 +22,6 @@ kubectl apply \
 # RabbitMQ Messaging Topology Operator
 kubectl apply \
     --filename https://github.com/rabbitmq/messaging-topology-operator/releases/download/v1.7.1/messaging-topology-operator-with-certmanager.yaml
-
-kubectl apply \
-    --kustomize .
 ```
 
 ```
@@ -39,6 +36,11 @@ docker build ./apps/app-factorial-worker \
     --tag k3d-example-registry:5000/app-factorial-worker
 
 docker push k3d-example-registry:5000/app-factorial-worker
+```
+
+```
+kubectl apply \
+    --kustomize .
 ```
 
 ## Notes

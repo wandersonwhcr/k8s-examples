@@ -41,8 +41,9 @@ fastify.post('/factorials', {
   handler: function (req, reply) {
     const id = uuid.v4();
 
-    this.amqp.channel.sendToQueue(
-      'factorials',
+    this.amqp.channel.publish(
+      process.env.RABBITMQ_EXCHANGE,
+      'factorial',
       bson.serialize(req.body),
       { headers: { 'x-resource-id': id } }
     );

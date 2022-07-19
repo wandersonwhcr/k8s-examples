@@ -15,6 +15,7 @@ spec:
       containers:
         - name: app-factorial-api
           image: k3d-example-registry:5000/app-factorial-api
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 3000
@@ -51,3 +52,5 @@ spec:
                 secretKeyRef:
                   name: app-factorial-api-user-credentials
                   key: password
+            - name: RABBITMQ_EXCHANGE
+              value: app-factorial-api

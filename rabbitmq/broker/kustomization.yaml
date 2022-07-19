@@ -3,3 +3,4 @@ namespace: broker
 resources:
   - cluster.yaml
   - namespace.yaml
+  - pdb.yaml

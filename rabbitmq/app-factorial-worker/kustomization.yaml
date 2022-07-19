@@ -1,0 +1,4 @@
+namespace: app-factorial-worker
+
+resources:
+  - namespace.yaml

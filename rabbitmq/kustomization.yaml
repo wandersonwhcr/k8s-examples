@@ -1,3 +1,4 @@
 resources:
   - app-factorial-api
+  - app-factorial-worker
   - broker

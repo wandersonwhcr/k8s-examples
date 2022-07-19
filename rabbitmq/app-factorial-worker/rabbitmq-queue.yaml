@@ -1,13 +1,10 @@
 apiVersion: rabbitmq.com/v1beta1
-kind: Exchange
+kind: Queue
 metadata:
-  name: app-factorial-api
+  name: app-factorial-worker
 spec:
   vhost: /
-  name: app-factorial-api
-  type: fanout
-  autoDelete: false
-  durable: true
+  name: app-factorial-worker
   rabbitmqClusterReference:
     namespace: broker
     name: rabbitmq

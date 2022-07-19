@@ -2,5 +2,7 @@ namespace: app-factorial-worker
 
 resources:
   - namespace.yaml
+  - rabbitmq-binding.yaml
   - rabbitmq-permission.yaml
+  - rabbitmq-queue.yaml
   - rabbitmq-user.yaml

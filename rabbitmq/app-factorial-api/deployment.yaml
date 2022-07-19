@@ -26,7 +26,7 @@ spec:
               value: "3000"
 
             - name: AWS_ENDPOINT
-              value: http://minio.bucket
+              value: http://minio.buckets
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:

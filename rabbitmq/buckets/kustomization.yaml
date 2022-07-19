@@ -1,0 +1,7 @@
+namespace: buckets
+
+resources:
+  - namespace.yaml
+  - secret.yaml
+  - service.yaml
+  - statefulset.yaml

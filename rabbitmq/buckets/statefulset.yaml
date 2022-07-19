@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minio
+spec:
+  serviceName: minio
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minio
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: minio
+    spec:
+      containers:
+        - name: minio
+          image: "minio/minio"
+          ports:
+            - name: http
+              containerPort: 9000
+            - name: http-console
+              containerPort: 9001
+          args: ["server", "/data", "--console-address", ":9001"]
+          env:
+            - name: MINIO_ROOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-api-aws
+                  key: AWS_ACCESS_KEY_ID
+            - name: MINIO_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-api-aws
+                  key: AWS_SECRET_ACCESS_KEY
+          volumeMounts:
+            - name: minio-data
+              mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: minio-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1G

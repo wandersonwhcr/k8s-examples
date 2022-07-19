@@ -1,9 +1,0 @@
-apiVersion: rabbitmq.com/v1beta1
-kind: Queue
-metadata:
-  name: my-queue
-spec:
-  vhost: my-vhost
-  name: my-queue
-  rabbitmqClusterReference:
-    name: hello-world

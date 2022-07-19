@@ -1,8 +1,0 @@
-apiVersion: rabbitmq.com/v1beta1
-kind: Vhost
-metadata:
-  name: my-vhost
-spec:
-  name: "my-vhost"
-  rabbitmqClusterReference:
-    name: hello-world

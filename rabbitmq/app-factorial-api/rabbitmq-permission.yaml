@@ -1,0 +1,15 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Permission
+metadata:
+  name: app-factorial-api
+spec:
+  vhost: /
+  userReference:
+    name: app-factorial-api
+  permissions:
+    write: ".*"
+    read: ".*"
+    configure: ".*"
+  rabbitmqClusterReference:
+    namespace: broker
+    name: rabbitmq

@@ -16,9 +16,11 @@ services:
       RABBITMQ_PORT: "5672"
       RABBITMQ_USERNAME: "admin"
       RABBITMQ_PASSWORD: "123456"
+      RABBITMQ_EXCHANGE: "app-factorial-api"
       AWS_ACCESS_KEY_ID: "AKIAIOSFODNN7EXAMPLE"
       AWS_SECRET_ACCESS_KEY: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
       AWS_ENDPOINT: "http://minio:9000"
+      AWS_BUCKET: "app-factorial-api"
 
   app-factorial-worker:
     image: "node:16.16-alpine"
@@ -33,9 +35,11 @@ services:
       RABBITMQ_PORT: "5672"
       RABBITMQ_USERNAME: "admin"
       RABBITMQ_PASSWORD: "123456"
+      RABBITMQ_QUEUE: "app-factorial-worker"
       AWS_ACCESS_KEY_ID: "AKIAIOSFODNN7EXAMPLE"
       AWS_SECRET_ACCESS_KEY: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
       AWS_ENDPOINT: "http://minio:9000"
+      AWS_BUCKET: "app-factorial-api"
 
   rabbitmq:
     image: "rabbitmq:3.10-management"

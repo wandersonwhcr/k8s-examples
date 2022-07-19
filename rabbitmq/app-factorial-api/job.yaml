@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-factorial-api-buckets
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: app-factorial-api
+          image: k3d-example-registry:5000/app-factorial-api
+          args: ["run", "buckets"]
+          env:
+            - name: AWS_ENDPOINT
+              value: http://minio.bucket
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-api-aws
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-api-aws
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: AWS_BUCKET
+              value: app-factorial-api

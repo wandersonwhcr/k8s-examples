@@ -67,7 +67,8 @@ fastify.get('/factorials/:id', {
     }
   },
   handler: async function (req, reply) {
-    const data = await s3.getObject({ Bucket: 'factorials', Key: req.params.id }).promise();
+    const data = await s3.getObject({ Bucket: process.env.AWS_BUCKET, Key: req.params.id })
+      .promise();
 
     reply.status(200)
       .header('content-type', data.ContentType)

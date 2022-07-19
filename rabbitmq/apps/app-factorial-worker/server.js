@@ -30,24 +30,31 @@ async function main() {
 
   const channel = await connection.createChannel();
 
-  channel.consume('factorials', (message) => {
+  channel.consume(process.env.RABBITMQ_QUEUE, (message) => {
     const headers = message.properties.headers;
     const body    = bson.deserialize(message.content);
 
     body.factorial = factorial(body.number);
 
     const params = {
-      Bucket: 'factorials',
+      Bucket: process.env.AWS_BUCKET,
       Key: headers['x-resource-id'],
       Body: JSON.stringify(body),
       ContentType: 'application/json',
     };
 
-    s3.putObject(params, (err, data) => {}); // TODO Exception Handling
+    // TODO Exception Handling
+    s3.putObject(params, (err, data) => {
+      if (err) {
+        console.error(new Date(), 'ERROR', headers['x-resource-id'], body.factorial);
+        console.debug(err);
+        return;
+      }
 
-    channel.ack(message);
+      channel.ack(message);
 
-    console.debug(new Date(), headers['x-resource-id'], body.factorial);
+      console.debug(new Date(), headers['x-resource-id'], body.factorial);
+    });
   });
 
   async function handler() {

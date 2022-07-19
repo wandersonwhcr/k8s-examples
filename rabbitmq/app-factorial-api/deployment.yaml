@@ -37,6 +37,8 @@ spec:
                 secretKeyRef:
                   name: app-factorial-api-aws
                   key: AWS_SECRET_ACCESS_KEY
+            - name: AWS_BUCKET
+              value: app-factorial-api
 
             - name: RABBITMQ_HOST
               value: rabbitmq.broker

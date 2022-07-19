@@ -1,6 +1,9 @@
 {
   "name": "app-factorial-api",
   "version": "1.0.0-alpha",
+  "scripts": {
+    "buckets": "./bin/buckets.js"
+  },
   "dependencies": {
     "aws-sdk": "^2.1174.0",
     "bson": "^4.6.5",

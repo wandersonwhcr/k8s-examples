@@ -8,5 +8,5 @@ spec:
   destination: app-factorial-worker
   destinationType: queue
   rabbitmqClusterReference:
-    namespace: broker
+    namespace: rabbitmq
     name: rabbitmq

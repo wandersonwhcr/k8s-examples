@@ -9,5 +9,5 @@ spec:
   autoDelete: false
   durable: true
   rabbitmqClusterReference:
-    namespace: broker
+    namespace: rabbitmq
     name: rabbitmq

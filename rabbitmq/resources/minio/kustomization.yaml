@@ -1,4 +1,4 @@
-namespace: buckets
+namespace: minio
 
 resources:
   - namespace.yaml

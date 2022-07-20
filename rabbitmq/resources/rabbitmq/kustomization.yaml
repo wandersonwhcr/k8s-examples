@@ -1,4 +1,4 @@
-namespace: broker
+namespace: rabbitmq
 
 resources:
   - cluster.yaml

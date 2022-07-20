@@ -1,8 +1,8 @@
 apiVersion: rabbitmq.com/v1beta1
 kind: User
 metadata:
-  name: app-factorial-api
+  name: app-factorial-worker
 spec:
   rabbitmqClusterReference:
-    namespace: broker
+    namespace: rabbitmq
     name: rabbitmq

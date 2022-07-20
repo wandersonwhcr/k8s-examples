@@ -11,5 +11,5 @@ spec:
     read: ".*"
     configure: ".*"
   rabbitmqClusterReference:
-    namespace: broker
+    namespace: rabbitmq
     name: rabbitmq

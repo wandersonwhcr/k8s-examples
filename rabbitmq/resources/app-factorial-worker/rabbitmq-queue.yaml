@@ -6,5 +6,5 @@ spec:
   vhost: /
   name: app-factorial-worker
   rabbitmqClusterReference:
-    namespace: broker
+    namespace: rabbitmq
     name: rabbitmq

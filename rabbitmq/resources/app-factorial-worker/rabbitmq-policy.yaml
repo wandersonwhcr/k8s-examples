@@ -10,5 +10,5 @@ spec:
   definition:
     queue-mode: lazy
   rabbitmqClusterReference:
-    namespace: broker
+    namespace: rabbitmq
     name: rabbitmq

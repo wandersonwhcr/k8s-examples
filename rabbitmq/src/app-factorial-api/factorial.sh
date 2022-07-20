@@ -6,7 +6,7 @@ REQUEST_DATA=`echo "$1" | jq 'tonumber | { number: . }'`
 
 TEMPORARY_FILENAME=`mktemp`
 
-curl http://localhost:3000/factorials \
+curl http://app-factorial-api.app-services.localhost/factorials \
     --silent \
     --request POST \
     --header 'Content-Type: application/json' \
@@ -18,5 +18,5 @@ rm "$TEMPORARY_FILENAME"
 
 sleep 1
 
-curl "http://localhost:3000/factorials/$FACTORIAL_ID" \
+curl "http://app-factorial-api.app-services.localhost/factorials/$FACTORIAL_ID" \
     --include

@@ -1,5 +1,5 @@
 resources:
-  - app-factorial-api
-  - app-factorial-worker
-  - minio
-  - rabbitmq
+  - resources/app-factorial-api
+  - resources/app-factorial-worker
+  - resources/minio
+  - resources/rabbitmq

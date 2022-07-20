@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-factorial-api
+spec:
+  rules:
+    - host: app-factorial-api.app-services.localhost
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: app-factorial-api
+                port:
+                  name: http

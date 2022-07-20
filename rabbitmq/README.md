@@ -27,12 +27,12 @@ kubectl apply \
 ```
 # echo "127.0.0.255 k3d-example k3d-example-registry" >> /etc/hosts
 
-docker build ./apps/app-factorial-api \
+docker build ./src/app-factorial-api \
     --tag k3d-example-registry:5000/app-factorial-api
 
 docker push k3d-example-registry:5000/app-factorial-api
 
-docker build ./apps/app-factorial-worker \
+docker build ./src/app-factorial-worker \
     --tag k3d-example-registry:5000/app-factorial-worker
 
 docker push k3d-example-registry:5000/app-factorial-worker
@@ -41,6 +41,10 @@ docker push k3d-example-registry:5000/app-factorial-worker
 ```
 kubectl apply \
     --kustomize .
+```
+
+```
+./src/app-factorial-api/factorial.sh 10
 ```
 
 ## Notes

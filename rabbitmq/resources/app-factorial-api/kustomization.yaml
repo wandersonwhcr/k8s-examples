@@ -2,6 +2,7 @@ namespace: app-factorial-api
 
 resources:
   - deployment.yaml
+  - ingress.yaml
   - job.yaml
   - namespace.yaml
   - rabbitmq-exchange.yaml

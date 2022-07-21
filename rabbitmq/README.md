@@ -69,6 +69,13 @@ kubectl apply \
     --kustomize .
 ```
 
+Every RabbitMQ resource are defined in `resources` directory using Topology
+Operator. `app-factorial-api` subdirectory defines user and permission to access
+this broker from service and an exchange to receive messages from publisher.
+`app-factorial-worker` subdirectory also defines a user and permission for
+worker, a queue for messages, a binding to link the exchange and queue, and a
+policy for queue.
+
 ## Testing
 
 This snipped shows how to calculate the factorial of 10.

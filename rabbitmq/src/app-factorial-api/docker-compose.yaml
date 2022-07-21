@@ -28,6 +28,7 @@ services:
       RABBITMQ_USERNAME: "admin"
       RABBITMQ_PASSWORD: "admin"
       RABBITMQ_EXCHANGE: "app-factorial-api"
+      RABBITMQ_ROUTING_KEY: "factorial"
       # Local
       PORT: "3000"
 

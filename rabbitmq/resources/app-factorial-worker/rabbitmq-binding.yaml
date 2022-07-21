@@ -5,6 +5,7 @@ metadata:
 spec:
   vhost: /
   source: app-factorial-api
+  routingKey: factorial
   destination: app-factorial-worker
   destinationType: queue
   rabbitmqClusterReference:

@@ -5,7 +5,7 @@ metadata:
 spec:
   vhost: /
   name: app-factorial-api
-  type: fanout
+  type: direct
   autoDelete: false
   durable: true
   rabbitmqClusterReference:

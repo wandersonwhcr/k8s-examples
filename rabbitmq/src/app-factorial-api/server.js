@@ -43,7 +43,7 @@ fastify.post('/factorials', {
 
     this.amqp.channel.publish(
       process.env.RABBITMQ_EXCHANGE,
-      'app-factorial-api.factorials',
+      process.env.RABBITMQ_ROUTING_KEY,
       bson.serialize(req.body),
       { headers: { 'x-resource-id': id } }
     );

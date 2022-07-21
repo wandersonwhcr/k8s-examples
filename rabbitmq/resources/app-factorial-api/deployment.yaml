@@ -56,3 +56,5 @@ spec:
                   key: password
             - name: RABBITMQ_EXCHANGE
               value: app-factorial-api
+            - name: RABBITMQ_ROUTING_KEY
+              value: factorial

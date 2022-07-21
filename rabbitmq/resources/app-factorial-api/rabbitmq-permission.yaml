@@ -7,9 +7,9 @@ spec:
   userReference:
     name: app-factorial-api
   permissions:
-    write: ".*"
-    read: ".*"
-    configure: ".*"
+    write: "^app-factorial-api$"
+    read: "^$"
+    configure: "^$"
   rabbitmqClusterReference:
     namespace: rabbitmq
     name: rabbitmq

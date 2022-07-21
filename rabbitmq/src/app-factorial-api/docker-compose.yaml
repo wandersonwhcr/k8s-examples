@@ -6,13 +6,12 @@ services:
     image: "node:16.16-alpine"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app-factorial-api.rule=Host(`app-factorial-api.app-services.localhost`)"
+      - "traefik.http.routers.app-factorial-api.rule=Host(`app-factorial-api.example.localhost`)"
       - "traefik.http.services.app-factorial-api.loadbalancer.server.port=3000"
     volumes:
       - ".:/app"
     networks:
-      - "app-services"
-      - "app-factorial-api"
+      - "example-services"
     working_dir: "/app"
     user: "${UID:-1000}:${GID:-1000}"
     entrypoint: ["npm"]
@@ -33,8 +32,6 @@ services:
       PORT: "3000"
 
 networks:
-  app-services:
-    name: "app-services"
+  example-services:
+    name: "example-services"
     external: true
-  app-factorial-api:
-    name: "app-factorial-api"

@@ -2,13 +2,12 @@ version: "3.8"
 
 services:
 
-  app-factorial-api:
+  app-factorial-worker:
     image: "node:16.16-alpine"
     volumes:
       - ".:/app"
     networks:
-      - "app-services"
-      - "app-factorial-worker"
+      - "example-services"
     working_dir: "/app"
     user: "${UID:-1000}:${GID:-1000}"
     entrypoint: ["npm"]
@@ -29,8 +28,6 @@ services:
       PORT: "3000"
 
 networks:
-  app-services:
-    name: "app-services"
+  example-services:
+    name: "example-services"
     external: true
-  app-factorial-worker:
-    name: "app-factorial-worker"

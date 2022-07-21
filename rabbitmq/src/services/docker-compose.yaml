@@ -2,36 +2,36 @@ version: "3.8"
 
 services:
 
-  proxy:
+  traefik:
     image: "traefik:2.5"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.app-services.localhost`)"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.example.localhost`)"
       - "traefik.http.services.traefik.loadbalancer.server.port=8080"
     ports:
       - "80:80"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
-      - "app-services"
+      - "example-services"
     command:
       - "--api.insecure=true"
       - "--entrypoints.http.address=:80"
-      - "--log.level=INFO"
-      - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.network=app-services"
+      - "--log.level=DEBUG"
       - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.network=example-services"
 
   rabbitmq:
     image: "rabbitmq:3.10-management"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.app-services.localhost`)"
+      - "traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.example.localhost`)"
       - "traefik.http.services.rabbitmq.loadbalancer.server.port=15672"
     volumes:
       - "rabbitmq-data:/var/lib/rabbitmq"
     networks:
-      - "app-services"
+      - "example-services"
     environment:
       RABBITMQ_DEFAULT_USER: "admin"
       RABBITMQ_DEFAULT_PASS: "admin"
@@ -40,12 +40,12 @@ services:
     image: "minio/minio"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.minio.rule=Host(`minio.app-services.localhost`)"
+      - "traefik.http.routers.minio.rule=Host(`minio.example.localhost`)"
       - "traefik.http.services.minio.loadbalancer.server.port=9001"
     volumes:
       - "minio-data:/data"
     networks:
-      - "app-services"
+      - "example-services"
     entrypoint: ["minio"]
     command: ["server", "/data", "--console-address", ":9001"]
     environment:
@@ -53,8 +53,8 @@ services:
       MINIO_ROOT_PASSWORD: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
 
 networks:
-  app-services:
-    name: "app-services"
+  example-services:
+    name: "example-services"
 
 volumes:
   rabbitmq-data:

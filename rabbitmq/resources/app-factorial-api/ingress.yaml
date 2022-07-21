@@ -4,7 +4,7 @@ metadata:
   name: app-factorial-api
 spec:
   rules:
-    - host: app-factorial-api.app-services.localhost
+    - host: app-factorial-api.example.localhost
       http:
         paths:
           - pathType: Prefix

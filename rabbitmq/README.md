@@ -2,11 +2,9 @@
 
 This example shows how to deploy a RabbitMQ Cluster via Cluster Operator, adding
 three separate Kubernetes nodes to deploy the RabbitMQ using taints and
-affinity.
-
-Also, it installs and shows how to use Topology Operator to provision RabbitMQ
-Cluster resources using Kubernetes CRD. Cert Manager is installed too, because
-Topology Operator depends on it.
+affinity. Also, it installs and shows how to use Topology Operator to provision
+RabbitMQ Cluster resources using Kubernetes CRD. Cert Manager is installed
+because Topology Operator depends on it.
 
 ```
 k3d cluster create \
@@ -40,11 +38,10 @@ producer-consumer pattern to calculate the factorial of a number.
 `app-factorial-api` is a REST API that provides two endpoints: one receives a
 number and responds with a new location and another corresponds to this new
 location to retrieve the factorial of number. API produces messages on RabbitMQ
-to async execution and retrieves results calculated on bucket. This example uses
-MinIO as bucket provider.
+for async processing and retrieves results calculated on bucket using MinIO.
 
-`app-factorial-worker` is a worker consumer from RabbitMQ that computes
-factorial of number and stores its results on bucket.
+`app-factorial-worker` is a consumer worker for RabbitMQ that computes factorial
+of a number and stores its results on bucket.
 
 Use Docker to build and push these container images to cluster registry.
 

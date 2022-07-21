@@ -1,10 +1,10 @@
 # rabbitmq
 
 This example shows how to deploy a RabbitMQ Cluster via Cluster Operator, adding
-three separate Kubernetes nodes to deploy the RabbitMQ using taints and
-affinity. Also, it installs and shows how to use Topology Operator to provision
-RabbitMQ Cluster resources using Kubernetes CRD. Cert Manager is installed
-because Topology Operator depends on it.
+three separate Kubernetes nodes to deploy RabbitMQ using taint and affinity.
+Also, it installs and shows how to use Topology Operator to provision RabbitMQ
+resources using Kubernetes CRD. Cert Manager is installed because Topology
+Operator depends on it.
 
 ```
 k3d cluster create \
@@ -38,10 +38,10 @@ producer-consumer pattern to calculate the factorial of a number.
 `app-factorial-api` is a RESTful API that provides two endpoints: one receives a
 number and responds with a new location and another corresponds to this new
 location to retrieve the factorial of number. API produces messages on RabbitMQ
-for async processing and retrieves results calculated on bucket using MinIO.
+for async processing and retrieves results calculated on a bucket using MinIO.
 
 `app-factorial-worker` is a consumer worker for RabbitMQ that computes factorial
-of a number and stores its results on bucket.
+of a number and stores its results on the same bucket.
 
 Use Docker to build and push these container images to cluster registry.
 
@@ -66,12 +66,12 @@ kubectl apply \
     --kustomize .
 ```
 
-Every RabbitMQ resource are defined in `resources` directory using Topology
-Operator. `app-factorial-api` subdirectory defines user and permission to access
-this broker from service and an exchange to receive messages from publisher.
-`app-factorial-worker` subdirectory also defines a user and permission for
-worker, a queue for messages, a binding to link the exchange and queue, and a
-policy for queue.
+Every RabbitMQ resource is defined in `resources` directory using Topology
+Operator. `app-factorial-api` subdirectory contains user and permission to
+access this broker from service and an exchange to receive messages from
+publisher. `app-factorial-worker` subdirectory also defines a user and
+permission for worker, a queue for messages, a binding to link the exchange and
+queue, and a policy for queue.
 
 ```mermaid
 flowchart LR

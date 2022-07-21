@@ -32,6 +32,20 @@ kubectl apply \
     --filename https://github.com/rabbitmq/messaging-topology-operator/releases/download/v1.7.1/messaging-topology-operator-with-certmanager.yaml
 ```
 
+## Producer-Consumer Example
+
+Two projects were developed to show how to use Topology Operator, using a
+producer-consumer pattern to calculate the factorial of a number.
+
+`app-factorial-api` is a REST API that provides two endpoints: one receives a
+number and responds with a new location and another corresponds to this new
+location to retrieve the factorial of number. API produces messages on RabbitMQ
+to async execution and retrieves results calculated on bucket. This example uses
+MinIO as bucket provider. `app-factorial-worker` is a worker consumer from
+RabbitMQ that computes factorial of number and stores results on bucket.
+
+Use Docker to build and push the container images to cluster registry.
+
 ```
 docker build ./src/app-factorial-api \
     --tag k3d-example-registry:5000/app-factorial-api

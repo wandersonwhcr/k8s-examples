@@ -1,5 +1,13 @@
 # rabbitmq
 
+This example shows how to deploy a RabbitMQ Cluster via Cluster Operator, adding
+three separate Kubernetes nodes to deploy the RabbitMQ using taints and
+affinity.
+
+Also, it installs and shows how to use Topology Operator to provision RabbitMQ
+Cluster resources using Kubernetes CRD. Cert Manager is installed too, because
+Topology Operator depends on it.
+
 ```
 k3d cluster create \
     --config ../k3d-example.yaml \
@@ -25,8 +33,6 @@ kubectl apply \
 ```
 
 ```
-# echo "127.0.0.255 k3d-example k3d-example-registry" >> /etc/hosts
-
 docker build ./src/app-factorial-api \
     --tag k3d-example-registry:5000/app-factorial-api
 

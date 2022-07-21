@@ -1,0 +1,14 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Policy
+metadata:
+  name: app-factorial-worker
+spec:
+  vhost: /
+  name: app-factorial-worker
+  pattern: "^app-factorial-worker$"
+  applyTo: queues
+  definition:
+    queue-mode: lazy
+  rabbitmqClusterReference:
+    namespace: rabbitmq
+    name: rabbitmq

@@ -1,0 +1,10 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Queue
+metadata:
+  name: app-factorial-worker
+spec:
+  vhost: /
+  name: app-factorial-worker
+  rabbitmqClusterReference:
+    namespace: rabbitmq
+    name: rabbitmq

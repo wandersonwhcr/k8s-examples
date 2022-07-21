@@ -1,0 +1,5 @@
+resources:
+  - resources/app-factorial-api
+  - resources/app-factorial-worker
+  - resources/minio
+  - resources/rabbitmq

@@ -1,0 +1,11 @@
+namespace: app-factorial-worker
+
+resources:
+  - deployment.yaml
+  - namespace.yaml
+  - rabbitmq-binding.yaml
+  - rabbitmq-permission.yaml
+  - rabbitmq-policy.yaml
+  - rabbitmq-queue.yaml
+  - rabbitmq-user.yaml
+  - secret.yaml

@@ -1,0 +1,6 @@
+namespace: rabbitmq
+
+resources:
+  - cluster.yaml
+  - namespace.yaml
+  - pdb.yaml

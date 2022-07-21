@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-factorial-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-factorial-api
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-factorial-api
+    spec:
+      containers:
+        - name: app-factorial-api
+          image: k3d-example-registry:5000/app-factorial-api
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "3000"
+
+            - name: AWS_ENDPOINT
+              value: http://minio.minio
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-api-aws
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-api-aws
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: AWS_BUCKET
+              value: app-factorial-api
+
+            - name: RABBITMQ_HOST
+              value: rabbitmq.rabbitmq
+            - name: RABBITMQ_PORT
+              value: "5672"
+            - name: RABBITMQ_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-api-user-credentials
+                  key: username
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-api-user-credentials
+                  key: password
+            - name: RABBITMQ_EXCHANGE
+              value: app-factorial-api

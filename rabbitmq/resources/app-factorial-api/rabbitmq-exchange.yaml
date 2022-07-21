@@ -1,0 +1,13 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Exchange
+metadata:
+  name: app-factorial-api
+spec:
+  vhost: /
+  name: app-factorial-api
+  type: fanout
+  autoDelete: false
+  durable: true
+  rabbitmqClusterReference:
+    namespace: rabbitmq
+    name: rabbitmq

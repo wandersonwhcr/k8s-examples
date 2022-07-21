@@ -1,0 +1,15 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: Permission
+metadata:
+  name: app-factorial-worker
+spec:
+  vhost: /
+  userReference:
+    name: app-factorial-worker
+  permissions:
+    write: ".*"
+    read: ".*"
+    configure: ".*"
+  rabbitmqClusterReference:
+    namespace: rabbitmq
+    name: rabbitmq

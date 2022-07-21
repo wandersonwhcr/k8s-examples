@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-factorial-worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-factorial-worker
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-factorial-worker
+    spec:
+      containers:
+        - name: app-factorial-worker
+          image: k3d-example-registry:5000/app-factorial-worker
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+
+            - name: AWS_ENDPOINT
+              value: http://minio.minio
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-worker-aws
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-worker-aws
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: AWS_BUCKET
+              value: app-factorial-api
+
+            - name: RABBITMQ_HOST
+              value: rabbitmq.rabbitmq
+            - name: RABBITMQ_PORT
+              value: "5672"
+            - name: RABBITMQ_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-worker-user-credentials
+                  key: username
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-factorial-worker-user-credentials
+                  key: password
+            - name: RABBITMQ_QUEUE
+              value: app-factorial-worker

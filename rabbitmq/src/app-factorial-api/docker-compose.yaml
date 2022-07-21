@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+
+  app-factorial-api:
+    image: "node:16.16-alpine"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app-factorial-api.rule=Host(`app-factorial-api.example.localhost`)"
+      - "traefik.http.services.app-factorial-api.loadbalancer.server.port=3000"
+    volumes:
+      - ".:/app"
+    networks:
+      - "example-services"
+    working_dir: "/app"
+    user: "${UID:-1000}:${GID:-1000}"
+    entrypoint: ["npm"]
+    command: ["start"]
+    environment:
+      # AWS
+      AWS_ENDPOINT: "http://minio:9000"
+      AWS_ACCESS_KEY_ID: "AKIAIOSFODNN7EXAMPLE"
+      AWS_SECRET_ACCESS_KEY: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+      AWS_BUCKET: "app-factorial-api"
+      # RabbitMQ
+      RABBITMQ_HOST: "rabbitmq"
+      RABBITMQ_PORT: "5672"
+      RABBITMQ_USERNAME: "admin"
+      RABBITMQ_PASSWORD: "admin"
+      RABBITMQ_EXCHANGE: "app-factorial-api"
+      # Local
+      PORT: "3000"
+
+networks:
+  example-services:
+    name: "example-services"
+    external: true

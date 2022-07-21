@@ -1,0 +1,25 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq
+  annotations:
+    rabbitmq.com/topology-allowed-namespaces: "*"
+spec:
+  replicas: 3
+  resources:
+    requests:
+      memory: 1G
+    limits:
+      memory: 1G
+  tolerations:
+    - key: node.kubernetes.io/broker
+      operator: Equal
+      value: rabbitmq
+      effect: NoSchedule
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - topologyKey: "kubernetes.io/hostname"
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: rabbitmq

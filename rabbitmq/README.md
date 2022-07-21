@@ -35,7 +35,7 @@ kubectl apply \
 Two projects were developed to show how to use Topology Operator, using a
 producer-consumer pattern to calculate the factorial of a number.
 
-`app-factorial-api` is a REST API that provides two endpoints: one receives a
+`app-factorial-api` is a RESTful API that provides two endpoints: one receives a
 number and responds with a new location and another corresponds to this new
 location to retrieve the factorial of number. API produces messages on RabbitMQ
 for async processing and retrieves results calculated on bucket using MinIO.

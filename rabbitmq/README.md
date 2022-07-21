@@ -41,10 +41,12 @@ producer-consumer pattern to calculate the factorial of a number.
 number and responds with a new location and another corresponds to this new
 location to retrieve the factorial of number. API produces messages on RabbitMQ
 to async execution and retrieves results calculated on bucket. This example uses
-MinIO as bucket provider. `app-factorial-worker` is a worker consumer from
-RabbitMQ that computes factorial of number and stores results on bucket.
+MinIO as bucket provider.
 
-Use Docker to build and push the container images to cluster registry.
+`app-factorial-worker` is a worker consumer from RabbitMQ that computes
+factorial of number and stores its results on bucket.
+
+Use Docker to build and push these container images to cluster registry.
 
 ```
 docker build ./src/app-factorial-api \
@@ -58,10 +60,18 @@ docker build ./src/app-factorial-worker \
 docker push k3d-example-registry:5000/app-factorial-worker
 ```
 
+## Deployment
+
+Resources are available using Kustomize and must be applied using this command.
+
 ```
 kubectl apply \
     --kustomize .
 ```
+
+## Testing
+
+This snipped shows how to calculate the factorial of 10.
 
 ```
 ./src/app-factorial-api/factorial.sh 10

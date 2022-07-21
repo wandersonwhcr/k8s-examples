@@ -76,6 +76,15 @@ this broker from service and an exchange to receive messages from publisher.
 worker, a queue for messages, a binding to link the exchange and queue, and a
 policy for queue.
 
+```mermaid
+flowchart LR
+    app-factorial-api --> exchange[Exchange: app-factorial-api]
+    subgraph RabbitMQ
+        exchange -->|Binding: app-factorial-worker| queue[Queue: app-factorial-worker]
+    end
+    queue --> app-factorial-worker
+```
+
 ## Testing
 
 This snipped shows how to calculate the factorial of 10.

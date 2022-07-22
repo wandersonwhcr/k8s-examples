@@ -16,4 +16,18 @@ kubectl apply \
 ```
 kubectl apply \
     --kustomize ../gogs
+
+# Gogs Install Wizard
+kubectl port-forward \
+    --namespace gogs \
+    service/gogs 8080:http
+# Available at http://localhost:8080
+```
+
+```
+# Drone Install Wizard
+kubectl port-forward \
+    --namespace drone \
+    service/drone 8080:http
+# Available at http://localhost:8080
 ```

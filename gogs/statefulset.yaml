@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: gogs
-          image: "gogs/gogs:0.12.5"
+          image: "gogs/gogs:0.12.7"
           ports:
             - name: http
               containerPort: 3000

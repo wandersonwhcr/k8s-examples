@@ -1,5 +1,3 @@
----
-
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -17,7 +15,7 @@ spec:
     spec:
       containers:
         - name: gogs
-          image: "gogs/gogs:0.12"
+          image: "gogs/gogs:0.12.5"
           ports:
             - name: http
               containerPort: 3000

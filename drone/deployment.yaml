@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: runner
+  name: drone-runner
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: runner
+      app.kubernetes.io/name: drone-runner
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: runner
+        app.kubernetes.io/name: drone-runner
     spec:
       containers:
-        - name: runner
+        - name: drone-runner
           image: drone/drone-runner-kube
           ports:
             - name: rpc
@@ -28,5 +28,8 @@ spec:
               value: drone
             - name: DRONE_RPC_PROTO
               value: http
+            - name: DRONE_DEBUG
+              value: "true"
             - name: DRONE_NAMESPACE_DEFAULT
               value: drone
+      serviceAccountName: drone-runner

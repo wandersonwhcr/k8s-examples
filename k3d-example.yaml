@@ -17,6 +17,9 @@ options:
     wait: true
   k3s:
     extraArgs:
+      # - arg: --cluster-domain=example.localhost
+      #   nodeFilters:
+      #     - server:*
       - arg: --node-taint=node-role.kubernetes.io/master=:NoSchedule
         nodeFilters:
           - server:*

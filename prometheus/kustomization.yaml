@@ -6,3 +6,4 @@ resources:
   - namespace.yaml
   - prometheus.yaml
   - serviceaccount.yaml
+  - servicemonitor.yaml

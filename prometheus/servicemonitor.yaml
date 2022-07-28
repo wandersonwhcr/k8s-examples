@@ -3,9 +3,6 @@ kind: ServiceMonitor
 metadata:
   name: prometheus
 spec:
-  namespaceSelector:
-    matchNames:
-      - prometheus
   selector:
     matchLabels:
       operated-prometheus: "true"
@@ -20,9 +17,6 @@ kind: ServiceMonitor
 metadata:
   name: alertmanager
 spec:
-  namespaceSelector:
-    matchNames:
-      - prometheus
   selector:
     matchLabels:
       operated-alertmanager: "true"

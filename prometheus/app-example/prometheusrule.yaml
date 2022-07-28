@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: app-example
+spec:
+  groups:
+    - name: app-example
+      interval: 5s
+      rules:
+        - alert: app-example-down
+          expr: |
+            absent(up{namespace="app-example",service="app-example"})

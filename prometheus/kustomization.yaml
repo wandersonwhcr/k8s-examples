@@ -1,16 +1,11 @@
 namespace: prometheus
 
 resources:
+  - alertmanager.yaml
   - clusterrole.yaml
   - clusterrolebinding.yaml
   - namespace.yaml
-  - service.yaml
-  - statefulset.yaml
-
-generatorOptions:
-  disableNameSuffixHash: true
-
-configMapGenerator:
-  - name: config
-    files:
-      - assets/prometheus.yml
+  - prometheus.yaml
+  - prometheusrule.yaml
+  - serviceaccount.yaml
+  - servicemonitor.yaml

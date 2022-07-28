@@ -5,5 +5,6 @@ resources:
   - clusterrolebinding.yaml
   - namespace.yaml
   - prometheus.yaml
+  - prometheusrule.yaml
   - serviceaccount.yaml
   - servicemonitor.yaml

@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: prometheus
+spec:
+  groups:
+    - name: prometheus
+      interval: 5s
+      rules:
+        - alert: prometheus-down
+          expr: |
+            absent(up{namespace="prometheus",service="prometheus-operated"})

@@ -4,4 +4,6 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - namespace.yaml
+  - prometheusrule.yaml
   - service.yaml
+  - servicemonitor.yaml

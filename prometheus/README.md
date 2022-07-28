@@ -9,4 +9,7 @@ kubectl create \
 
 kubectl apply \
     --kustomize .
+
+kubectl apply \
+    --kustomize app-example
 ```

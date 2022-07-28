@@ -9,3 +9,8 @@ spec:
   podMonitorSelector: {}
   ruleNamespaceSelector: {}
   ruleSelector: {}
+  alerting:
+    alertmanagers:
+      - namespace: prometheus
+        name: alertmanager-operated
+        port: web

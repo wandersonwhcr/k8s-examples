@@ -10,3 +10,18 @@ spec:
         - alert: prometheus-down
           expr: |
             absent(up{namespace="prometheus",service="prometheus-operated"})
+
+---
+
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: alertmanager
+spec:
+  groups:
+    - name: alertmanager
+      interval: 5s
+      rules:
+        - alert: alertmanager-down
+          expr: |
+            absent(up{namespace="prometheus",service="alertmanager-operated"})

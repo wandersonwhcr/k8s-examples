@@ -4,4 +4,5 @@ resources:
   - clusterrole.yaml
   - clusterrolebinding.yaml
   - namespace.yaml
+  - prometheus.yaml
   - serviceaccount.yaml

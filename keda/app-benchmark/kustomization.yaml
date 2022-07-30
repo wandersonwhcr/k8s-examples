@@ -1,0 +1,13 @@
+generatorOptions:
+  disableNameSuffixHash: true
+
+namespace: app-benchmark
+
+configMapGenerator:
+  - name: app-benchmark-bin
+    files:
+      - assets/entrypoint.sh
+
+resources:
+  - job.yaml
+  - namespace.yaml

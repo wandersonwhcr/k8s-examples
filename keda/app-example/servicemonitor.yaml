@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: app-example
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-example
+  endpoints:
+    - port: http-metrics
+      interval: 5s

@@ -3,7 +3,14 @@ kind: ConfigMap
 metadata:
   name: app-example-nginx-templates
 data:
-  metrics.conf.template:
+  default.conf.template: |
+    server {
+      listen 80;
+      location / {
+        return 200;
+      }
+    }
+  metrics.conf.template: |
     server {
       listen 127.0.0.1:8080;
       location /stub_status {

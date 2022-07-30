@@ -6,4 +6,7 @@ $ k3d cluster create \
 
 $ kubectl create \
     --kustomize ../prometheus/prometheus-operator
+
+$ kubectl apply \
+    --kustomize ../prometheus
 ```

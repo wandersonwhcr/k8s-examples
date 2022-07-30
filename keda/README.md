@@ -1,8 +1,8 @@
 # keda
 
-This example shows how to use Keda, an autoscaler for Kubernetes that uses more
-resources to calculate how many replicas a Deployment or Statefulset must have.
-Keda can be used with Prometheus to compute replica count.
+This example shows how to use KEDA, an autoscaler for Kubernetes that uses more
+sources to calculate how many replicas a Deployment or Statefulset must have.
+KEDA can be used with Prometheus to compute replica count.
 
 ```console
 $ k3d cluster create \
@@ -18,15 +18,15 @@ $ kubectl apply \
     --filename https://github.com/kedacore/keda/releases/download/v2.7.1/keda-2.7.1.yaml
 ```
 
-Here, there is na Example Application using Nginx with a Nginx Prometheus
+Here, there is an Example Application using Nginx with a Nginx Prometheus
 Exporter sidecar. It includes a Service Monitor used by Prometheus to scrape
 metrics from this example.
 
-Let's think this application can't receive more than 100 concurrent active
-connections, because there's a problem with concurrency.
+Let's think this application can't have more than 100 active connections,
+because there's a problem with concurrency.
 
-Because of this, there is a Keda Scaled Object that uses Prometheus to check how
-many Nginx connections are active. With a threshold of 100, Keda will try to
+Because of this, a KEDA Scaled Object was defined using Prometheus to check how
+many Nginx connections are active. With a threshold of 100, KEDA will try to
 keep the active connections per pod below this number.
 
 ```console
@@ -34,7 +34,7 @@ $ kubectl apply \
     --kustomize ./app-example
 ```
 
-A benchmark can be used to increase active connections. Keda will autoscale
+A benchmark can be used to increase active connections. KEDA will autoscale
 example application.
 
 ```console
@@ -46,7 +46,8 @@ $ kubectl logs \
     jobs/app-benchmark
 ```
 
-Prometheus query interface can be used to check average active connections.
+Prometheus query interface can be used to check the average of active
+connections.
 
 ```plain
 avg by(namespace, service) (

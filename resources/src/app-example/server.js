@@ -1,7 +1,7 @@
 console.log(new Date(), 'Application Started');
 
 function handler(signal) {
-  console.info(new Date(), 'Signal Received: ' + signal);
+  console.info(new Date(), 'Signal Received', signal);
   console.info(new Date(), 'Application Stopped');
   process.exit(0);
 }
@@ -14,7 +14,10 @@ async function checkEventLoop() {
 }
 
 async function main() {
+  const data = [];
   while (true) {
+    data.push(new Array(1024 * 10).fill(0));
+    console.debug(new Date(), process.memoryUsage.rss() / 1024 / 1024, 'MB');
     await checkEventLoop();
   }
 }

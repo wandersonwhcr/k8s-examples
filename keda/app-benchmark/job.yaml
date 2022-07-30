@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-benchmark
+spec:
+  template:
+    spec:
+      containers:
+        - name: alpine
+          image: alpine:3.16
+          command:
+            - /usr/local/bin/entrypoint.sh
+          volumeMounts:
+            - name: entrypoint
+              mountPath: /usr/local/bin
+      volumes:
+        - name: entrypoint
+          configMap:
+            name: app-benchmark-bin
+            defaultMode: 0777
+      restartPolicy: Never

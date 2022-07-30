@@ -15,4 +15,7 @@ $ kubectl apply \
 
 $ kubectl apply \
     --kustomize ./app-example
+
+$ kubectl apply \
+    --kustomize ./app-benchmark
 ```

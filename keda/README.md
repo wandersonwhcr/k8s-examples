@@ -9,4 +9,7 @@ $ kubectl create \
 
 $ kubectl apply \
     --kustomize ../prometheus
+
+$ kubectl apply \
+    --filename https://github.com/kedacore/keda/releases/download/v2.7.1/keda-2.7.1.yaml
 ```

@@ -4,5 +4,6 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - namespace.yaml
+  - scaledobject.yaml
   - service.yaml
   - servicemonitor.yaml

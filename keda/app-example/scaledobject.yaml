@@ -1,0 +1,25 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: app-example
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: app-example
+  minReplicaCount: 3
+  maxReplicaCount: 10
+  fallback:
+    failureThreshold: 1
+    replicas: 3
+  pollingInterval: 5
+  cooldownPeriod: 30
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus-operated.prometheus:9090
+        metricName: nginx_connections_active
+        query: |
+          sum by (namespace, service) (
+            nginx_connections_active{namespace="app-example", service="app-example"}
+          )
+        threshold: "100"

@@ -14,11 +14,19 @@ async function checkEventLoop() {
 }
 
 async function main() {
-  const data = [];
-  while (true) {
-    data.push(new Array(1024 * 10).fill(0));
-    console.debug(new Date(), process.memoryUsage.rss() / 1024 / 1024, 'MB');
-    await checkEventLoop();
+  switch (process.argv[2]) {
+
+    case 'memory':
+      const data = [];
+      while (true) {
+        data.push(new Array(1024 * 10).fill(0));
+        console.debug(new Date(), process.memoryUsage.rss() / 1024 / 1024, 'MB');
+        await checkEventLoop();
+      }
+      break;
+
+    default:
+      throw 'Unknown Test';
   }
 }
 

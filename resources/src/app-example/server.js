@@ -16,6 +16,16 @@ async function checkEventLoop() {
 async function main() {
   switch (process.argv[2]) {
 
+    case 'cpu':
+      while (true) {
+        const usage = process.cpuUsage();
+        const begin = Date.now();
+        while (Date.now() - begin < 1000); // 1 CPU during 1000 milliseconds
+        console.debug(new Date(), process.cpuUsage(usage).user / 1000, 'ms');
+        await checkEventLoop();
+      }
+      break;
+
     case 'memory':
       const data = [];
       while (true) {

@@ -59,7 +59,7 @@ spec:
           args: ["server.js", "memory"]
           resources:
             limits:
-              memory: "128Mi"
+              memory: "128M"
           volumeMounts:
             - name: server
               mountPath: /app

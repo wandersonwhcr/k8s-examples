@@ -17,8 +17,8 @@ container can use. CPU limit defines how much time of CPU a container can use in
 
 In this example, Deployment `resources-limits-cpu` limits CPU usage of container
 to `200m`, so it can use 200 milliseconds of one CPU per second. Deployment
-`resources-limits-memory` limits Memory usage of container to `128Mi` or 128
-Mebibytes (~134.22 Megabytes).
+`resources-limits-memory` limits Memory usage of container to `128M` or 128
+megabytes.
 
 A Node.js application that logs CPU and Memory usage was defined, logging these
 usages on `stdout`. Below commands display these outputs.

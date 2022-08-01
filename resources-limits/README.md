@@ -1,4 +1,4 @@
-# resources
+# resources-limits
 
 ```console
 $ k3d cluster create \

@@ -1,7 +1,7 @@
 generatorOptions:
   disableNameSuffixHash: true
 
-namespace: resources
+namespace: resources-limits
 
 configMapGenerator:
   - name: resources-server

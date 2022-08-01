@@ -8,11 +8,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/resources/limits: cpu
+      app.kubernetes.io/resources: limits
+      app.kubernetes.io/limits: cpu
   template:
     metadata:
       labels:
-        app.kubernetes.io/resources/limits: cpu
+        app.kubernetes.io/resources: limits
+        app.kubernetes.io/limits: cpu
     spec:
       containers:
         - name: node
@@ -41,11 +43,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/resources/limits: memory
+      app.kubernetes.io/resources: limits
+      app.kubernetes.io/limits: memory
   template:
     metadata:
       labels:
-        app.kubernetes.io/resources/limits: memory
+        app.kubernetes.io/resources: limits
+        app.kubernetes.io/limits: memory
     spec:
       containers:
         - name: node

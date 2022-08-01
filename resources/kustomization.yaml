@@ -1,4 +1,12 @@
+generatorOptions:
+  disableNameSuffixHash: true
+
 namespace: resources
+
+configMapGenerator:
+  - name: resources-server
+    files:
+      - src/app-example/server.js
 
 resources:
   - namespace.yaml

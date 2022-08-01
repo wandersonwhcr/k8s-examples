@@ -20,10 +20,10 @@ to `200m`, so it can use 200 milliseconds of one CPU per second. Deployment
 `resources-limits-memory` limits Memory usage of container to `128Mi` or 128
 Mebibytes (~134.22 Megabytes).
 
-A Node.js application that logs CPU and Memory usage was defined, logging this
-usages on `stdout`. Above commands display these outputs.
+A Node.js application that logs CPU and Memory usage was defined, logging these
+usages on `stdout`. Below commands display these outputs.
 
-```
+```console
 $ kubectl logs \
     deployment/resources-limits-cpu \
     --follow

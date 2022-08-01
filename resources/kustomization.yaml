@@ -9,4 +9,5 @@ configMapGenerator:
       - src/app-example/server.js
 
 resources:
+  - deployment.yaml
   - namespace.yaml

@@ -36,7 +36,7 @@ $ kubectl logs \
 If a container reaches CPU limits its tasks will be slower. By the way, if a
 container reaches Memory Limits, Kubernetes will restart the pod.
 
-Resources limits can be used with resources requests to improve pod allocation.
+Resources limits can be used with resources requests to improve pod scheduling.
 
 ## References
 

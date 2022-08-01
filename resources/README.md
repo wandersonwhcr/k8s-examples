@@ -7,3 +7,7 @@ $ k3d cluster create \
 $ kubectl apply \
     --kustomize .
 ```
+
+## References
+
+* [Kubernetes Best Practices: Resource Requests and Limits](https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-resource-requests-and-limits)

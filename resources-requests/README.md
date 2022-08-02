@@ -18,3 +18,16 @@ $ k3d node create example-agent-resources \
 $ kubectl apply \
     --kustomize .
 ```
+
+```console
+$ kubectl get pods \
+    --namespace resources-requests \
+    --sort-by metadata.name
+NAME                                         READY   STATUS    RESTARTS   AGE
+resources-requests-cpu-558566dcdd-bl7v2      1/1     Running   0          64s
+resources-requests-cpu-558566dcdd-cghp5      0/1     Pending   0          64s
+resources-requests-cpu-558566dcdd-rvjbx      1/1     Running   0          64s
+resources-requests-memory-66db67668b-f2w6d   0/1     Pending   0          64s
+resources-requests-memory-66db67668b-kshvj   1/1     Running   0          64s
+resources-requests-memory-66db67668b-r2w28   1/1     Running   0          64s
+```

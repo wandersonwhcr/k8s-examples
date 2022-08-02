@@ -54,10 +54,10 @@ resources-requests-memory-66db67668b-kshvj   1/1     Running   0          64s
 resources-requests-memory-66db67668b-r2w28   1/1     Running   0          64s
 ```
 
-Resources requests work to guarantee that Pods will receive CPU and Memory as
-requested and these values will be used as base on Pod scheduling. Requests will
-not limit CPU and Memory usage, they will be used only to allocate resources on
-nodes.
+Resources requests work to guarantee that Pods will be allocated where CPU and
+Memory are available and these values will be used as base on Pod scheduling.
+Requests will not limit CPU and Memory usage, they will be used only to allocate
+resources on nodes.
 
 Resources requests can be used with resources limits to define these
 restrictions.

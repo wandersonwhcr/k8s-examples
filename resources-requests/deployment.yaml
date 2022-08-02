@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: resources-requests-memory
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app.kubernetes.io/resources: requests
@@ -22,7 +22,7 @@ spec:
               containerPort: 80
           resources:
             requests:
-              memory: 512M
+              memory: 768M
       nodeSelector:
         node.kubernetes.io/example: resources
       tolerations:
@@ -38,7 +38,7 @@ kind: Deployment
 metadata:
   name: resources-requests-cpu
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app.kubernetes.io/resources: requests
@@ -57,7 +57,7 @@ spec:
               containerPort: 80
           resources:
             requests:
-              cpu: 500m
+              cpu: 750m
       nodeSelector:
         node.kubernetes.io/example: resources
       tolerations:

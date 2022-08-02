@@ -5,8 +5,9 @@ deployments from an example application setting these options.
 
 Two tainted nodes must be created with CPU and Memory limited.
 `KUBE_RESERVED_CPU` is equal to the total of CPUs available minus `1`. When
-these nodes are created, Kubernetes will allocate only 1 CPU for Pod scheduling.
-Also, each node receives a Memory limit by `1G` (1024 Megabytes).
+these nodes are created, Kubernetes will allocate CPU with `1000m` (1 CPU per
+second) for Pod scheduling.  Also, each node receives a Memory limit by `1G`
+(1024 Megabytes).
 
 ```console
 $ k3d cluster create \
@@ -58,7 +59,8 @@ requested and these values will be used as base on Pod scheduling. Requests will
 not limit CPU and Memory usage, they will be used only to allocate resources on
 nodes.
 
-Resources requests can be used with resources limits to defines these limits.
+Resources requests can be used with resources limits to define these
+restrictions.
 
 ## References
 

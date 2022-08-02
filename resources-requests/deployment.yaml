@@ -17,14 +17,21 @@ spec:
         app.kubernetes.io/requests: cpu
     spec:
       containers:
-        - name: nginx
-          image: nginx:1.23
-          ports:
-            - name: http
-              containerPort: 80
+        - name: node
+          image: node:16.16-alpine
+          workingDir: /app
+          command: ["node"]
+          args: ["server.js", "cpu"]
           resources:
             requests:
               cpu: 750m
+          volumeMounts:
+            - name: server
+              mountPath: /app
+      volumes:
+        - name: server
+          configMap:
+            name: resources-server
       nodeSelector:
         node.kubernetes.io/example: resources
       tolerations:
@@ -52,14 +59,21 @@ spec:
         app.kubernetes.io/requests: memory
     spec:
       containers:
-        - name: nginx
-          image: nginx:1.23
-          ports:
-            - name: http
-              containerPort: 80
+        - name: node
+          image: node:16.16-alpine
+          workingDir: /app
+          command: ["node"]
+          args: ["server.js", "memory"]
           resources:
             requests:
               memory: 768M
+          volumeMounts:
+            - name: server
+              mountPath: /app
+      volumes:
+        - name: server
+          configMap:
+            name: resources-server
       nodeSelector:
         node.kubernetes.io/example: resources
       tolerations:

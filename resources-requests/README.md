@@ -10,4 +10,7 @@ $ k3d node create example-agent-resources \
     --memory 1G \
     --role agent \
     --k3s-arg --node-taint=node.kubernetes.io/example=resources:NoSchedule
+
+$ kubectl apply \
+    --kustomize .
 ```

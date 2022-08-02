@@ -1,0 +1,4 @@
+namespace: resources-requests
+
+resources:
+  - namespace.yaml

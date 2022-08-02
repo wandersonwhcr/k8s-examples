@@ -1,4 +1,5 @@
 namespace: resources-requests
 
 resources:
+  - deployment.yaml
   - namespace.yaml

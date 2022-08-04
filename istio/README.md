@@ -8,4 +8,7 @@ k3d cluster create \
 
 istioctl install \
     --skip-confirmation
+
+kubectl apply \
+    --filename ingressclass.yaml
 ```

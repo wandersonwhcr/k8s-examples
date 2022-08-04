@@ -17,3 +17,5 @@ done \
     | sort --numeric-sort \
     | uniq --count
 ```
+
+* Kubernetes `Ingress` has priority over Istio `Gateway`.

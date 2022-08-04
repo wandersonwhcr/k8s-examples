@@ -1,6 +1,7 @@
 namespace: app-example
 
 resources:
+  - configmap.yaml
   - deployment.yaml
   - destinationrule.yaml
   - ingress.yaml

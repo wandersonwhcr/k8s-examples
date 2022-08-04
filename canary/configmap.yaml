@@ -1,0 +1,27 @@
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-example-nginx-templates
+data:
+  default.conf.template: |
+    server {
+      listen 80;
+      default_type 'application/json';
+      return 200 '{"hostname": "$HOST", "subset": "default"}';
+    }
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-example-canary-nginx-templates
+data:
+  default.conf.template: |
+    server {
+      listen 80;
+      default_type 'application/json';
+      return 200 '{"hostname": "$HOST", "subset": "canary"}';
+    }

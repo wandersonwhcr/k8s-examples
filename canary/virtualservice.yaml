@@ -6,7 +6,8 @@ spec:
   hosts:
     - app-example
   http:
-    - route:
+    - name: default
+      route:
         - weight: 100
           destination:
             host: app-example

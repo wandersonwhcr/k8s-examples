@@ -3,18 +3,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-example
+  name: app-example-default
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: app-example
-      app.kubernetes.io/subset: default
+      app.istio.io/subset: default
   template:
     metadata:
       labels:
         app.kubernetes.io/name: app-example
-        app.kubernetes.io/subset: default
+        app.istio.io/subset: default
     spec:
       containers:
         - name: nginx
@@ -22,6 +22,13 @@ spec:
           ports:
             - name: http
               containerPort: 80
+          volumeMounts:
+            - name: nginx-templates
+              mountPath: /etc/nginx/templates
+      volumes:
+        - name: nginx-templates
+          configMap:
+            name: app-example-nginx-templates
 
 ---
 
@@ -30,16 +37,16 @@ kind: Deployment
 metadata:
   name: app-example-canary
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: app-example
-      app.kubernetes.io/subset: canary
+      app.istio.io/subset: canary
   template:
     metadata:
       labels:
         app.kubernetes.io/name: app-example
-        app.kubernetes.io/subset: canary
+        app.istio.io/subset: canary
     spec:
       containers:
         - name: nginx
@@ -47,3 +54,10 @@ spec:
           ports:
             - name: http
               containerPort: 80
+          volumeMounts:
+            - name: nginx-templates
+              mountPath: /etc/nginx/templates
+      volumes:
+        - name: nginx-templates
+          configMap:
+            name: app-example-canary-nginx-templates

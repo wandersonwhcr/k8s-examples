@@ -7,9 +7,7 @@ spec:
   subsets:
     - name: default
       labels:
-        app.kubernetes.io/name: app-example
-        app.kubernetes.io/subset: default
+        app.istio.io/subset: default
     - name: canary
       labels:
-        app.kubernetes.io/name: app-example
-        app.kubernetes.io/subset: canary
+        app.istio.io/subset: canary

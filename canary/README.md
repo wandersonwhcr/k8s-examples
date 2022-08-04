@@ -18,4 +18,16 @@ done \
     | uniq --count
 ```
 
+```
+kubectl patch \
+    virtualservice app-example \
+    --type json \
+    --patch-file patch-canary-50.yaml
+
+kubectl patch \
+    virtualservice app-example \
+    --type json \
+    --patch-file patch-canary-100.yaml
+```
+
 * Kubernetes `Ingress` has priority over Istio `Gateway`.

@@ -10,8 +10,7 @@ spec:
     - mesh # applies internally as well as externally
     - app-example
   http:
-    - name: default
-      route:
+    - route:
         - weight: 100
           destination:
             host: app-example

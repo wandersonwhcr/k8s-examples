@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-example
+spec:
+  rules:
+    - host: app-example.app-example.svc.cluster.local
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: app-example
+                port:
+                  name: http

@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: app-example
+spec:
+  servers:
+    - hosts:
+        - app-example.app-example.svc
+      port:
+        name: http
+        number: 80
+        protocol: HTTP

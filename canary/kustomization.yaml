@@ -4,6 +4,7 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - destinationrule.yaml
+  - gateway.yaml
   - ingress.yaml
   - namespace.yaml
   - service.yaml

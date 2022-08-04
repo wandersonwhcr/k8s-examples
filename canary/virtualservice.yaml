@@ -5,6 +5,9 @@ metadata:
 spec:
   hosts:
     - app-example
+  gateways:
+    - mesh # applies internally as well as externally
+    - app-example
   http:
     - name: default
       route:

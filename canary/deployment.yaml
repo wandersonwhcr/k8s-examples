@@ -9,12 +9,12 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: app-example
-      app.kubernetes.io/type: default
+      app.kubernetes.io/subset: default
   template:
     metadata:
       labels:
         app.kubernetes.io/name: app-example
-        app.kubernetes.io/type: default
+        app.kubernetes.io/subset: default
     spec:
       containers:
         - name: nginx
@@ -34,12 +34,12 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: app-example
-      app.kubernetes.io/type: canary
+      app.kubernetes.io/subset: canary
   template:
     metadata:
       labels:
         app.kubernetes.io/name: app-example
-        app.kubernetes.io/type: canary
+        app.kubernetes.io/subset: canary
     spec:
       containers:
         - name: nginx

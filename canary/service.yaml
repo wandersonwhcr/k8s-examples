@@ -7,7 +7,7 @@ metadata:
 spec:
   selector:
     app.kubernetes.io/name: app-example
-    app.kubernetes.io/type: default
+    app.kubernetes.io/subset: default
   ports:
     - name: http
       port: 80
@@ -22,7 +22,7 @@ metadata:
 spec:
   selector:
     app.kubernetes.io/name: app-example
-    app.kubernetes.io/type: canary
+    app.kubernetes.io/subset: canary
   ports:
     - name: http
       port: 80

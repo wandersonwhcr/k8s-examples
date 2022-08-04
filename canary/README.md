@@ -1,6 +1,14 @@
 # canary
 
-Create a cluster and install istio from example.
+```
+k3d cluster create \
+    --config ../k3d-example.yaml \
+    --k3s-arg --no-deploy=traefik@server:*
+
+istioctl install \
+    --skip-confirmation \
+    --set profile=demo
+```
 
 ```
 kubectl apply \

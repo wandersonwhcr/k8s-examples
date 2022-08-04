@@ -1,5 +1,7 @@
 # istio
 
+## Install
+
 ```
 k3d cluster create \
     --config ../k3d-example.yaml \
@@ -12,6 +14,8 @@ istioctl install \
 kubectl apply \
     --filename ingressclass.yaml
 ```
+
+## Example
 
 ```
 kubectl apply \

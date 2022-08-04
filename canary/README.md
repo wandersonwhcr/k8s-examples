@@ -27,13 +27,15 @@ done \
 ```
 
 ```
-kubectl patch \
-    virtualservice app-example \
+kubectl patch virtualservice \
+    app-example \
+    --namespace app-example \
     --type json \
     --patch-file patch-canary-50.yaml
 
-kubectl patch \
-    virtualservice app-example \
+kubectl patch virtualservice \
+    app-example \
+    --namespace app-example \
     --type json \
     --patch-file patch-canary-100.yaml
 ```

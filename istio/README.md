@@ -12,3 +12,8 @@ istioctl install \
 kubectl apply \
     --filename ingressclass.yaml
 ```
+
+```
+kubectl apply \
+    --kustomize ./app-example
+```

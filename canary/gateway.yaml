@@ -5,7 +5,7 @@ metadata:
 spec:
   servers:
     - hosts:
-        - app-example.app-example.svc
+        - app-example.app-example.localhost
       port:
         name: http
         number: 80

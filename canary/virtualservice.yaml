@@ -5,6 +5,7 @@ metadata:
 spec:
   hosts:
     - app-example
+    - app-example.app-example.localhost
   gateways:
     - mesh # applies internally as well as externally
     - app-example

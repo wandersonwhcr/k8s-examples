@@ -3,3 +3,4 @@ namespace: app-example
 resources:
   - deployment.yaml
   - namespace.yaml
+  - service.yaml

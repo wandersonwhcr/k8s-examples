@@ -56,7 +56,7 @@ x-envoy-upstream-service-time: 0
 ## Addons
 
 Some addons can be installed with Istio to improve observability. Kiali is a
-dashboard to manage Istio. Kiali uses Prometheus to retrieve metrics and display
+dashboard to manage Istio. It uses Prometheus to retrieve metrics and display
 network traffic and service dependencies.
 
 ```
@@ -70,12 +70,6 @@ kubectl apply \
 Use port forward to access Kiali dashboard and execute a sequence of requests to
 visualize the cluster topology.
 
-```
-kubectl port-forward \
-    service/kiali http \
-    --namespace istio-system
-```
-
 ```sh
 for I in `seq 1 100`; do
     curl http://app-example.app-example.localhost \
@@ -83,6 +77,12 @@ for I in `seq 1 100`; do
         --resolve app-example.app-example.localhost:80:127.0.0.1 \
         > /dev/null
 done
+```
+
+```
+kubectl port-forward \
+    service/kiali http \
+    --namespace istio-system
 ```
 
 ## References

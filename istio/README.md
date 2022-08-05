@@ -43,3 +43,28 @@ etag: "62d6ba27-267"
 accept-ranges: bytes
 x-envoy-upstream-service-time: 0
 ```
+
+## Addons
+
+```
+kubectl apply \
+    --filename https://raw.githubusercontent.com/istio/istio/1.14.3/samples/addons/prometheus.yaml
+
+kubectl apply \
+    --filename https://raw.githubusercontent.com/istio/istio/1.14.3/samples/addons/kiali.yaml
+```
+
+```
+kubectl port-forward \
+    service/kiali http \
+    --namespace istio-system
+```
+
+```sh
+for I in `seq 1 100`; do
+    curl http://app-example.app-example.localhost \
+        --silent \
+        --resolve app-example.app-example.localhost:80:127.0.0.1 \
+        > /dev/null
+done
+```

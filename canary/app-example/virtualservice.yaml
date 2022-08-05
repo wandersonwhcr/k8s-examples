@@ -14,7 +14,7 @@ spec:
         - weight: 100
           destination:
             host: app-example
-            subset: default
+            subset: stable
         - weight: 0
           destination:
             host: app-example

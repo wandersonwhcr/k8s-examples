@@ -5,9 +5,9 @@ metadata:
 spec:
   host: app-example
   subsets:
-    - name: default
+    - name: stable
       labels:
-        app.istio.io/subset: default
+        app.kubernetes.io/subset: stable
     - name: canary
       labels:
-        app.istio.io/subset: canary
+        app.kubernetes.io/subset: canary

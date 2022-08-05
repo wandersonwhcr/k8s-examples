@@ -1,5 +1,9 @@
 # istio
 
+This example shows how to install Istio on k3d Kubernetes cluster with demo
+profile. Also, there is an example of Ingress Class with Istio that is not
+installed by default.
+
 ## Install
 
 ```
@@ -12,7 +16,7 @@ istioctl install \
     --set profile=demo
 ```
 
-## Ingress Class
+### Ingress Class
 
 ```
 kubectl apply \
@@ -21,10 +25,15 @@ kubectl apply \
 
 ## Example
 
+An example application can be deployed to test Istio. The `Namespace` must be
+created with label `istio-injection` to automatically run `istio-envoy` sidecar.
+
 ```
 kubectl apply \
     --kustomize ./app-example
 ```
+
+Make a request with `curl` to check if this application is running.
 
 ```
 curl http://app-example.app-example.localhost \
@@ -46,6 +55,10 @@ x-envoy-upstream-service-time: 0
 
 ## Addons
 
+Some addons can be installed with Istio to improve observability. Kiali is a
+dashboard to manage Istio. Kiali uses Prometheus to retrieve metrics and display
+network traffic and service dependencies.
+
 ```
 kubectl apply \
     --filename https://raw.githubusercontent.com/istio/istio/1.14.3/samples/addons/prometheus.yaml
@@ -53,6 +66,9 @@ kubectl apply \
 kubectl apply \
     --filename https://raw.githubusercontent.com/istio/istio/1.14.3/samples/addons/kiali.yaml
 ```
+
+Use port forward to access Kiali dashboard and execute a sequence of requests to
+visualize the cluster topology.
 
 ```
 kubectl port-forward \
@@ -68,3 +84,10 @@ for I in `seq 1 100`; do
         > /dev/null
 done
 ```
+
+## References
+
+* [Istio Service Mesh](https://istio.io/)
+* [Install Istio with istioctl](https://istio.io/latest/docs/setup/install/istioctl/)
+* [Specifying IngressClass](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass)
+* [Kiali Management Console for Istio](https://kiali.io/)

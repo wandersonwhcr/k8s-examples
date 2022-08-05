@@ -12,7 +12,7 @@ istioctl install \
 
 ```
 kubectl apply \
-    --kustomize .
+    --kustomize ./app-example
 ```
 
 ```

@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: app-example
+spec:
+  hosts:
+    - app-example
+    - app-example.app-example.localhost
+  gateways:
+    - mesh # applies internally as well as externally
+    - app-example
+  http:
+    - route:
+        - weight: 100
+          destination:
+            host: app-example
+            subset: stable
+        - weight: 0
+          destination:
+            host: app-example
+            subset: canary

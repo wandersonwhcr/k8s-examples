@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: app-example
+spec:
+  host: app-example
+  subsets:
+    - name: stable
+      labels:
+        app.kubernetes.io/subset: stable
+    - name: canary
+      labels:
+        app.kubernetes.io/subset: canary

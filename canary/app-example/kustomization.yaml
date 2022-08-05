@@ -1,0 +1,10 @@
+namespace: app-example
+
+resources:
+  - configmap.yaml
+  - deployment.yaml
+  - destinationrule.yaml
+  - gateway.yaml
+  - namespace.yaml
+  - service.yaml
+  - virtualservice.yaml

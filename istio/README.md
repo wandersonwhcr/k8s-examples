@@ -27,9 +27,9 @@ kubectl apply \
 ```
 
 ```
-curl http://app-example.app-example.svc.cluster.local \
+curl http://app-example.app-example.localhost \
     --head \
-    --resolve app-example.app-example.svc.cluster.local:80:127.0.0.1
+    --resolve app-example.app-example.localhost:80:127.0.0.1
 ```
 
 ```

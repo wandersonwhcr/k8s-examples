@@ -4,7 +4,7 @@ metadata:
   name: app-example
 spec:
   rules:
-    - host: app-example.app-example.svc.cluster.local
+    - host: app-example.app-example.localhost
       http:
         paths:
           - pathType: Prefix

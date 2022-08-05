@@ -1,6 +1,7 @@
 # canary
 
 This example shows how to create a Canary Release on Kubernetes using Istio.
+
 First, a Kubernetes cluster with Istio installed must be available.
 
 ```
@@ -14,19 +15,22 @@ istioctl install \
 ```
 
 This example application contains two Deployments: one contains a `stable`
-release and another a is the `canary` release, each called a subset of replicas
-from application. There is only one Service pointing to both subsets. One
+release and other is a `canary`, and each one is called a subset of replicas
+from application. There is only one `Service` pointing to both subsets. One
 `DestinationRule` must be created to map both subsets and a `VirtualService` to
 split traffic using weighted routes. Initially, all traffic directs to `stable`
 release.
 
-The `make-requests.sh` script makes 100 requests to example application and
-outputs how many responses are from `stable` release or `canary`.
-
 ```
 kubectl apply \
     --kustomize ./app-example
+```
 
+The `make-requests.sh` script makes 100 requests to example application and
+outputs how many responses are from `stable` release or `canary`.
+
+
+```
 ./make-requests.sh
 ```
 

@@ -69,3 +69,4 @@ configured using the `mesh` Gateway from Istio.
 ## References
 
 * [Canary Release by Martin Fowler](https://martinfowler.com/bliki/CanaryRelease.html)
+* [Istio Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/)

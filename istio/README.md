@@ -10,7 +10,11 @@ k3d cluster create \
 istioctl install \
     --skip-confirmation \
     --set profile=demo
+```
 
+## Ingress Class
+
+```
 kubectl apply \
     --filename ingressclass.yaml
 ```

@@ -8,6 +8,7 @@ spec:
       app.kubernetes.io/name: app-service-b
   policyTypes:
     - Ingress
+    - Egress # deny all because spec.egress is empty
   ingress:
     - from:
         - namespaceSelector:

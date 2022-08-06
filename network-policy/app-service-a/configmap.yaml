@@ -6,6 +6,8 @@ data:
   default.conf.template: |
     server {
       listen 80;
-      default_type 'application/json';
-      return 200 '{"app": "service-a", "hostname": "$HOSTNAME"}';
+      location / {
+        add_header 'App-Service-A' '$HOSTNAME';
+        proxy_pass http://app-service-b.app-service-b;
+      }
     }

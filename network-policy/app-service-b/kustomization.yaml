@@ -1,0 +1,7 @@
+namespace: app-service-b
+
+resources:
+  - configmap.yaml
+  - deployment.yaml
+  - namespace.yaml
+  - service.yaml

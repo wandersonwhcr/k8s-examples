@@ -8,4 +8,7 @@ k3d cluster create \
 ```
 kubectl apply \
     --kustomize ./app-service-a
+
+kubectl apply \
+    --kustomize ./app-service-b
 ```

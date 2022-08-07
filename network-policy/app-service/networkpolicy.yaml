@@ -13,10 +13,10 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              app.kubernetes.io/name: app-service
+              app.kubernetes.io/name: app-proxy
           podSelector:
             matchLabels:
-              app.kubernetes.io/name: app-service
+              app.kubernetes.io/name: app-proxy
       ports:
         - port: 80
           protocol: TCP

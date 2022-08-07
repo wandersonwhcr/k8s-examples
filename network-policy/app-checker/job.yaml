@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: app-checker-service-a
+  name: app-checker-proxy
 spec:
   template:
     spec:
@@ -10,7 +10,7 @@ spec:
           image: alpine:3.16
           command:
             - /usr/local/bin/entrypoint.sh
-            - app-service-a
+            - app-proxy
           volumeMounts:
             - name: bin
               mountPath: /usr/local/bin
@@ -26,7 +26,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: app-checker-service-a-status
+  name: app-checker-proxy-status
 spec:
   template:
     metadata:
@@ -38,7 +38,7 @@ spec:
           image: alpine:3.16
           command:
             - /usr/local/bin/entrypoint.sh
-            - app-service-a:status
+            - app-proxy:status
           volumeMounts:
             - name: bin
               mountPath: /usr/local/bin
@@ -54,7 +54,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: app-checker-service-a-status-error
+  name: app-checker-proxy-status-error
 spec:
   template:
     spec:
@@ -63,7 +63,7 @@ spec:
           image: alpine:3.16
           command:
             - /usr/local/bin/entrypoint.sh
-            - app-service-a:status
+            - app-proxy:status
           volumeMounts:
             - name: bin
               mountPath: /usr/local/bin
@@ -79,7 +79,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: app-checker-service-b
+  name: app-checker-service
 spec:
   template:
     spec:
@@ -88,7 +88,7 @@ spec:
           image: alpine:3.16
           command:
             - /usr/local/bin/entrypoint.sh
-            - app-service-b
+            - app-service
           volumeMounts:
             - name: bin
               mountPath: /usr/local/bin

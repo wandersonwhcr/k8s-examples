@@ -18,13 +18,13 @@ request() {
 SUBCOMMAND="$1"
 
 case "$SUBCOMMAND" in
-    'app-service-a')
-        request 'Service A -> Service B' http://app-service-a.app-service-a
+    'app-service')
+        request 'Service' http://app-service.app-service
         ;;
-    'app-service-a:status')
-        request 'Service A:Status' http://app-service-a.app-service-a:8080
+    'app-proxy')
+        request 'Proxy -> Service' http://app-proxy.app-proxy
         ;;
-    'app-service-b')
-        request 'Service B' http://app-service-b.app-service-b
+    'app-proxy:status')
+        request 'Proxy:Status' http://app-proxy.app-proxy:8080
         ;;
 esac

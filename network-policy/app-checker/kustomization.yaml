@@ -1,0 +1,13 @@
+generatorOptions:
+  disableNameSuffixHash: true
+
+namespace: app-checker
+
+configMapGenerator:
+  - name: app-checker-bin
+    files:
+      - assets/entrypoint.sh
+
+resources:
+  - job.yaml
+  - namespace.yaml

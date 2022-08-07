@@ -11,4 +11,7 @@ kubectl apply \
 
 kubectl apply \
     --kustomize ./app-service-b
+
+kubectl apply \
+    --kustomize ./app-checker
 ```

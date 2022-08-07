@@ -18,6 +18,8 @@ spec:
           ports:
             - name: http
               containerPort: 80
+            - name: http-status
+              containerPort: 8080
           volumeMounts:
             - name: nginx-templates
               mountPath: /etc/nginx/templates

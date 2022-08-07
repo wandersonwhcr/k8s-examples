@@ -11,3 +11,10 @@ data:
         proxy_pass http://app-service-b.app-service-b;
       }
     }
+  status.conf.template: |
+    server {
+      listen 8080;
+      location / {
+        stub_status on;
+      }
+    }

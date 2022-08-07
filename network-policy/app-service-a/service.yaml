@@ -9,3 +9,6 @@ spec:
     - name: http
       port: 80
       targetPort: http
+    - name: http-status
+      port: 8080
+      targetPort: http-status

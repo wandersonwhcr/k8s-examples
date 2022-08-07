@@ -7,7 +7,12 @@ spec:
     matchLabels:
       app.kubernetes.io/name: app-service-a
   policyTypes:
+    - Ingress
     - Egress
+  ingress:
+    - ports:
+        - port: 80
+          protocol: TCP
   egress:
     - to:
         - namespaceSelector:

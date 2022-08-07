@@ -1,0 +1,100 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-checker-proxy
+spec:
+  template:
+    spec:
+      containers:
+        - name: alpine
+          image: alpine:3.16
+          command:
+            - /usr/local/bin/entrypoint.sh
+            - app-proxy
+          volumeMounts:
+            - name: bin
+              mountPath: /usr/local/bin
+      volumes:
+        - name: bin
+          configMap:
+            name: app-checker-bin
+            defaultMode: 0777
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-checker-proxy-status
+spec:
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/role: status
+    spec:
+      containers:
+        - name: alpine
+          image: alpine:3.16
+          command:
+            - /usr/local/bin/entrypoint.sh
+            - app-proxy:status
+          volumeMounts:
+            - name: bin
+              mountPath: /usr/local/bin
+      volumes:
+        - name: bin
+          configMap:
+            name: app-checker-bin
+            defaultMode: 0777
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-checker-proxy-status-error
+spec:
+  template:
+    spec:
+      containers:
+        - name: alpine
+          image: alpine:3.16
+          command:
+            - /usr/local/bin/entrypoint.sh
+            - app-proxy:status
+          volumeMounts:
+            - name: bin
+              mountPath: /usr/local/bin
+      volumes:
+        - name: bin
+          configMap:
+            name: app-checker-bin
+            defaultMode: 0777
+      restartPolicy: Never
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-checker-service
+spec:
+  template:
+    spec:
+      containers:
+        - name: alpine
+          image: alpine:3.16
+          command:
+            - /usr/local/bin/entrypoint.sh
+            - app-service
+          volumeMounts:
+            - name: bin
+              mountPath: /usr/local/bin
+      volumes:
+        - name: bin
+          configMap:
+            name: app-checker-bin
+            defaultMode: 0777
+      restartPolicy: Never

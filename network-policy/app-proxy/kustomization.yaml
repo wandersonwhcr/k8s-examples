@@ -1,0 +1,8 @@
+namespace: app-proxy
+
+resources:
+  - configmap.yaml
+  - deployment.yaml
+  - namespace.yaml
+  - networkpolicy.yaml
+  - service.yaml

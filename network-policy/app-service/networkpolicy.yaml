@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: app-service
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: app-service
+  policyTypes:
+    - Ingress
+    - Egress # deny all because spec.egress is empty
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              app.kubernetes.io/name: app-proxy
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: app-proxy
+      ports:
+        - port: 80
+          protocol: TCP

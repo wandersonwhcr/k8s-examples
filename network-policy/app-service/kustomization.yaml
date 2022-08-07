@@ -1,4 +1,4 @@
-namespace: app-service-b
+namespace: app-service
 
 resources:
   - configmap.yaml

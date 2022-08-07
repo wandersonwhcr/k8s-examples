@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app-service-b-nginx-templates
+  name: app-service-nginx-templates
 data:
   default.conf.template: |
     server {
       listen 80;
       default_type 'application/json';
-      return 200 '{"app": "service-b", "hostname": "$HOSTNAME"}';
+      return 200 '{"app": "service", "hostname": "$HOSTNAME"}';
     }

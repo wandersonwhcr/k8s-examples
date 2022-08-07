@@ -17,3 +17,6 @@ spec:
           podSelector:
             matchLabels:
               app.kubernetes.io/name: app-service-a
+      ports:
+        - port: 80
+          protocol: TCP

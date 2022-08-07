@@ -8,7 +8,6 @@ k3d cluster create --config k3d-example.yaml
 
 ## TODO
 
-* [Network Policy](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
 * [Prometheus OOMKilled](https://songrgg.github.io/operation/how-to-alert-for-Pod-Restart-OOMKilled-in-Kubernetes/)
 * [Fluent Bit](https://github.com/fluent/fluent-bit)
 * [Kong Ingress Controller](https://github.com/Kong/kubernetes-ingress-controller)

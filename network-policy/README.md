@@ -1,7 +1,7 @@
 # network-policy
 
-This example creates network policies to allow and deny requests between pods.
-Installed Kubernetes Container Network Interface (CNI) must handle
+This example creates network policies to allow and deny network traffic between
+pods. Installed Kubernetes Container Network Interface (CNI) must handle
 `NetworkPolicy` resources to configure these permissions. k3d (k3s) uses Flannel
 CNI by default and it reads these definitions.
 
@@ -10,13 +10,31 @@ k3d cluster create \
     --config ../k3d-example.yaml
 ```
 
+Service application has a Nginx deployment that renders a JSON with replica
+`hostname`. It defines a `NetworkPolicy` that denies every egress traffic from
+replicas and allows only ingress traffic from pods on `app-proxy` namespace from
+`app-proxy` deployment.
+
+Also, there is a Proxy application with another Nginx deployment that works as a
+proxy reverse to Service application, adding a header `App-Proxy` that contains
+the `hostname` from proxy replica and outputs the JSON from Service. It defines
+a `NetworkPolicy` that allows only ingress traffic on port `80` or on port
+`8080` if pod has label `app.kubernetes.io/role=status`, and allow only egress
+traffic to pods on `app-service` namespace from `app-service` deployment.
+
 ```
 kubectl apply \
     --kustomize ./app-service
 
 kubectl apply \
     --kustomize ./app-proxy
+```
 
+Tests can be executing with Checker application that creates four jobs to make
+requests to these deployments, showing how `NetworkPolicy` allows or denies
+network traffic.
+
+```
 kubectl apply \
     --kustomize ./app-checker
 ```

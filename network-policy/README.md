@@ -36,55 +36,55 @@ app-checker-service-b-5z9rx                0/1     Completed   0          26s
 ```
 kubectl logs \
     --namespace app-checker \
-    jobs/app-checker-service-a
+    jobs/app-checker-proxy
 
-[Sun, 07 Aug 2022 15:17:03 +0000] Service A -> Service B
+[Sun, 07 Aug 2022 15:47:35 +0000] Proxy -> Service
 HTTP/1.1 200 OK
 Server: nginx/1.23.1
-Date: Sun, 07 Aug 2022 15:17:03 GMT
+Date: Sun, 07 Aug 2022 15:47:35 GMT
 Content-Type: application/json
-Content-Length: 66
+Content-Length: 61
 Connection: keep-alive
-App-Service-A: app-service-a-7ff97746cf-vj58z
+App-Proxy: app-proxy-65555dc65f-d5sks
 
-{"app": "service-b", "hostname": "app-service-b-568b45d8c4-498bh"}
+{"app": "service", "hostname": "app-service-69f89769d-ntj9f"}
 ```
 
 ```
 kubectl logs \
     --namespace app-checker \
-    jobs/app-checker-service-a-status
+    jobs/app-checker-proxy-status
 
-[Sun, 07 Aug 2022 15:17:03 +0000] Service A:Status
+[Sun, 07 Aug 2022 15:47:35 +0000] Proxy:Status
 HTTP/1.1 200 OK
 Server: nginx/1.23.1
-Date: Sun, 07 Aug 2022 15:17:03 GMT
+Date: Sun, 07 Aug 2022 15:47:35 GMT
 Content-Type: text/plain
-Content-Length: 100
+Content-Length: 97
 Connection: keep-alive
 
-Active connections: 1
+Active connections: 1 
 server accepts handled requests
- 18 18 18
-Reading: 0 Writing: 1 Waiting: 0
+ 1 1 1 
+Reading: 0 Writing: 1 Waiting: 0 
 ```
 
 ```
 kubectl logs \
     --namespace app-checker \
-    jobs/app-checker-service-a-status-error
+    jobs/app-checker-proxy-status-error
 
-[Sun, 07 Aug 2022 15:17:03 +0000] Service A:Status
-[Sun, 07 Aug 2022 15:17:03 +0000] Service A:Status Failed to Connect
+[Sun, 07 Aug 2022 15:47:35 +0000] Proxy:Status
+[Sun, 07 Aug 2022 15:47:35 +0000] Proxy:Status Failed to Connect
 ```
 
 ```
 kubectl logs \
     --namespace app-checker \
-    jobs/app-checker-service-b
+    jobs/app-checker-service
 
-[Sun, 07 Aug 2022 15:17:10 +0000] Service B
-[Sun, 07 Aug 2022 15:17:10 +0000] Service B Failed to Connect
+[Sun, 07 Aug 2022 15:47:35 +0000] Service
+[Sun, 07 Aug 2022 15:47:35 +0000] Service Failed to Connect
 ```
 
 ## References

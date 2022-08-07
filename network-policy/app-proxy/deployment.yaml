@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-service-a
+  name: app-proxy
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: app-service-a
+      app.kubernetes.io/name: app-proxy
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: app-service-a
+        app.kubernetes.io/name: app-proxy
     spec:
       containers:
         - name: nginx
@@ -26,4 +26,4 @@ spec:
       volumes:
         - name: nginx-templates
           configMap:
-            name: app-service-a-nginx-templates
+            name: app-proxy-nginx-templates

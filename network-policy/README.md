@@ -12,10 +12,10 @@ k3d cluster create \
 
 ```
 kubectl apply \
-    --kustomize ./app-service-a
+    --kustomize ./app-service-b
 
 kubectl apply \
-    --kustomize ./app-service-b
+    --kustomize ./app-proxy
 
 kubectl apply \
     --kustomize ./app-checker

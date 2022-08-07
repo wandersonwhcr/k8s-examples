@@ -1,11 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: app-service-a
+  name: app-proxy
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: app-service-a
+      app.kubernetes.io/name: app-proxy
   policyTypes:
     - Ingress
     - Egress
@@ -25,10 +25,10 @@ spec:
     - to:
         - namespaceSelector:
             matchLabels:
-              app.kubernetes.io/name: app-service-b
+              app.kubernetes.io/name: app-service
           podSelector:
             matchLabels:
-              app.kubernetes.io/name: app-service-b
+              app.kubernetes.io/name: app-service
       ports:
         - port: 80
           protocol: TCP

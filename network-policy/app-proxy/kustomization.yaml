@@ -1,4 +1,4 @@
-namespace: app-service-a
+namespace: app-proxy
 
 resources:
   - configmap.yaml

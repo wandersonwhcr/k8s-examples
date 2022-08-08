@@ -4,3 +4,43 @@ metadata:
   name: fluent-bit-config
 data:
   fluent-bit.conf: |
+    [SERVICE]
+      Daemon       off
+      Log_Level    debug
+      Parsers_File parsers.conf
+      HTTP_Server  on
+      HTTP_Listen  0.0.0.0
+      HTTP_Port    2020
+
+    [INPUT]
+      Name             tail
+      Tag              kube.*
+      # Tag              <namespace_name>.<pod_name>.<container_name>.<container_id>
+      # Tag_Regex        ^(?<pod_name>[^_]+)_(?<namespace_name>[^_]+)_(?<container_name>.+)-(?<container_id>[a-z0-9]{64}).log$
+      Parser           cri
+      Path             /var/log/containers/*.log
+      # DB               /var/log/fluentd.db
+      Refresh_Interval 5
+
+    [FILTER]
+      Name                kubernetes
+      Match               kube.*
+      Kube_URL            https://kubernetes.default.svc
+      Kube_CA_File        /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      Kube_Token_File     /var/run/secrets/kubernetes.io/serviceaccount/token
+      Kube_Tag_Prefix     kube.var.log.containers.
+      K8S-Logging.Parser  on
+      K8S-Logging.Exclude off
+      Merge_Log           on
+      Merge_Log_Key       log_processed
+
+    [OUTPUT]
+      Name stdout
+
+  parsers.conf: |
+    [PARSER]
+      Name        cri
+      Format      regex
+      Regex       ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<message>.*)$
+      Time_Key    time
+      Time_Format %Y-%m-%dT%H:%M:%S.%L%z

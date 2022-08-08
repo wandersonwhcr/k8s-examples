@@ -2,3 +2,6 @@ namespace: fluent-bit
 
 resources:
   - namespace.yaml
+  - role.yaml
+  - rolebinding.yaml
+  - serviceaccount.yaml

@@ -15,11 +15,10 @@ data:
     [INPUT]
       Name             tail
       Tag              kube.*
-      # Tag              <namespace_name>.<pod_name>.<container_name>.<container_id>
-      # Tag_Regex        ^(?<pod_name>[^_]+)_(?<namespace_name>[^_]+)_(?<container_name>.+)-(?<container_id>[a-z0-9]{64}).log$
       Parser           cri
       Path             /var/log/containers/*.log
-      # DB               /var/log/fluentd.db
+      Exclude_Path     /var/log/containers/fluent-bit-*.log
+      DB               /var/log/fluentd.db
       Refresh_Interval 5
 
     [FILTER]

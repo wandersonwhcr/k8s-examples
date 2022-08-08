@@ -18,14 +18,14 @@ spec:
             - name: http-metrics
               containerPort: 2020
           volumeMounts:
-            - name: host-var-log-containers
-              mountPath: /var/log/containers
+            - name: host-var-log
+              mountPath: /var/log
             - name: config
               mountPath: /fluent-bit/etc
       volumes:
-        - name: host-var-log-containers
+        - name: host-var-log
           hostPath:
-            path: /var/log/containers
+            path: /var/log
         - name: config
           configMap:
             name: fluent-bit-config

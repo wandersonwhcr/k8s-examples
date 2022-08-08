@@ -8,6 +8,12 @@ kubectl apply \
     --kustomize .
 ```
 
+## Notes
+
+DaemonSet receives a mount using host path on `/var/log` and Fluent Bit stores
+its database in `/var/log/fluentd.db`, that means Fluent Bit saves this file on
+host, keeping track of processed logs if restarted.
+
 ## References
 
 * [Fluent Bit for Kubernetes](https://github.com/fluent/fluent-bit-kubernetes-logging)

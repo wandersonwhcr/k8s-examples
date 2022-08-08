@@ -1,0 +1,4 @@
+namespace: fluent-bit
+
+resources:
+  - namespace.yaml

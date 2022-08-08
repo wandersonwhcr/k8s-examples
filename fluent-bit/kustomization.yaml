@@ -1,6 +1,7 @@
 namespace: fluent-bit
 
 resources:
+  - configmap.yaml
   - namespace.yaml
   - role.yaml
   - rolebinding.yaml

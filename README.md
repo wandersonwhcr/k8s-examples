@@ -18,3 +18,4 @@ k3d cluster create --config k3d-example.yaml
 * [Calico](https://github.com/projectcalico/calico)
 * [Loki](https://grafana.com/oss/loki/)
 * [ClickHouse](https://clickhouse.com/)
+* [Rundeck](https://www.rundeck.com/open-source)

@@ -2,6 +2,7 @@ namespace: fluent-bit
 
 resources:
   - configmap.yaml
+  - daemonset.yaml
   - namespace.yaml
   - role.yaml
   - rolebinding.yaml

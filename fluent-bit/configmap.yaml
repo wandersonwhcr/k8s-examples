@@ -34,7 +34,8 @@ data:
       Merge_Log_Key       log_processed
 
     [OUTPUT]
-      Name stdout
+      Name   stdout
+      Format json
 
   parsers.conf: |
     [PARSER]

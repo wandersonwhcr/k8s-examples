@@ -1,9 +1,9 @@
 namespace: fluent-bit
 
 resources:
+  - clusterrole.yaml
+  - clusterrolebinding.yaml
   - configmap.yaml
   - daemonset.yaml
   - namespace.yaml
-  - role.yaml
-  - rolebinding.yaml
   - serviceaccount.yaml

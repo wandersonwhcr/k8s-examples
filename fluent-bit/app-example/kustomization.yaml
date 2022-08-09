@@ -1,0 +1,13 @@
+generatorOptions:
+  disableNameSuffixHash: true
+
+namespace: app-example
+
+configMapGenerator:
+  - name: app-example-bin
+    files:
+      - assets/entrypoint.sh
+
+resources:
+  - deployment.yaml
+  - namespace.yaml

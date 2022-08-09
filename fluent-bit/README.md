@@ -8,6 +8,11 @@ kubectl apply \
     --kustomize .
 ```
 
+```
+kubectl apply \
+    --kustomize ./app-example
+```
+
 ## Notes
 
 DaemonSet receives a mount using host path on `/var/log` and Fluent Bit stores

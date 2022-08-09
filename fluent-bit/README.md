@@ -4,10 +4,11 @@ This example shows how to use Fluent Bit to collect logs from containers running
 on Kubernetes nodes.
 
 Fluent Bit is installed as a `DaemonSet` to run one pod per node. Each pod
-receives a volume mount from `/var/log` of node to access containers logs. A
-`tail` input plugin fetches these logs and keep tracking of consuming using a
-database saved on node. To enrich messages, `kubernetes` filter plugin retrieve
-information about the pod. Collected logs are sent to fluent bit standard output
+receives a volume mount on `/var/log` from host to access containers logs. A
+`tail` input plugin fetches these logs and keep tracking of consume using a
+database saved on mounted directory, so if restarted, it will begin from last
+consumed log. To enrich messages, `kubernetes` filter plugin retrieves
+information about the pod. Collected logs are sent to Fluent Bit standard output
 using `stdout` output plugin.
 
 ```
@@ -19,7 +20,7 @@ kubectl apply \
 ```
 
 An example application that generates a JSON with a random hash on standard
-output can be installed. Results can be retrieved checking fluent bit stdout.
+output can be installed. Results can be check on Fluent Bit stdout.
 
 ```
 kubectl apply \

@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: app-example
   annotations:
-    konghq.com/plugins: app-example-request-id
+    konghq.com/plugins: app-example-authz, app-example-request-id
 spec:
   rules:
     - host: app-example.app-example.localhost

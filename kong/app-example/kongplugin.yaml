@@ -1,3 +1,5 @@
+---
+
 apiVersion: configuration.konghq.com/v1
 kind: KongPlugin
 metadata:
@@ -6,6 +8,16 @@ plugin: correlation-id
 config:
   header_name: X-Request-Id
   echo_downstream: true
+
+---
+
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: app-example-authz
+plugin: basic-auth
+config:
+  hide_credentials: true
 
 ---
 

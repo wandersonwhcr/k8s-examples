@@ -1,7 +1,7 @@
 # kong
 
-This example shows how to install and use Kong Ingress Controller, defining the
-create `IngressClass` as default and installing an example application.
+This example shows how to install and use Kong Ingress Controller, configuring
+created `IngressClass` as default and installing an example application.
 
 ```
 k3d cluster create \
@@ -20,8 +20,8 @@ kubectl apply \
 ```
 
 `app-example` is a deployment with pods running Nginx containers. It uses 3 Kong
-plugins: `correlation-id` to create a header `X-Request-Id` to trace requests on
-cluster, `basic-auth` to force authentication on edge, and `rate-limiting` to
+plugins: `correlation-id` to create a header `X-Request-Id` and trace requests
+on cluster, `basic-auth` to force authentication on edge and `rate-limiting` to
 limit requests by IP. These plugins are installed via annotations on `Ingress`,
 but the last one is on `Service` to allow any ingress that uses it to configure
 rate limiting. Kong plugins installed on service level don't change internal

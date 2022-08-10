@@ -1,0 +1,10 @@
+namespace: app-example
+
+resources:
+  - deployment.yaml
+  - ingress.yaml
+  - kongconsumer.yaml
+  - kongplugin.yaml
+  - namespace.yaml
+  - secret.yaml
+  - service.yaml

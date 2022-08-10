@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-example
+  labels:
+    app.kubernetes.io/name: app-example
+  annotations:
+    konghq.com/plugins: app-example-rate-limit-by-ip
+spec:
+  selector:
+    app.kubernetes.io/name: app-example
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

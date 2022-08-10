@@ -9,7 +9,6 @@ k3d cluster create --config k3d-example.yaml
 ## TODO
 
 * [Prometheus OOMKilled](https://songrgg.github.io/operation/how-to-alert-for-Pod-Restart-OOMKilled-in-Kubernetes/)
-* [Kong Ingress Controller](https://github.com/Kong/kubernetes-ingress-controller)
 * [Nginx Ingress Controller](https://github.com/nginxinc/kubernetes-ingress)
 * [Jenkins Operator](https://github.com/jenkinsci/kubernetes-operator)
 * [Kyverno](https://github.com/nirmata/kyverno)

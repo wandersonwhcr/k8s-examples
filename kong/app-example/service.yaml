@@ -4,6 +4,8 @@ metadata:
   name: app-example
   labels:
     app.kubernetes.io/name: app-example
+  annotations:
+    konghq.com/plugins: app-example-rate-limit-by-ip
 spec:
   selector:
     app.kubernetes.io/name: app-example

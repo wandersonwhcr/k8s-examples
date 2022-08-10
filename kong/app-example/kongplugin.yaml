@@ -1,0 +1,20 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: app-example-request-id
+plugin: correlation-id
+config:
+  header_name: X-Request-Id
+  echo_downstream: true
+
+---
+
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: app-example-rate-limit-by-ip
+plugin: rate-limiting
+config:
+  limit_by: ip
+  minute: 10
+  policy: local

@@ -3,5 +3,6 @@ namespace: app-example
 resources:
   - deployment.yaml
   - ingress.yaml
+  - kongplugin.yaml
   - namespace.yaml
   - service.yaml

@@ -8,6 +8,7 @@ k3d cluster create --config k3d-example.yaml
 
 ## TODO
 
+* [Gitea](https://gitea.io/en-us/)
 * [OpenID Connect](https://docs.k0sproject.io/v1.23.6+k0s.2/examples/oidc/oidc-cluster-configuration/)
 * [OpenID Connect](https://devopstales.github.io/kubernetes/kube-openid-connect-1.0/)
 * [Audit](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/)
@@ -17,6 +18,7 @@ k3d cluster create --config k3d-example.yaml
 * [Readiness and Liveness](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 * [Nginx Ingress Controller](https://github.com/nginxinc/kubernetes-ingress)
 * [HAProxy Ingress Controller](https://haproxy-ingress.github.io/docs/getting-started/)
+* [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
 * [Jenkins Operator](https://github.com/jenkinsci/kubernetes-operator)
 * [Kyverno](https://github.com/nirmata/kyverno)
 * [Flagger](https://docs.flagger.app/)

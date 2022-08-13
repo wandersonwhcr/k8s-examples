@@ -25,5 +25,13 @@ spec:
             - name: alpine
               image: alpine:3.16
               command:
-                - date
+                - scale.sh
+              volumeMounts:
+                - name: bin
+                  mountPath: /usr/local/bin
+          volumes:
+            - name: bin
+              configMap:
+                name: app-example-scale-bin
+                defaultMode: 0777
           restartPolicy: Never

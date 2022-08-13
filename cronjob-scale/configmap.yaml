@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-example-scale-bin
+  labels:
+    app.kubernetes.io/name: app-example
+data:
+  scale.sh: |
+    #!/usr/bin/env sh
+    set -xe
+    date

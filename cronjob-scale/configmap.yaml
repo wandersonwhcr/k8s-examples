@@ -15,4 +15,4 @@ data:
       --silent \
       --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
       --header "Authorization: Bearer `cat /var/run/secrets/kubernetes.io/serviceaccount/token`" \
-      | jq .info.version
+      | jq --raw-output '.info.version | capture("^(?<version>[^+]+)") | .version'

@@ -45,6 +45,6 @@ app-example-scale-up-27672962-whj5q     0/1     Completed   0          23s
 
 ## References
 
-* [kubectl Cheat Cheat](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+* [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 * [crontab guru](https://crontab.guru/)
 * [cURLing the Kubernetes API Server](https://nieldw.medium.com/curling-the-kubernetes-api-server-d7675cfc398c)

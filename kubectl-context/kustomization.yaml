@@ -1,0 +1,10 @@
+namespace: app-example
+
+resources:
+  - configmap.yaml
+  - deployment.yaml
+  - namespace.yaml
+  - role.yaml
+  - rolebinding.yaml
+  - secret.yaml
+  - serviceaccount.yaml

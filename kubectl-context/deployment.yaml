@@ -19,11 +19,17 @@ spec:
           image: alpine:3.15
           command:
             - entrypoint.sh
+          workingDir: /app
           volumeMounts:
             - name: bin
               mountPath: /usr/local/bin
+            - name: credentials
+              mountPath: /app/credentials
       volumes:
         - name: bin
           configMap:
             name: app-example-bin
             defaultMode: 0777
+        - name: credentials
+          secret:
+            secretName: app-example-credentials

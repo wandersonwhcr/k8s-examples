@@ -1,5 +1,6 @@
 namespace: app-example
 
 resources:
+  - cronjob.yaml
   - deployment.yaml
   - namespace.yaml

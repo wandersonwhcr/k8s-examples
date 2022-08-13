@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: app-example-scale-up
+  labels:
+    app.kubernetes.io/name: app-example
+spec:
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Replace
+  schedule: "* * * * *"
+  jobTemplate:
+    # Job
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-example
+    spec:
+      template:
+        # Pod
+        metadata:
+          labels:
+            app.kubernetes.io/name: app-example
+        spec:
+          containers:
+            - name: alpine
+              image: alpine:3.16
+              command:
+                - date
+          restartPolicy: Never

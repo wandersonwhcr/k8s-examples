@@ -11,8 +11,19 @@ data:
     date
     apk add --quiet curl jq
 
+    CLUSTER_VERSION=`mktemp`
+
     curl https://kubernetes.default.svc/openapi/v2 \
       --silent \
       --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
       --header "Authorization: Bearer `cat /var/run/secrets/kubernetes.io/serviceaccount/token`" \
-      | jq --raw-output '.info.version | capture("^(?<version>[^+]+)") | .version'
+      | jq '.info.version | capture("^(?<version>[^+]+)")' \
+      | jq --raw-output '.version' > "$CLUSTER_VERSION"
+
+    curl "https://dl.k8s.io/release/`cat $CLUSTER_VERSION`/bin/linux/amd64/kubectl" \
+      --silent --location \
+      --output /usr/bin/kubectl
+
+    chmod +x /usr/bin/kubectl
+
+    kubectl version

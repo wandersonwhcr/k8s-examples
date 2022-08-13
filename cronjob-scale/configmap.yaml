@@ -26,6 +26,14 @@ data:
 
     chmod +x /usr/bin/kubectl
 
+    DEPLOYMENT_PATCH=`mktemp`
+
+    # odd minute:  1 replicas
+    # even minute: 3 replicas
+    date +%M \
+      | jq '((. % 2) * 2) + 1 | {"spec": {"replicas": .}}' \
+      | jq --compact-output > "$DEPLOYMENT_PATCH"
+
     kubectl patch deployment app-example \
       --type merge \
-      --patch '{"spec": {"replicas": 2}}'
+      --patch-file "$DEPLOYMENT_PATCH"

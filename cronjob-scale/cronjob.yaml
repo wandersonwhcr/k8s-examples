@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: app-example-scale-up
+  name: app-example-scale
   labels:
     app.kubernetes.io/name: app-example
 spec:

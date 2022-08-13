@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: app-example-scale
+  labels:
+    app.kubernetes.io/name: app-example
+rules:
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+    resourceNames:
+      - app-example
+    verbs:
+      - get
+      - patch

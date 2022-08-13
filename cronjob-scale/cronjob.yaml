@@ -36,3 +36,4 @@ spec:
                 name: app-example-scale-bin
                 defaultMode: 0777
           restartPolicy: Never
+          serviceAccountName: app-example-scale

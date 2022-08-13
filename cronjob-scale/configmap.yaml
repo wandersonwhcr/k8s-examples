@@ -9,3 +9,10 @@ data:
     #!/usr/bin/env sh
     set -xe
     date
+    apk add --quiet curl jq
+
+    curl https://kubernetes.default.svc/openapi/v2 \
+      --silent \
+      --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+      --header "Authorization: Bearer `cat /var/run/secrets/kubernetes.io/serviceaccount/token`" \
+      | jq .info.version

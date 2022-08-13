@@ -1,0 +1,83 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: app-example-scale-up
+  labels:
+    app.kubernetes.io/name: app-example
+spec:
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Replace
+  schedule: "0-58/2 * * * *"
+  jobTemplate:
+    # Job
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-example
+    spec:
+      backoffLimit: 0
+      template:
+        # Pod
+        metadata:
+          labels:
+            app.kubernetes.io/name: app-example
+        spec:
+          containers:
+            - name: alpine
+              image: alpine:3.16
+              command:
+                - scale.sh
+                - "10"
+              volumeMounts:
+                - name: bin
+                  mountPath: /usr/local/bin
+          volumes:
+            - name: bin
+              configMap:
+                name: app-example-scale-bin
+                defaultMode: 0777
+          restartPolicy: Never
+          serviceAccountName: app-example-scale
+
+---
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: app-example-scale-down
+  labels:
+    app.kubernetes.io/name: app-example
+spec:
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Replace
+  schedule: "1-59/2 * * * *"
+  jobTemplate:
+    # Job
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-example
+    spec:
+      backoffLimit: 0
+      template:
+        # Pod
+        metadata:
+          labels:
+            app.kubernetes.io/name: app-example
+        spec:
+          containers:
+            - name: alpine
+              image: alpine:3.16
+              command:
+                - scale.sh
+                - "1"
+              volumeMounts:
+                - name: bin
+                  mountPath: /usr/local/bin
+          volumes:
+            - name: bin
+              configMap:
+                name: app-example-scale-bin
+                defaultMode: 0777
+          restartPolicy: Never
+          serviceAccountName: app-example-scale

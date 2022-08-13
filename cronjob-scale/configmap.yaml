@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-example-scale-bin
+  labels:
+    app.kubernetes.io/name: app-example
+data:
+  scale.sh: |
+    #!/usr/bin/env sh
+    set -xe
+    date
+    apk add --quiet curl jq
+
+    CLUSTER_VERSION=`mktemp`
+
+    curl https://kubernetes.default.svc/openapi/v2 \
+      --silent \
+      --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+      --header "Authorization: Bearer `cat /var/run/secrets/kubernetes.io/serviceaccount/token`" \
+      | jq '.info.version | capture("^(?<version>[^+]+)")' \
+      | jq --raw-output '.version' > "$CLUSTER_VERSION"
+
+    curl "https://dl.k8s.io/release/`cat $CLUSTER_VERSION`/bin/linux/amd64/kubectl" \
+      --silent --location \
+      --output /usr/bin/kubectl
+
+    chmod +x /usr/bin/kubectl
+
+    DEPLOYMENT_PATCH=`mktemp`
+
+    echo "$1" \
+      | jq '{"spec": {"replicas": .}}' \
+      | jq --compact-output > "$DEPLOYMENT_PATCH"
+
+    kubectl patch deployment app-example \
+      --type merge \
+      --patch-file "$DEPLOYMENT_PATCH"

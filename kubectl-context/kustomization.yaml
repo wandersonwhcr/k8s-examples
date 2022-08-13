@@ -1,4 +1,5 @@
 namespace: app-example
 
 resources:
+  - configmap.yaml
   - namespace.yaml

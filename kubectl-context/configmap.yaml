@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-example-bin
+data:
+  entrypoint.sh: |
+    #!/usr/bin/env sh
+    trap exit 1 2 15
+    date
+    set -xe
+    sleep infinity &
+    wait $!

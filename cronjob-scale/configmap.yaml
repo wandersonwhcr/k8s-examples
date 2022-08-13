@@ -26,4 +26,6 @@ data:
 
     chmod +x /usr/bin/kubectl
 
-    kubectl version
+    kubectl patch deployment app-example \
+      --type merge \
+      --patch '{"spec": {"replicas": 2}}'

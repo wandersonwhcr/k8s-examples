@@ -15,6 +15,7 @@ spec:
       labels:
         app.kubernetes.io/name: app-example
     spec:
+      backoffLimit: 0
       template:
         # Pod
         metadata:

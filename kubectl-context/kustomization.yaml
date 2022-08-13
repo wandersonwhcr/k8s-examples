@@ -4,3 +4,6 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - namespace.yaml
+  - role.yaml
+  - rolebinding.yaml
+  - serviceaccount.yaml

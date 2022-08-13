@@ -27,5 +27,8 @@ data:
 
     kubectl version --short
 
+    kubectl get pods \
+      --namespace app-example
+
     sleep infinity &
     wait $!

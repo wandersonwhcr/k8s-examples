@@ -27,10 +27,18 @@ data:
     chmod +x /usr/bin/kubectl
 
     DEPLOYMENT_PATCH=`mktemp`
+    if [ -z "$2"]
+    then
+      echo "$1" \
+        | jq '{"spec": {"replicas": .}}' \
+        | jq --compact-output > "$DEPLOYMENT_PATCH"
+    else
+      REPLICAS_NOW=`kubectl get deployment app-example -o=jsonpath='{.spec.replicas}'`
+      echo $(expr $1 '*' $REPLICAS_NOW) \
+        | jq '{"spec": {"replicas": .}}' \
+        | jq --compact-output > "$DEPLOYMENT_PATCH"
+    fi
 
-    echo "$1" \
-      | jq '{"spec": {"replicas": .}}' \
-      | jq --compact-output > "$DEPLOYMENT_PATCH"
 
     kubectl patch deployment app-example \
       --type merge \

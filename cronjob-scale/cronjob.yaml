@@ -28,6 +28,7 @@ spec:
               command:
                 - scale.sh
                 - "10"
+                - "true"
               volumeMounts:
                 - name: bin
                   mountPath: /usr/local/bin
@@ -70,7 +71,7 @@ spec:
               image: alpine:3.16
               command:
                 - scale.sh
-                - "1"
+                - "2"
               volumeMounts:
                 - name: bin
                   mountPath: /usr/local/bin

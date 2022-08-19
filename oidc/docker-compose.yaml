@@ -5,11 +5,15 @@ services:
     image: quay.io/keycloak/keycloak:19.0
     command:
       - start-dev
+      - --https-port=443
+      - --https-certificate-file=/opt/keycloak/certs/tls.crt
+      - --https-certificate-key-file=/opt/keycloak/certs/tls.key
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     volumes:
       - ./keycloak/data:/opt/keycloak/data
+      - ./keycloak/certs:/opt/keycloak/certs
     networks:
       - k3d-example
 

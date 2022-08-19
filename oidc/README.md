@@ -106,3 +106,8 @@ kube-system   svclb-traefik-8zjt6                       2/2     Running     0   
 $ kubectl get configmaps --all-namespaces
 Error from server (Forbidden): configmaps is forbidden: User "john.doe" cannot list resource "configmaps" in API group "" at the cluster scope
 ```
+
+## References
+
+* [Kubernetes Auth by Sirio Salvi](https://faun.pub/kubernetes-auth-e2f342a5f269)
+* [Authenticating on Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)

@@ -10,11 +10,11 @@ docker-compose up --detach
 # Authenticate with User `admin` and Password `admin`
 # Create Realm `kubernetes`
 # Create Client `cluster` with Client Authentication `off`
+# Create Client `kubectl` with Client Authentication `off`
 # Create Client Scope `cluster` with Type `default`
 # Add Mapper Type `User Property` with Name `username`, Property `username`, Token Claim Name `username`
 # Add Mapper Type `Group Membership` with Name `groups`, Token Claim Name `groups` and Full Group Path `off`
 # Add Mapper Type `Audience` Name `audience` and Included Client Audience `cluster`
-# Relates Client `cluster` with Client Scope `cluster` with Assigned Type `default`
 # Create Group `developers`
 # Create User `john.doe` with Password `102030`
 # Relates User `john.doe` with Group `developers`
@@ -31,17 +31,24 @@ k3d cluster create --config ../k3d-example.yaml \
 
 kubectl apply --filename clusterrole.yaml
 kubectl apply --filename clusterrolebinding.yaml
+```
 
-kubectl config view --minify --output json \
-    | jq .clusters[].cluster.server > kubernetes-api
+## Authentication
 
-./jwt-token.sh john.doe 102030 > token
+```
+./jwt-token.sh john.doe 102030 > jwt.json
 
-KUBERNETES_API=`cat kubernetes-api`
-KUBERNETES_TOKEN=`cat token`
+kubectl config set-credentials john.doe@k3d-example \
+    --auth-provider oidc \
+    --auth-provider-arg idp-issuer-url=https://keycloak:8443/realms/kubernetes \
+    --auth-provider-arg idp-certificate-authority=./keycloak/certs/tls.crt \
+    --auth-provider-arg client-id=kubectl \
+    --auth-provider-arg id-token=`jq -r .access_token jwt.json` \
+    --auth-provider-arg refresh-token=`jq -r .refresh_token jwt.json`
 
-curl "$KUBERNETES_API/api/v1/namespaces" \
-    --insecure \
-    --silent --show-error --fail \
-    --oauth2-bearer "$TOKEN"
+kubectl config set-context k3d-example-oidc \
+    --cluster k3d-example \
+    --user john.doe@k3d-example
+
+kubectl config use-context k3d-example-oidc
 ```

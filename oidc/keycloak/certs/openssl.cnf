@@ -1,0 +1,14 @@
+[req]
+prompt = no
+distinguished_name = distinguished_name
+x509_extensions = x509_extensions
+
+[distinguished_name]
+commonName = keycloak
+
+[x509_extensions]
+basicConstraints = CA:TRUE
+subjectAltName = @subjectAltNames
+
+[subjectAltNames]
+DNS.1 = keycloak

@@ -9,13 +9,10 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     volumes:
-      - keycloak-data:/opt/keycloak/data
+      - ./keycloak/data:/opt/keycloak/data
     networks:
       - k3d-example
 
 networks:
   k3d-example:
     name: k3d-example
-
-volumes:
-  keycloak-data:

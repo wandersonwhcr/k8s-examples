@@ -10,8 +10,6 @@ k3d cluster create --config k3d-example.yaml
 
 * [Falco](https://falco.org/)
 * [Gitea](https://gitea.io/en-us/)
-* [OpenID Connect](https://docs.k0sproject.io/v1.23.6+k0s.2/examples/oidc/oidc-cluster-configuration/)
-* [OpenID Connect](https://devopstales.github.io/kubernetes/kube-openid-connect-1.0/)
 * [Audit](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/)
 * [Prometheus OOMKilled](https://songrgg.github.io/operation/how-to-alert-for-Pod-Restart-OOMKilled-in-Kubernetes/)
 * [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)

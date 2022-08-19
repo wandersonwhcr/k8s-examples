@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0
+    command:
+      - start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - keycloak-data:/opt/keycloak/data
+    networks:
+      - k3d-example
+
+networks:
+  k3d-example:
+    name: k3d-example
+
+volumes:
+  keycloak-data:

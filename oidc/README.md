@@ -1,7 +1,7 @@
 # oidc
 
 This example shows how to authenticate on Kubernetes using OpenID Connect (OIDC)
-via Keycloak. ALso, `kubectl` is configured with a generated JWT to access
+via Keycloak. Also, `kubectl` is configured with a generated JWT to access
 cluster.
 
 ## Keycloak
@@ -9,7 +9,8 @@ cluster.
 Keycloak must be installed outside Kubernetes and must be accessible using
 HTTPS. `make` can be used to generate certificates using OpenSSL. Docker Compose
 initializes Keycloak, mounting certificates as a volume. Another volume is used
-to store data.
+to store data. It will be created on the same Docker network used by k3d on
+cluster creation.
 
 ```
 make

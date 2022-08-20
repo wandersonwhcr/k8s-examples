@@ -8,6 +8,8 @@ k3d cluster create --config k3d-example.yaml
 
 ## TODO
 
+* PHP + Nginx + CDN
+* Nginx
 * [Falco](https://falco.org/)
 * [Gitea](https://gitea.io/en-us/)
 * [Audit](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/)

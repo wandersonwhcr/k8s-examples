@@ -3,6 +3,7 @@ version: "3.8"
 services:
   keycloak:
     image: quay.io/keycloak/keycloak:19.0
+    container_name: keycloak
     command:
       - start-dev
       - --https-certificate-file=/opt/keycloak/certs/tls.crt

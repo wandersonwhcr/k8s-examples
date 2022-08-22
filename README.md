@@ -12,7 +12,6 @@ k3d cluster create --config k3d-example.yaml
 * Nginx
 * [Falco](https://falco.org/)
 * [Gitea](https://gitea.io/en-us/)
-* [Audit](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/)
 * [Prometheus OOMKilled](https://songrgg.github.io/operation/how-to-alert-for-Pod-Restart-OOMKilled-in-Kubernetes/)
 * [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
 * [Node Affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)

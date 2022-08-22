@@ -13,8 +13,8 @@ k3d cluster create \
 ```
 
 The file `policy.yaml` contains a resource of kind `Policy` that configures the
-cluster to register metadata changes from pods. These changes can be read using
-this command:
+cluster to register metadata changes from pods. These changes can be read as
+defined:
 
 ```console
 $ kubectl get pods --all-namespaces

@@ -25,3 +25,7 @@ spec:
           operator: Equal
           value: bar
           effect: NoSchedule
+        - key: foo
+          operator: Equal
+          value: bar
+          effect: NoExecute

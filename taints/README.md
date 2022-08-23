@@ -52,8 +52,8 @@ app-example   app-example-9ddd674b5-8glf5   1/1     Running   0          19m   1
 app-example   app-example-9ddd674b5-qvq46   1/1     Running   0          19m   10.42.3.7    k3d-example-agent-2   <none>           <none>
 app-example   app-example-9ddd674b5-bgh99   1/1     Running   0          19m   10.42.3.8    k3d-example-agent-2   <none>           <none>
 ```
-As seen, pod tolerations will not force scheduling on tainted node, but this
-behavior can be defined using node affinity.
+As seen, pod tolerations will not force scheduling on tainted node only, but
+this behavior can be defined using node affinity.
 
 ## References
 

@@ -15,7 +15,7 @@ k3d cluster create \
 
 kubectl cordon k3d-example-agent-2
 
-kubectl taint node k3d-example-agent-2 foo:bar=NoSchedule
+kubectl taint node k3d-example-agent-2 foo=bar:NoSchedule
 
 kubectl drain k3d-example-agent-2 \
     --ignore-daemonsets

@@ -28,10 +28,5 @@ data:
 
     DEPLOYMENT_PATCH=`mktemp`
 
-    echo "$1" \
-      | jq '{"spec": {"replicas": .}}' \
-      | jq --compact-output > "$DEPLOYMENT_PATCH"
-
-    kubectl patch deployment app-example \
-      --type merge \
-      --patch-file "$DEPLOYMENT_PATCH"
+    kubectl scale deployment app-example \
+      --replicas "$1"

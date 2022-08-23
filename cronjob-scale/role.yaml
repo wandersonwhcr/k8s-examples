@@ -5,6 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: app-example
 rules:
+
   - apiGroups:
       - apps
     resources:
@@ -13,4 +14,12 @@ rules:
       - app-example
     verbs:
       - get
+
+  - apiGroups:
+      - apps
+    resources:
+      - deployments/scale
+    resourceNames:
+      - app-example
+    verbs:
       - patch

@@ -1,4 +1,4 @@
-# taint
+# taints
 
 This example creates a Kubernetes cluster with 3 agent nodes. After, it removes
 pod scheduling from `k3d-example-agent-2` node using `kubectl cordon`. Also, it

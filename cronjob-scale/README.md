@@ -59,3 +59,4 @@ app-example-scale-up-27672962-whj5q     0/1     Completed   0          23s
 * [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 * [crontab guru](https://crontab.guru/)
 * [cURLing the Kubernetes API Server](https://nieldw.medium.com/curling-the-kubernetes-api-server-d7675cfc398c)
+* [Authorization: Checking API Access](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#checking-api-access)

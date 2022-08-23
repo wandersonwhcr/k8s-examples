@@ -18,6 +18,17 @@ kubectl apply \
     --kustomize ./
 ```
 
+```
+kubectl auth can-i get deployments/app-example \
+    --namespace app-example \
+    --as system:serviceaccount:app-example:app-example-scale
+
+kubectl auth can-i patch deployments/app-example \
+    --subresource scale \
+    --namespace app-example \
+    --as system:serviceaccount:app-example:app-example-scale
+```
+
 ```console
 $ date && kubectl get pods --sort-by metadata.name
 Sat 13 Aug 2022 05:01:16 AM -03

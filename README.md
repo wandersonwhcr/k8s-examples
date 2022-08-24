@@ -10,7 +10,6 @@ k3d cluster create --config k3d-example.yaml
 
 * PHP + Nginx + CDN
 * Nginx
-* [Kustomize LabelTransformer](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/transformerconfigs/README.md#labels-transformer)
 * [Falco](https://falco.org/)
 * [Gitea](https://gitea.io/en-us/)
 * [Prometheus OOMKilled](https://songrgg.github.io/operation/how-to-alert-for-Pod-Restart-OOMKilled-in-Kubernetes/)

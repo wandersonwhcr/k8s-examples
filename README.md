@@ -13,7 +13,6 @@ k3d cluster create --config k3d-example.yaml
 * [Falco](https://falco.org/)
 * [Gitea](https://gitea.io/en-us/)
 * [Prometheus OOMKilled](https://songrgg.github.io/operation/how-to-alert-for-Pod-Restart-OOMKilled-in-Kubernetes/)
-* [Node Affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
 * [Readiness and Liveness](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 * [Nginx Ingress Controller](https://github.com/nginxinc/kubernetes-ingress)
 * [HAProxy Ingress Controller](https://haproxy-ingress.github.io/docs/getting-started/)

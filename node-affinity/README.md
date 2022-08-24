@@ -1,11 +1,23 @@
 # node-affinity
 
+This example shows how to assign pods to nodes using labels.
+
+When cluster is created, k3d adds 3 agents and they are labeled using `kubectl`:
+
+* `k3d-example-agent-0` without `topology.kubernetes.io/region`
+* `k3d-example-agent-1` with `topology.kubernetes.io/region` equals to `us-east-1`
+* `k3d-example-agent-2` with `topology.kubernetes.io/region` equals to `sa-east-1`
+
 ```
 k3d cluster create \
     --config ../k3d-example.yaml
 
 kubectl label nodes \
+    k3d-example-agent-0 topology.kubernetes.io/region-
+
+kubectl label nodes \
     k3d-example-agent-1 topology.kubernetes.io/region=us-east-1
+
 kubectl label nodes \
     k3d-example-agent-2 topology.kubernetes.io/region=sa-east-1
 
@@ -36,6 +48,10 @@ kubectl get pods --namespace app-example --output json \
 {"node":"k3d-example-agent-2","name":"app-example-sa-east-1-6d68f5648d-h4lgz"}
 {"node":"k3d-example-agent-2","name":"app-example-sa-east-1-6d68f5648d-t54hc"}
 ```
+
+As seen, `app-example-global` replicas will run on any node because they are not
+defined with node affinity. If you want to avoid node to run some kind of pods
+you must use taints and tolerations.
 
 ## References
 

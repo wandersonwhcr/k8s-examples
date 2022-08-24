@@ -26,7 +26,5 @@ data:
 
     chmod +x /usr/bin/kubectl
 
-    DEPLOYMENT_PATCH=`mktemp`
-
     kubectl scale deployment app-example \
       --replicas "$1"

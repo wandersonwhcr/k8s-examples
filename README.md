@@ -2,6 +2,8 @@
 
 Another Kubernetes Example Repository
 
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
 ```
 k3d cluster create --config k3d-example.yaml
 ```
@@ -30,3 +32,12 @@ k3d cluster create --config k3d-example.yaml
 * [MongoDB Operator](https://github.com/mongodb/mongodb-kubernetes-operator)
 * [Redis Operator](https://github.com/spotahome/redis-operator)
 * [Keycloak](https://www.keycloak.org/getting-started/getting-started-kube)
+
+## License
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg

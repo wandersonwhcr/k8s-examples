@@ -1,0 +1,29 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-configmaps
+spec:
+  rules:
+
+# ------------------------------------------------------------------------------
+
+    - name: database-config
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+              names:
+                - app-example
+      generate:
+        synchronize: true
+        apiVersion: v1
+        kind: ConfigMap
+        namespace: "{{ request.object.metadata.name }}"
+        name: database-config
+        data:
+          metadata:
+            labels:
+              app.kubernetes.io/name: "{{ request.object.metadata.name }}"
+          data:
+            address: "mysql.example.tld"

@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: mutate-pods
+spec:
+  rules:
+    - name: label-environment
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+              namespaces:
+                - app-example
+      mutate:
+        patchStrategicMerge:
+          metadata:
+            labels:
+              app.kubernetes.io/environment: testing

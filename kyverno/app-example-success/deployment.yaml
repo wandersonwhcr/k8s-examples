@@ -18,3 +18,8 @@ spec:
           env:
             - name: APP_NAME
               value: app-example-success
+            - name: DATABASE_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: database-config
+                  key: address

@@ -12,6 +12,9 @@ kubectl apply \
 
 kubectl apply \
     --filename clusterpolicies_mutate-pods.yaml
+
+kubectl apply \
+    --filename clusterpolicies_generate-configmaps.yaml
 ```
 
 ```

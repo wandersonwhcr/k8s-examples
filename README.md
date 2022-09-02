@@ -21,7 +21,6 @@ k3d cluster create --config k3d-example.yaml
 * [HAProxy Ingress Controller](https://haproxy-ingress.github.io/docs/getting-started/)
 * [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
 * [Jenkins Operator](https://github.com/jenkinsci/kubernetes-operator)
-* [Kyverno](https://github.com/nirmata/kyverno)
 * [Flagger](https://docs.flagger.app/)
 * [Jaeger](https://github.com/jaegertracing/jaeger)
 * [Calico](https://github.com/projectcalico/calico)

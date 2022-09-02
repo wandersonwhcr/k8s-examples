@@ -8,23 +8,6 @@ spec:
 
 # ------------------------------------------------------------------------------
 
-    - name: label-env
-      match:
-        any:
-          - resources:
-              kinds:
-                - Pod
-              namespaces:
-                - app-example-*
-      validate:
-        message: Environment Label must be equal to "testing" or "production"
-        pattern:
-          metadata:
-            labels:
-              app.kubernetes.io/environment: testing|production
-
-# ------------------------------------------------------------------------------
-
     - name: image-tag
       match:
         any:

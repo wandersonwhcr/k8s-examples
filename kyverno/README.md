@@ -9,6 +9,9 @@ kubectl apply \
 
 kubectl apply \
     --filename clusterpolicies_validate-pods.yaml
+
+kubectl apply \
+    --filename clusterpolicies_mutate-pods.yaml
 ```
 
 ```

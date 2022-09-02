@@ -12,7 +12,7 @@ spec:
               kinds:
                 - Pod
               namespaces:
-                - default
+                - app-example-*
       validate:
         message: Environment Variables must have only uppercase and underscore characters
         deny:

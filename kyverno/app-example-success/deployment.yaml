@@ -11,10 +11,11 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: app-example-success
+        app.kubernetes.io/environment: testing
     spec:
       containers:
         - name: nginx
           image: nginx:1.23
           env:
-            - name: APP_ENV
-              value: qa
+            - name: APP_NAME
+              value: app-example-success

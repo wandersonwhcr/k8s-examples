@@ -13,7 +13,7 @@ kubectl apply \
 
 ```
 kubectl apply \
-    --kustomize ./app-example-success
+    --kustomize ./app-example
 ```
 
 ## References

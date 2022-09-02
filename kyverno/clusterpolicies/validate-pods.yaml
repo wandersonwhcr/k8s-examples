@@ -15,7 +15,7 @@ spec:
               kinds:
                 - Pod
               namespaces:
-                - app-example-*
+                - app-example
       validate:
         message: Container Image must have a tag
         pattern:
@@ -32,7 +32,7 @@ spec:
               kinds:
                 - Pod
               namespaces:
-                - app-example-*
+                - app-example
       validate:
         message: Container Image Tag must not be equal to "latest"
         pattern:
@@ -49,7 +49,7 @@ spec:
               kinds:
                 - Pod
               namespaces:
-                - app-example-*
+                - app-example
       validate:
         message: Environment Variables must have only uppercase and underscore characters
         deny:

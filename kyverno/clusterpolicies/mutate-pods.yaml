@@ -11,7 +11,7 @@ spec:
               kinds:
                 - Pod
               namespaces:
-                - app-example-*
+                - app-example
       mutate:
         patchStrategicMerge:
           metadata:

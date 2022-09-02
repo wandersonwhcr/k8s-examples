@@ -14,7 +14,7 @@ spec:
               kinds:
                 - Namespace
               names:
-                - app-example-*
+                - app-example
       generate:
         synchronize: true
         apiVersion: v1

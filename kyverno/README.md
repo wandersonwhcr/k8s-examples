@@ -8,7 +8,7 @@ kubectl apply \
     --filename https://raw.githubusercontent.com/kyverno/kyverno/release-1.7/config/release/install.yaml
 
 kubectl apply \
-    --filename clusterpolicies.yaml
+    --filename clusterpolicies_validate-pods.yaml
 ```
 
 ```

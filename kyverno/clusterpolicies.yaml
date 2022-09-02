@@ -1,0 +1,23 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: validate-pod-envs
+spec:
+  validationFailureAction: enforce
+  rules:
+    - name: name-uppercase-underscore
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+              namespaces:
+                - default
+      validate:
+        message: Environment Variables must have only uppercase and underscore characters
+        deny:
+          conditions:
+            any:
+              - key: "{{ request.object.spec.containers[].env[].name | [? ! regex_match('^[A-Z_]+$', @) ] | length(@) }}"
+                operator: GreaterThan
+                value: 0

@@ -13,7 +13,7 @@ spec:
         app.kubernetes.io/name: app-example
     spec:
       containers:
-        - name: nginx
+        - name: webserver
           image: nginx:1.23
           env:
             - name: APP_NAME

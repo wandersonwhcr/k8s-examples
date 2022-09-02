@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-example-success
+  name: app-example
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: app-example-success
+      app.kubernetes.io/name: app-example
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: app-example-success
+        app.kubernetes.io/name: app-example
     spec:
       containers:
         - name: nginx

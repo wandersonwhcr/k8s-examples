@@ -1,8 +1,8 @@
-namespace: app-example-success
+namespace: app-example
 
 resources:
   - deployment.yaml
   - namespace.yaml
 
 commonLabels:
-  app.kubernetes.io/name: app-example-success
+  app.kubernetes.io/name: app-example

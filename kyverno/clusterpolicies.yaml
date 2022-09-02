@@ -1,11 +1,48 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: validate-pod-envs
+  name: validate-pods
 spec:
   validationFailureAction: enforce
   rules:
-    - name: name-uppercase-underscore
+
+# ------------------------------------------------------------------------------
+
+    - name: image-tag
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+              namespaces:
+                - app-example-*
+      validate:
+        message: Container Image must have a tag
+        pattern:
+          spec:
+            containers:
+              - image: "*:*"
+
+# ------------------------------------------------------------------------------
+
+    - name: image-tag-not-latest
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+              namespaces:
+                - app-example-*
+      validate:
+        message: Container Image Tag must not be equal to latest
+        pattern:
+          spec:
+            containers:
+              - image: "!*:latest"
+
+# ------------------------------------------------------------------------------
+
+    - name: env-name-uppercase-underscore
       match:
         any:
           - resources:

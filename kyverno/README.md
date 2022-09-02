@@ -3,11 +3,11 @@
 This example shows how to use Kyverno, a policy engine to validate, mutate and
 generate resources on Kubernetes.
 
-Basically, this example installs policies over `app-example` namespace, to
-generate a configmap automatically with database configuration, to validate if
-pod containers use image tags different from latest and if environment variables
-use only uppercase and underscore characteres, and to mutate pods adding a label
-describing the environment.
+Basically, this example installs cluster policies over `app-example` namespace,
+to generate a configmap automatically with database configuration, to validate
+if pod containers use image tags different from latest and if environment
+variables use only uppercase and underscore chars, and to mutate pods adding a
+label describing the environment.
 
 ```
 k3d cluster create \
@@ -27,7 +27,8 @@ kubectl apply \
     --kustomize ./app-example
 ```
 
-Kyverno will apply policies as defined.
+Kyverno will apply policies as defined and values can be fetch using these
+commands:
 
 ```
 kubectl get configmap database-config \

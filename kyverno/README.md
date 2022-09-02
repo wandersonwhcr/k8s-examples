@@ -6,6 +6,14 @@ k3d cluster create \
 
 kubectl apply \
     --filename https://raw.githubusercontent.com/kyverno/kyverno/release-1.7/config/release/install.yaml
+
+kubectl apply \
+    --filename clusterpolicies.yaml
+```
+
+```
+kubectl apply \
+    --kustomize ./app-example-success
 ```
 
 ## References

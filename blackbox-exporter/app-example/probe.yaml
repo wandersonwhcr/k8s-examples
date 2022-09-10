@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+metadata:
+  name: app-example
+spec:
+  interval: 5s
+  prober:
+    url: blackbox-exporter.blackbox-exporter.svc:9115
+  targets:
+    staticConfig:
+      static:
+        - http://app-example.app-example.svc:8080/healthz

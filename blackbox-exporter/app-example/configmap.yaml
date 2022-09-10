@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-example-nginx-templates
+data:
+  healthz.conf.template: |
+    server {
+      listen 8080;
+      location /healthz {
+        return 200;
+      }
+    }

@@ -4,11 +4,19 @@ metadata:
   name: prometheus
 spec:
   serviceAccountName: prometheus
+
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
+
+  podMonitorNamespaceSelector: {}
   podMonitorSelector: {}
+
+  probeNamespaceSelector: {}
+  probeSelector: {}
+
   ruleNamespaceSelector: {}
   ruleSelector: {}
+
   alerting:
     alertmanagers:
       - namespace: prometheus

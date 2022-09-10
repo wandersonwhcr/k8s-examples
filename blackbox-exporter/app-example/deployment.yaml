@@ -23,12 +23,6 @@ spec:
           volumeMounts:
             - name: nginx-templates
               mountPath: /etc/nginx/templates
-          livenessProbe:
-            httpGet:
-              port: http-healthz
-              path: /healthz
-            initialDelaySeconds: 1
-            periodSeconds: 5
       volumes:
         - name: nginx-templates
           configMap:

@@ -8,5 +8,7 @@ spec:
     url: blackbox-exporter.blackbox-exporter.svc:9115
   targets:
     staticConfig:
+      labels:
+        service: app-example
       static:
         - http://app-example.app-example.svc:8080/healthz

@@ -1,8 +1,9 @@
 # blackbox-exporter
 
-This example shows how to install Blackbox Exporter. Prometheus `ServiceMonitor`
-will scrape metrics direct from `Pod` IPs and to check if `Service` is up, use
-`Probe` with static host address.
+This example shows how to install Blackbox Exporter.
+
+Prometheus `ServiceMonitor` will only scrape metrics direct from `Pod` IPs. To
+check if `Service` is up, use `Probe` with static host address.
 
 ```
 k3d cluster create \
@@ -20,7 +21,8 @@ kubectl apply \
 
 Install this example that contains a `Probe` resource to configure Prometheus to
 make HTTP requests directly to the `Service`. This is useful to check if service
-host is responding correctly on canary deployments.
+host is responding correctly, especially on Istio `VirtualService`, where only a
+subset of pods are used.
 
 ```
 kubectl apply \

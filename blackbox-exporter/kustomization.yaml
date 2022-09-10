@@ -1,0 +1,9 @@
+namespace: blackbox-exporter
+
+resources:
+  - deployment.yaml
+  - namespace.yaml
+  - service.yaml
+
+commonLabels:
+  app.kubernetes.io/name: blackbox-exporter

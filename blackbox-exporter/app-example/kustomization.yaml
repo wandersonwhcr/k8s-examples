@@ -4,6 +4,7 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - namespace.yaml
+  - probe.yaml
 
 commonLabels:
   app.kubernetes.io/name: app-example

@@ -10,6 +10,7 @@ k3d cluster create --config k3d-example.yaml
 
 ## TODO
 
+* Docker Registry + S3 Storage Driver
 * PHP + Nginx + CDN
 * Nginx
 * [Falco](https://falco.org/)

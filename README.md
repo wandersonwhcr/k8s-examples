@@ -14,6 +14,7 @@ k3d cluster create --config k3d-example.yaml
 * PHP + Nginx + CDN
 * Nginx
 * [Victoria Metrics](https://victoriametrics.com/products/open-source/)
+* [Certificate Exporter](https://github.com/enix/x509-certificate-exporter)
 * [Falco](https://falco.org/)
 * [Gitea](https://gitea.io/en-us/)
 * [Prometheus OOMKilled](https://songrgg.github.io/operation/how-to-alert-for-Pod-Restart-OOMKilled-in-Kubernetes/)

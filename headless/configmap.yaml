@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dn-checker-bin
+data:
+  entrypoint.sh: |
+    #!/usr/bin/env sh
+    set -xe
+    trap exit 0 1 2 15
+    apk add --quiet bind-tools
+
+    # service
+    dig +search +noall +answer app-example.app-example.svc
+    # format: pod.service.namespace.svc
+    dig +search +noall +answer app-example-0.app-example.app-example.svc
+    dig +search +noall +answer app-example-1.app-example.app-example.svc
+    dig +search +noall +answer app-example-2.app-example.app-example.svc

@@ -6,6 +6,7 @@ spec:
   clusterIP: None
   selector:
     app.kubernetes.io/name: app-example
+    app.kubernetes.io/instance: app-example
   ports:
     - name: http
       port: 80

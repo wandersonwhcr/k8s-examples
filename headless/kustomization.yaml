@@ -2,6 +2,7 @@ namespace: app-example
 
 resources:
   - namespace.yaml
+  - service.yaml
 
 commonLabels:
   app.kubernetes.io/name: app-example

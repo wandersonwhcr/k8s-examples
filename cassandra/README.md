@@ -7,7 +7,7 @@ k3d cluster create \
     && k3d node create example-agent-cassandra \
         --cluster example \
         --replicas 1 \
-        --memory 2G \
+        --memory 4G \
         --role agent \
         --k3s-arg --node-taint=node.kubernetes.io/owner=cassandra:NoSchedule
 

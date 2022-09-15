@@ -1,0 +1,7 @@
+namespace: app-example
+
+resources:
+  - namespace.yaml
+
+commonLabels:
+  app.kubernetes.io/name: app-example

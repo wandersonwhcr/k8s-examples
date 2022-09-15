@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cassandra
+spec:
+  serviceName: cassandra
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cassandra
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: cassandra
+    spec:
+      containers:
+        - name: cassandra
+          image: cassandra:4.0
+          ports:
+            - name: cql
+              containerPort: 9042
+          volumeMounts:
+            - name: cassandra-data
+              mountPath: /var/lib/cassandra
+          resources:
+            requests:
+              cpu: 1000m
+              memory: 4G
+            limits:
+              cpu: 1000m
+              memory: 4G
+          readinessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 15
+            exec:
+              command:
+                - sh
+                - -c
+                - test `nodetool statusgossip` = running
+      tolerations:
+        - key: node.kubernetes.io/owner
+          operator: Equal
+          value: cassandra
+          effect: NoSchedule
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: cassandra
+  volumeClaimTemplates:
+    - metadata:
+        name: cassandra-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1G

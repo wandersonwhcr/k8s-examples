@@ -2,6 +2,7 @@ namespace: cassandra
 
 resources:
   - namespace.yaml
+  - service.yaml
 
 commonLabels:
   app.kubernetes.io/name: cassandra

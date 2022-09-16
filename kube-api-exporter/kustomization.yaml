@@ -1,0 +1,14 @@
+namespace: kube-api-exporter
+
+resources:
+  - clusterrole.yaml
+  - clusterrolebinding.yaml
+  - configmap.yaml
+  - deployment.yaml
+  - namespace.yaml
+  - probe.yaml
+  - service.yaml
+  - serviceaccount.yaml
+
+commonLabels:
+  app.kubernetes.io/name: kube-api-exporter

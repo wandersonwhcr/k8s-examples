@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+metadata:
+  name: kube-api-exporter-deployment
+spec:
+  interval: 30s
+  prober:
+    url: kube-api-exporter.kube-api-exporter.svc:7979
+  module: deployment
+  targets:
+    staticConfig:
+      static:
+        - https://kubernetes.default.svc/apis/apps/v1/deployments

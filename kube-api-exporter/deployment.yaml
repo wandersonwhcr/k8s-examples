@@ -26,3 +26,4 @@ spec:
         - name: config
           configMap:
             name: kube-api-exporter-config
+      serviceAccountName: kube-api-exporter

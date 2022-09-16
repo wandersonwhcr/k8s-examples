@@ -6,6 +6,7 @@ resources:
   - configmap.yaml
   - deployment.yaml
   - namespace.yaml
+  - probe.yaml
   - service.yaml
   - serviceaccount.yaml
 

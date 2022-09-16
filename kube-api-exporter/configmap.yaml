@@ -5,3 +5,19 @@ metadata:
 data:
   config.yml: |
     modules:
+      deployments:
+        metrics:
+          - name: kube_api_exporter_deployment
+            type: object
+            path: "{ .items[*] }"
+            labels:
+              namespace: "{ .metadata.namespace }"
+              name: "{ .metadata.name }"
+            valuetype: gauge
+            values:
+              replicas: "{ .spec.replicas }"
+        http_client_config:
+          tls_config:
+            ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          authorization:
+            credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token

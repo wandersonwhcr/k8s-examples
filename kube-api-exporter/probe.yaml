@@ -3,10 +3,10 @@ kind: Probe
 metadata:
   name: kube-api-exporter
 spec:
-  interval: 5s
+  interval: 30s
   prober:
     url: kube-api-exporter.kube-api-exporter.svc:7979
-  module: deployments
+  module: kube-api-exporter
   targets:
     staticConfig:
       static:

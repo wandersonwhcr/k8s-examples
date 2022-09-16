@@ -5,7 +5,7 @@ metadata:
 data:
   config.yml: |
     modules:
-      deployments:
+      kube-api-exporter:
         metrics:
           - name: kube_api_exporter_deployment
             type: object

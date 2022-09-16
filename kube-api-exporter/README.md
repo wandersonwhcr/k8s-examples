@@ -28,7 +28,7 @@ It installs a JSON Exporter called `kube-api-exporter` with a configured module
 is configured with `ca.crt` and `token` from Service Account, related with a
 Cluster Role that allows Deployment listing on Kubernetes API.
 
-A Probe resource configures Prometheus execute requests on this JSON Exporter
+A Probe resource configures Prometheus to execute requests on this JSON Exporter
 using Kubernetes API Deployment endpoint as target and `deployment` module.
 
 After this, Prometheus API can be used to retrieve

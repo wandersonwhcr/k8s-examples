@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-api-exporter-config
+data:
+  config.yml: |
+    modules:

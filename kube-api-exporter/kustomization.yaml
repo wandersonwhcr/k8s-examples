@@ -1,0 +1,10 @@
+namespace: kube-api-exporter
+
+resources:
+  - configmap.yaml
+  - deployment.yaml
+  - namespace.yaml
+  - service.yaml
+
+commonLabels:
+  app.kubernetes.io/name: kube-api-exporter

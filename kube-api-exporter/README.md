@@ -7,7 +7,7 @@ retrieving metrics from deployments replicas value.
 resources and it is a proof of concept. Please, use
 [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) to
 retrieve these values. On the other hand, KSM does not scrape custom resources
-definitions and at the end, this example can be useful on this case.
+and at the end, this example can be useful on this case.
 
 ```
 k3d cluster create \

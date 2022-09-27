@@ -22,6 +22,7 @@ fastify.get('/', (request, reply) => {
     .send({ name, version, description });
 });
 
+fastify.get('/v1/artists', require('./routes/fetch.js'));
 fastify.post('/v1/artists', require('./routes/create.js'));
 fastify.get('/v1/artists/:artistId', require('./routes/find.js'));
 

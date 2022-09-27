@@ -6,9 +6,9 @@ const { makeExecutableSchema } = require('@graphql-tools/schema');
 const typeDefs = `
   type Query {
     albums: [Album]
-    album(id: ID): Album
+    album(_id: ID): Album
     artists: [Artist]
-    artist(id: ID): Artist
+    artist(_id: ID): Artist
   }
 
   type Album {
@@ -26,16 +26,16 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    albums: require('./queries/albums.js'),
-    album: require('./queries/album.js'),
-    artists: require('./queries/artists.js'),
-    artist: require('./queries/artist.js'),
+    albums: require('./resolvers/albums.js'),
+    album: require('./resolvers/album.js'),
+    artists: require('./resolvers/artists.js'),
+    artist: require('./resolvers/artist.js'),
   },
   Album: {
-    artists: require('./queries/artists.js'),
+    artists: require('./resolvers/artists.js'),
   },
   Artist: {
-    albums: require('./queries/albums.js'),
+    albums: require('./resolvers/albums.js'),
   },
 }
 

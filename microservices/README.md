@@ -37,3 +37,46 @@ kubectl apply \
 kubectl apply \
     --kustomize ./app-music
 ```
+
+```
+curl http://artists.app.localhost/v1/artists \
+    --resolve artists.app.localhost:80:127.0.0.1 \
+    --request POST \
+    --header 'Content-Type: application/json' \
+    --data '{"name": "My Artist"}'
+
+{"_id":"37a8375e-0ac9-47bc-b1f4-ac7e81149cdc"}
+```
+
+```
+curl http://albums.app.localhost/v1/albums \
+    --resolve albums.app.localhost:80:127.0.0.1 \
+    --request POST \
+    --header 'Content-Type: application/json' \
+    --data '{"name": "My Album", "artists": [{"_id": "37a8375e-0ac9-47bc-b1f4-ac7e81149cdc"}]}'
+
+{"_id":"b5b14a07-9ced-4505-9183-15bff62e07a9"}
+```
+
+```
+curl http://music.app.localhost/graphql \
+    --resolve music.app.localhost:80:127.0.0.1 \
+    --request POST \
+    --header 'Content-Type: application/json' \
+    --data '{"query": "{ artists { name albums { name } } }"}'
+
+{
+  "data": {
+    "artists": [
+      {
+        "name": "My Artist",
+        "albums": [
+          {
+            "name": "My Album"
+          }
+        ]
+      }
+    ]
+  }
+}
+```

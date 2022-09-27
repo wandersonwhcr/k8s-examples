@@ -1,0 +1,23 @@
+services:
+
+  app-artists:
+    image: "node:16.17-alpine"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.artists.rule=Host(`artists.app.localhost`)"
+      - "traefik.http.services.artists.loadbalancer.server.port=8080"
+    networks:
+      - "app-artists"
+      - "app-traefik"
+    volumes:
+      - "./src:/usr/local/src"
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: "/usr/local/src"
+    command: ["node", "server.js"]
+
+networks:
+  app-artists:
+    name: "app-artists"
+  app-traefik:
+    name: "app-traefik"
+    external: true

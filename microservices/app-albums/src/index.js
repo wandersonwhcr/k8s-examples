@@ -25,6 +25,8 @@ fastify.get('/', (request, reply) => {
 fastify.get('/v1/albums', require('./routes/fetch.js'));
 fastify.post('/v1/albums', require('./routes/create.js'));
 fastify.get('/v1/albums/:albumId', require('./routes/find.js'));
+fastify.put('/v1/albums/:albumId', require('./routes/update.js'));
+fastify.delete('/v1/albums/:albumId', require('./routes/delete.js'));
 
 fastify.setErrorHandler((error, request, reply) => {
   fastify.log.error(error);

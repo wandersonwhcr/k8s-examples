@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-artists
+spec:
+  rules:
+    - host: artists.app.localhost
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: app-artists
+                port:
+                  name: http

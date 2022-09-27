@@ -3,6 +3,9 @@
 ```
 k3d cluster create \
     --config ../k3d-example.yaml
+
+kubectl apply \
+    --kustomize ../mongodb
 ```
 
 ```
@@ -15,11 +18,11 @@ done
 
 ```
 kubectl apply \
-    --kustomize ../mongodb
-
-kubectl apply \
     --kustomize ./app-artists
 
 kubectl apply \
     --kustomize ./app-albums
+
+kubectl apply \
+    --kustomize ./app-music
 ```

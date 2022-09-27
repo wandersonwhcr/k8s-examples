@@ -1,0 +1,10 @@
+namespace: app-music
+
+resources:
+  - deployment.yaml
+  - ingress.yaml
+  - namespace.yaml
+  - service.yaml
+
+commonLabels:
+  app.kubernetes.io/name: app-music

@@ -1,0 +1,25 @@
+services:
+
+  app-albums:
+    image: "node:16.17-alpine"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.albums.rule=Host(`albums.app.localhost`)"
+      - "traefik.http.services.albums.loadbalancer.server.port=3000"
+    networks:
+      - "app-albums"
+      - "app-traefik"
+    volumes:
+      - "./src:/usr/local/src"
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: "/usr/local/src"
+    command: ["node", "server.js"]
+    environment:
+      PORT: "3000"
+
+networks:
+  app-albums:
+    name: "app-albums"
+  app-traefik:
+    name: "app-traefik"
+    external: true

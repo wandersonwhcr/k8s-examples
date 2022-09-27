@@ -25,6 +25,8 @@ fastify.get('/', (request, reply) => {
 fastify.get('/v1/artists', require('./routes/fetch.js'));
 fastify.post('/v1/artists', require('./routes/create.js'));
 fastify.get('/v1/artists/:artistId', require('./routes/find.js'));
+fastify.put('/v1/artists/:artistId', require('./routes/update.js'));
+fastify.delete('/v1/artists/:artistId', require('./routes/delete.js'));
 
 fastify.setErrorHandler((error, request, reply) => {
   fastify.log.error(error);

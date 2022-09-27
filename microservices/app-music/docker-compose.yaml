@@ -16,6 +16,7 @@ services:
     command: ["node", "server.js"]
     environment:
       PORT: "3000"
+      APP_ALBUMS_URL: "http://app-albums:3000"
 
 networks:
   app-music:

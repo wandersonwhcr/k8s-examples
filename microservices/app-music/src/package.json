@@ -1,5 +1,11 @@
 {
   "name": "app-music",
   "version": "1.0.0-alpha",
-  "description": "Music Application"
+  "description": "Music Application",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0"
+  }
 }

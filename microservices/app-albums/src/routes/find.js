@@ -9,9 +9,10 @@ module.exports = {
     response: {
       200: {
         type: 'object',
-        required: ['name', 'artists'],
+        required: ['_id', 'name', 'artists'],
         additionalProperties: false,
         properties: {
+          _id: { type: 'string', format: 'uuid' },
           name: { type: 'string' },
           artists: {
             type: 'array',

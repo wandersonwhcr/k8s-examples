@@ -1,5 +1,7 @@
 # app-artists
 
+Artists Application
+
 ## Development
 
 ```

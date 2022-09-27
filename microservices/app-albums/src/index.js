@@ -23,6 +23,7 @@ fastify.get('/', (request, reply) => {
 });
 
 fastify.post('/v1/albums', require('./routes/create.js'));
+fastify.get('/v1/albums/:albumId', require('./routes/find.js'));
 
 fastify.setErrorHandler((error, request, reply) => {
   fastify.log.error(error);

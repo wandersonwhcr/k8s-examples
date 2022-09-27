@@ -16,4 +16,6 @@ fastify.get('/', (request, reply) => {
     .send({ name, version, description });
 });
 
+fastify.post('/v1/artists', require('./routes/create.js'));
+
 module.exports = fastify;

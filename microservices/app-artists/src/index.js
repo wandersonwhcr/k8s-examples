@@ -23,5 +23,6 @@ fastify.get('/', (request, reply) => {
 });
 
 fastify.post('/v1/artists', require('./routes/create.js'));
+fastify.get('/v1/artists/:artistId', require('./routes/find.js'));
 
 module.exports = fastify;

@@ -1,3 +1,4 @@
+const axios = require('axios');
 const uuid = require('uuid');
 const { Binary } = require('mongodb');
 
@@ -38,9 +39,10 @@ module.exports = {
   handler: async function (request, reply) {
     const _id = uuid.v4();
 
-    request.body.artists.forEach((artist) => {
+    for (const artist of request.body.artists) {
+      await axios.get(process.env.APP_ARTISTS_URL + '/v1/artists/' + artist._id);
       artist._id = new Binary(uuid.parse(artist._id), Binary.SUBTYPE_UUID);
-    });
+    }
 
     await this.mongo.db.collection('albums')
       .insertOne({

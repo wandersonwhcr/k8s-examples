@@ -18,6 +18,7 @@ services:
       PORT: "3000"
       MONGO_URL: "mongodb://root:root@database"
       MONGO_DATABASE: "app-albums"
+      APP_ARTISTS_URL: "http://app-artists:3000"
 
   database:
     image: "mongo:6.0"

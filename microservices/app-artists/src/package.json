@@ -3,6 +3,9 @@
   "version": "1.0.0-alpha",
   "description": "Artists Application",
   "dependencies": {
-    "fastify": "^4.6.0"
+    "@fastify/mongodb": "^6.1.0",
+    "fastify": "^4.6.0",
+    "mongodb": "^4.10.0",
+    "uuid": "^9.0.0"
   }
 }

@@ -1,3 +1,6 @@
+const uuid = require('uuid');
+const { Binary } = require('mongodb');
+
 module.exports = {
   schema: {
     body: {
@@ -21,7 +24,15 @@ module.exports = {
   },
 
   handler: async function (request, reply) {
-    const _id = '5d126aff-a3e7-48ab-9b1e-a5d883a82531';
+    const _id = uuid.v4();
+
+    await this.mongo.db.collection('artists')
+      .insertOne({
+        _id: new Binary(uuid.parse(_id), Binary.SUBTYPE_UUID),
+        ...request.body,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
 
     reply.status(201)
       .send({ _id });

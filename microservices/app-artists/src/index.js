@@ -9,6 +9,12 @@ const fastify = require('fastify')({
   },
 });
 
+fastify.register(require('@fastify/mongodb'), {
+  forceClose: true,
+  url: process.env.MONGO_URL,
+  database: process.env.MONGO_DATABASE,
+});
+
 const { name, version, description } = require('./package.json');
 
 fastify.get('/', (request, reply) => {

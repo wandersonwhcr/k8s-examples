@@ -16,6 +16,18 @@ services:
     command: ["node", "server.js"]
     environment:
       PORT: "3000"
+      MONGO_URL: "mongodb://root:root@database"
+      MONGO_DATABASE: "app-artists"
+
+  database:
+    image: "mongo:6.0"
+    networks:
+      - "app-artists"
+    volumes:
+      - "database:/data/db"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "root"
 
 networks:
   app-artists:
@@ -23,3 +35,6 @@ networks:
   app-traefik:
     name: "app-traefik"
     external: true
+
+volumes:
+  database:

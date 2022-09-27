@@ -1,5 +1,8 @@
 {
   "name": "app-albums",
   "version": "1.0.0-alpha",
-  "description": "Albums Application"
+  "description": "Albums Application",
+  "dependencies": {
+    "fastify": "^4.6.0"
+  }
 }

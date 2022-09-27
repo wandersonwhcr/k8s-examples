@@ -19,4 +19,7 @@ kubectl apply \
 
 kubectl apply \
     --kustomize ./app-artists
+
+kubectl apply \
+    --kustomize ./app-albums
 ```

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-albums
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-albums
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-albums
+    spec:
+      containers:
+        - name: app-albums
+          image: k3d-example-registry:5000/app-albums
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
+            - name: MONGO_URL
+              value: "mongodb://root:root@mongodb.mongodb.svc"
+            - name: MONGO_DATABASE
+              value: "app-albums"
+            - name: APP_ARTISTS_URL
+              value: "http://app-artists.app-artists.svc"
+          envFrom:
+            - secretRef:
+                name: app-albums-env

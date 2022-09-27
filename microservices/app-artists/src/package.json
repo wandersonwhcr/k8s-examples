@@ -1,5 +1,8 @@
 {
   "name": "app-artists",
   "version": "1.0.0-alpha",
-  "description": "Artists Application"
+  "description": "Artists Application",
+  "dependencies": {
+    "fastify": "^4.6.0"
+  }
 }

@@ -5,7 +5,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.artists.rule=Host(`artists.app.localhost`)"
-      - "traefik.http.services.artists.loadbalancer.server.port=8080"
+      - "traefik.http.services.artists.loadbalancer.server.port=3000"
     networks:
       - "app-artists"
       - "app-traefik"
@@ -14,6 +14,8 @@ services:
     user: "${UID:-1000}:${GID:-1000}"
     working_dir: "/usr/local/src"
     command: ["node", "server.js"]
+    environment:
+      PORT: "3000"
 
 networks:
   app-artists:

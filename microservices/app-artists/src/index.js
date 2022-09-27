@@ -25,4 +25,23 @@ fastify.get('/', (request, reply) => {
 fastify.post('/v1/artists', require('./routes/create.js'));
 fastify.get('/v1/artists/:artistId', require('./routes/find.js'));
 
+fastify.setErrorHandler((error, request, reply) => {
+  fastify.log.error(error);
+
+  if (error.validation) {
+    reply.status(422)
+      .send(error.validation);
+    return;
+  }
+
+  if (error.isAxiosError) {
+    reply.status(error.response.status)
+      .send(error.response.data);
+    return;
+  }
+
+  reply.status(500)
+    .send();
+});
+
 module.exports = fastify;

@@ -13,7 +13,7 @@ services:
       - "./src:/usr/local/src"
     user: "${UID:-1000}:${GID:-1000}"
     working_dir: "/usr/local/src"
-    command: ["node", "server.js"]
+    command: ["--require", "./tracing.js", "server.js"]
     environment:
       PORT: "3000"
       APP_ARTISTS_URL: "http://app-artists:3000"

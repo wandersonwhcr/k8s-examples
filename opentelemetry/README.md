@@ -9,4 +9,7 @@ kubectl apply \
 
 kubectl apply \
     --kustomize ./opentelemetry-operator
+
+kubectl apply \
+    --kustomize ./
 ```

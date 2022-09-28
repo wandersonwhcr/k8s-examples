@@ -1,0 +1,11 @@
+namespace: app-artists
+
+resources:
+  - deployment.yaml
+  - ingress.yaml
+  - namespace.yaml
+  - secret.yaml
+  - service.yaml
+
+commonLabels:
+  app.kubernetes.io/name: app-artists

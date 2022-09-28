@@ -1,0 +1,27 @@
+services:
+
+  app-music:
+    image: "node:16.17-alpine"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.music.rule=Host(`music.app.localhost`)"
+      - "traefik.http.services.music.loadbalancer.server.port=3000"
+    networks:
+      - "app-music"
+      - "app-traefik"
+    volumes:
+      - "./src:/usr/local/src"
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: "/usr/local/src"
+    command: ["--require", "./tracing.js", "server.js"]
+    environment:
+      PORT: "3000"
+      APP_ARTISTS_URL: "http://app-artists:3000"
+      APP_ALBUMS_URL: "http://app-albums:3000"
+
+networks:
+  app-music:
+    name: "app-music"
+  app-traefik:
+    name: "app-traefik"
+    external: true

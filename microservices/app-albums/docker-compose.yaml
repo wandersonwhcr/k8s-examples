@@ -1,0 +1,41 @@
+services:
+
+  app-albums:
+    image: "node:16.17-alpine"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.albums.rule=Host(`albums.app.localhost`)"
+      - "traefik.http.services.albums.loadbalancer.server.port=3000"
+    networks:
+      - "app-albums"
+      - "app-traefik"
+    volumes:
+      - "./src:/usr/local/src"
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: "/usr/local/src"
+    command: ["--require", "./tracing.js", "server.js"]
+    environment:
+      PORT: "3000"
+      MONGO_URL: "mongodb://root:root@database"
+      MONGO_DATABASE: "app-albums"
+      APP_ARTISTS_URL: "http://app-artists:3000"
+
+  database:
+    image: "mongo:6.0"
+    networks:
+      - "app-albums"
+    volumes:
+      - "database:/data/db"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "root"
+
+networks:
+  app-albums:
+    name: "app-albums"
+  app-traefik:
+    name: "app-traefik"
+    external: true
+
+volumes:
+  database:

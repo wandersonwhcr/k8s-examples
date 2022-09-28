@@ -4,8 +4,8 @@ const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
 const { MongoDBInstrumentation } = require('@opentelemetry/instrumentation-mongodb');
 
 const sdk = new opentelemetry.NodeSDK({
-  traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
-  // traceExporter: new OTLPTraceExporter(),
+  // traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
+  traceExporter: new OTLPTraceExporter(),
   instrumentations: [
     new HttpInstrumentation(),
     new MongoDBInstrumentation(),

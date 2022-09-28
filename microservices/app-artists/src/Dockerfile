@@ -8,4 +8,4 @@ RUN npm install
 
 COPY ./ ./
 
-CMD ["server.js"]
+CMD ["--require", "./tracing.js", "server.js"]

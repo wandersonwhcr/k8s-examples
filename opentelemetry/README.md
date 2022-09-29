@@ -11,6 +11,9 @@ kubectl apply \
     --kustomize ./opentelemetry-operator
 
 kubectl apply \
+    --kustomize ./jaeger-operator
+
+kubectl apply \
     --kustomize ./
 ```
 

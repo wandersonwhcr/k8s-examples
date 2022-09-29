@@ -26,4 +26,10 @@ done
 
 kubectl apply \
     --kustomize ./app-artists
+
+kubectl apply \
+    --kustomize ./app-albums
+
+kubectl apply \
+    --kustomize ./app-music
 ```

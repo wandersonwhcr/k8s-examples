@@ -73,3 +73,7 @@ app-example-7d99566685-cl2bs   2/2     Running   0          12s
 app-example-7d99566685-97zr9   2/2     Running   0          10s
 app-example-7d99566685-mscvq   2/2     Running   0          9s
 ```
+
+## References
+
+* [Prometheus Annotations Support](https://github.com/prometheus-operator/prometheus-operator/issues/1547)

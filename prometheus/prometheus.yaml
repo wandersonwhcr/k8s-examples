@@ -22,3 +22,7 @@ spec:
       - namespace: prometheus
         name: alertmanager-operated
         port: web
+
+  additionalScrapeConfigs:
+    name: prometheus-additional-scrape-configs
+    key: configs.yaml

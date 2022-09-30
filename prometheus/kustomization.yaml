@@ -1,3 +1,6 @@
+generatorOptions:
+  disableNameSuffixHash: true
+
 namespace: prometheus
 
 resources:
@@ -9,3 +12,8 @@ resources:
   - prometheusrule.yaml
   - serviceaccount.yaml
   - servicemonitor.yaml
+
+secretGenerator:
+  - name: prometheus-additional-scrape-configs
+    files:
+      - configs.yaml=assets/prometheus-additional-scrape-configs.yaml

@@ -42,3 +42,7 @@ kubectl apply \
 kubectl apply \
     --kustomize ./app-music
 ```
+
+## References
+
+* [Error Updating Container Image Version](https://github.com/open-telemetry/opentelemetry-operator/issues/1107)

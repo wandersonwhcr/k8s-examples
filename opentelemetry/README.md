@@ -7,17 +7,8 @@ k3d cluster create \
 kubectl apply \
     --filename https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cert-manager.yaml
 
-kubectl create \
-    --kustomize ../prometheus/prometheus-operator
-
-kubectl apply \
-    --kustomize ../prometheus
-
 kubectl apply \
     --kustomize ./opentelemetry-operator
-
-kubectl apply \
-    --kustomize ./jaeger-operator
 
 kubectl apply \
     --kustomize ./
@@ -45,4 +36,6 @@ kubectl apply \
 
 ## References
 
+* [OpenTelemetry Collector OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+* [OpenTelemetry Collector Logging Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/loggingexporter)
 * [Error Updating Container Image Version](https://github.com/open-telemetry/opentelemetry-operator/issues/1107)

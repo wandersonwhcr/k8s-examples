@@ -1,6 +1,5 @@
 namespace: opentelemetry
 
 resources:
-  - jaeger.yaml
   - namespace.yaml
   - opentelemetrycollector.yaml

@@ -3,6 +3,7 @@ kind: OpenTelemetryCollector
 metadata:
   name: opentelemetry
 spec:
+  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.60.0
   config: |
 
     receivers:
@@ -10,15 +11,25 @@ spec:
         protocols:
           http:
 
+    processors:
+      spanmetrics:
+        metrics_exporter: prometheus
+
     exporters:
       logging:
       jaeger:
         endpoint: jaeger-collector:14250
         tls:
           insecure: true
+      prometheus:
+        endpoint: 0.0.0.0:9113
 
     service:
       pipelines:
         traces:
           receivers: [ otlp ]
+          processors: [ spanmetrics ]
           exporters: [ logging, jaeger ]
+        metrics:
+          receivers: [ otlp ]
+          exporters: [ prometheus ]

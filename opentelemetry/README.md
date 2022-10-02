@@ -34,6 +34,27 @@ kubectl apply \
     --kustomize ./app-music
 ```
 
+```sh
+../microservices/create-resources.sh
+```
+
+```json
+{
+  "data": {
+    "artists": [
+      {
+        "name": "My Artist",
+        "albums": [
+          {
+            "name": "My Album"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 ## References
 
 * [OpenTelemetry Collector OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)

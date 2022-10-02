@@ -1,0 +1,4 @@
+namespace: jaeger
+
+resources:
+  - namespace.yaml

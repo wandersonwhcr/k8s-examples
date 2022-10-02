@@ -17,6 +17,30 @@ kubectl apply \
     --kustomize ./
 ```
 
+```sh
+kubectl apply \
+    --kustomize ../mongodb
+
+for APPLICATION in app-music app-artists app-albums; do
+    docker build "../microservices/$APPLICATION/src" \
+        --tag "k3d-example-registry:5000/$APPLICATION"
+    docker push "k3d-example-registry:5000/$APPLICATION"
+done
+
+kubectl apply \
+    --kustomize ./app-artists
+
+kubectl apply \
+    --kustomize ./app-albums
+
+kubectl apply \
+    --kustomize ./app-music
+```
+
+```sh
+../microservices/create-resources.sh
+```
+
 ## References
 
 * [OpenTelemetry Contrib Collector Jaeger Exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/jaegerexporter)

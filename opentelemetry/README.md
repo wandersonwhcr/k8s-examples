@@ -43,6 +43,19 @@ kubectl apply \
     --kustomize ./app-music
 ```
 
+```mermaid
+flowchart LR
+    subgraph microservices
+        app-music -->|HTTP| app-artists
+        app-music -->|HTTP| app-albums
+        app-albums -->|HTTP| app-artists
+    end
+
+    app-music -->|OTLP| opentelemetry-collector
+    app-artists -->|OTLP| opentelemetry-collector
+    app-albums -->|OTLP| opentelemetry-collector
+```
+
 Using these microservices, create a "My Artist" artist with "My Album" album and
 fetch created resources from Music Application. Each microservice will send
 spans to Collector that receives them with HTTP OTLP Receiver.

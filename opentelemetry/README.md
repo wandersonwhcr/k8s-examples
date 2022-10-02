@@ -1,5 +1,10 @@
 # opentelemetry
 
+This example shows how to install OpenTelemetry Collector to receive application
+spans from microservices and export its contents to standard output. Using
+OpenTelemetry Operator, Collector is created and configured with HTTP OTLP
+Receiver and Logging Exporter.
+
 ```sh
 k3d cluster create \
     --config ../k3d-example.yaml
@@ -13,6 +18,10 @@ kubectl apply \
 kubectl apply \
     --kustomize ./
 ```
+
+After, three microservices are built and applied in Kubernetes, receiving
+environment variables `OTEL_EXPORTER_OTLP_ENDPOINT` with Collector endpoint and
+`OTEL_SERVICE_NAME` with microservice name.
 
 ```sh
 kubectl apply \
@@ -34,6 +43,10 @@ kubectl apply \
     --kustomize ./app-music
 ```
 
+Using these microservices, create a "My Artist" artist with "My Album" album and
+fetch created resources from Music Application. Each microservice will send
+spans to Collector that receives them with HTTP OTLP Receiver.
+
 ```sh
 ../microservices/create-resources.sh
 ```
@@ -54,6 +67,9 @@ kubectl apply \
   }
 }
 ```
+
+Retrieve Collector logs and check spans sent by microservices on standard
+output wrote by Logging Exporter.
 
 ```sh
 kubectl logs deployment/opentelemetry-collector \

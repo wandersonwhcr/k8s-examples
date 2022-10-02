@@ -1,0 +1,6 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: opentelemetry-operator-validating-webhook-configuration
+  annotations:
+    cert-manager.io/inject-ca-from: opentelemetry-operator/opentelemetry-operator-serving-cert

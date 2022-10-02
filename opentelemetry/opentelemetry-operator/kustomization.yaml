@@ -1,0 +1,10 @@
+namespace: opentelemetry-operator
+
+resources:
+  - https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.60.0/opentelemetry-operator.yaml
+
+patchesStrategicMerge:
+  - patch-certificate.yaml
+  - patch-customresourcedefinition.yaml
+  - patch-mutatingwebhookconfiguration.yaml
+  - patch-validatingwebhookconfiguration.yaml

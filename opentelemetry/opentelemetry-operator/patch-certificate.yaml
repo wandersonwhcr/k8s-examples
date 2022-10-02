@@ -1,0 +1,10 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  namespace: opentelemetry-operator-system
+  name: opentelemetry-operator-serving-cert
+spec:
+  dnsNames:
+    - opentelemetry-operator-webhook-service.opentelemetry-operator.svc
+    - opentelemetry-operator-webhook-service.opentelemetry-operator.svc.cluster.local
+

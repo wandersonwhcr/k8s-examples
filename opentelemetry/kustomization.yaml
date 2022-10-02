@@ -1,0 +1,5 @@
+namespace: opentelemetry
+
+resources:
+  - namespace.yaml
+  - opentelemetrycollector.yaml

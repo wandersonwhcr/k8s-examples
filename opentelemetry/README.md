@@ -55,6 +55,45 @@ kubectl apply \
 }
 ```
 
+```sh
+kubectl logs deployment/opentelemetry-collector \
+    --namespace opentelemetry \
+    --tail 30
+```
+
+```
+ScopeSpans #1
+ScopeSpans SchemaURL: 
+InstrumentationScope @opentelemetry/instrumentation-http 0.33.0
+Span #0
+    Trace ID       : 41db7e98e56c9d0b637f858f22288d48
+    Parent ID      : 835b20850aceaa42
+    ID             : d5881a0af2bb17ee
+    Name           : HTTP GET
+    Kind           : SPAN_KIND_SERVER
+    Start time     : 2022-10-02 09:27:17.5641137 +0000 UTC
+    End time       : 2022-10-02 09:27:17.567074 +0000 UTC
+    Status code    : STATUS_CODE_UNSET
+    Status message : 
+Attributes:
+     -> http.url: STRING(http://app-albums.app-albums.svc/v1/albums?artist._id=3f606135-af41-4eaa-9611-2d0356a1ea20)
+     -> http.host: STRING(app-albums.app-albums.svc)
+     -> net.host.name: STRING(app-albums.app-albums.svc)
+     -> http.method: STRING(GET)
+     -> http.scheme: STRING(http)
+     -> http.target: STRING(/v1/albums)
+     -> http.user_agent: STRING(axios/0.27.2)
+     -> http.flavor: STRING(1.1)
+     -> net.transport: STRING(ip_tcp)
+     -> net.host.ip: STRING(10.42.1.8)
+     -> net.host.port: INT(3000)
+     -> net.peer.ip: STRING(10.42.1.9)
+     -> net.peer.port: INT(53570)
+     -> http.status_code: INT(200)
+     -> http.status_text: STRING(OK)
+	{"kind": "exporter", "data_type": "traces", "name": "logging"}
+```
+
 ## References
 
 * [OpenTelemetry Collector OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)

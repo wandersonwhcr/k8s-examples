@@ -2,3 +2,4 @@ namespace: jaeger
 
 resources:
   - namespace.yaml
+  - opentelemetrycollector.yaml

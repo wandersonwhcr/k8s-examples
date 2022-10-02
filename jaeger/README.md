@@ -16,3 +16,7 @@ kubectl apply \
 kubectl apply \
     --kustomize ./
 ```
+
+## References
+
+* [OpenTelemetry Contrib Collector Jaeger Exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/jaegerexporter)

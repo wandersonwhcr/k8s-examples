@@ -128,3 +128,4 @@ Attributes:
 * [OpenTelemetry Collector OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
 * [OpenTelemetry Collector Logging Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/loggingexporter)
 * [Error Updating Container Image Version](https://github.com/open-telemetry/opentelemetry-operator/issues/1107)
+* [OpenTelemetry JavaScript Client](https://github.com/open-telemetry/opentelemetry-js)

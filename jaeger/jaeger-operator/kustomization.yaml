@@ -1,0 +1,11 @@
+namespace: jaeger-operator
+
+resources:
+  - https://github.com/jaegertracing/jaeger-operator/releases/download/v1.38.0/jaeger-operator.yaml
+  - namespace.yaml
+
+patchesStrategicMerge:
+  - patch-certificate.yaml
+  - patch-customresourcedefinition.yaml
+  - patch-mutatingwebhookconfiguration.yaml
+  - patch-validatingwebhookconfiguration.yaml

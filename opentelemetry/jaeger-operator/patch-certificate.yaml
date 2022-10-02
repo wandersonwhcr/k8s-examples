@@ -1,9 +1,0 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  namespace: observability
-  name: jaeger-operator-serving-cert
-spec:
-  dnsNames:
-    - jaeger-operator-webhook-service.jaeger-operator.svc
-    - jaeger-operator-webhook-service.jaeger-operator.svc.cluster.local

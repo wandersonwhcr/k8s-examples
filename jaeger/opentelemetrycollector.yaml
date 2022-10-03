@@ -11,15 +11,25 @@ spec:
         protocols:
           http:
 
+    processors:
+      spanmetrics:
+        metrics_exporter: prometheus
+
     exporters:
       logging:
       jaeger:
         endpoint: jaeger-collector.jaeger.svc:14250
         tls:
           insecure: true
+      prometheus:
+        endpoint: 0.0.0.0:9113
 
     service:
       pipelines:
         traces:
           receivers: [ otlp ]
+          processors: [ spanmetrics ]
           exporters: [ logging, jaeger ]
+        metrics:
+          receivers: [ otlp ]
+          exporters: [ prometheus ]

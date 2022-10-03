@@ -44,3 +44,5 @@ kubectl apply \
 ## References
 
 * [OpenTelemetry Contrib Collector Jaeger Exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/jaegerexporter)
+* [OpenTelemetry Contrib Collector Span Metrics Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanmetricsprocessor)
+* [OpenTelemetry Contrib Collector Prometheus Exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter)

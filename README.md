@@ -25,7 +25,6 @@ k3d cluster create --config k3d-example.yaml
 * [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
 * [Jenkins Operator](https://github.com/jenkinsci/kubernetes-operator)
 * [Flagger](https://docs.flagger.app/)
-* [Jaeger](https://github.com/jaegertracing/jaeger)
 * [Calico](https://github.com/projectcalico/calico)
 * [Loki](https://grafana.com/oss/loki/)
 * [ClickHouse](https://clickhouse.com/)

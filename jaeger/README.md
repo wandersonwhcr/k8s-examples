@@ -14,6 +14,9 @@ kubectl create \
     --kustomize ../prometheus/prometheus-operator
 
 kubectl apply \
+    --kustomize ../prometheus
+
+kubectl apply \
     --kustomize ./jaeger-operator
 
 kubectl apply \

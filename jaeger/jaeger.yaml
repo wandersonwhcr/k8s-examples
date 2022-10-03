@@ -8,4 +8,4 @@ spec:
       type: prometheus
     options:
       prometheus:
-        server-url: http://prometheus-operated.jaeger.svc:9090
+        server-url: http://prometheus-operated.prometheus.svc:9090

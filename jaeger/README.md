@@ -10,6 +10,9 @@ kubectl apply \
 kubectl apply \
     --kustomize ../opentelemetry/opentelemetry-operator
 
+kubectl create \
+    --kustomize ../prometheus/prometheus-operator
+
 kubectl apply \
     --kustomize ./jaeger-operator
 

@@ -1,0 +1,8 @@
+namespace: jaeger
+
+resources:
+  - jaeger.yaml
+  - namespace.yaml
+  - opentelemetrycollector.yaml
+  - service.yaml
+  - servicemonitor.yaml

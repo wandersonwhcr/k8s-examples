@@ -1,0 +1,11 @@
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: OTEL_EXPORTER_OTLP_ENDPOINT
+    value: http://opentelemetry-collector.jaeger.svc:4318
+
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: OTEL_SERVICE_NAME
+    value: app-music

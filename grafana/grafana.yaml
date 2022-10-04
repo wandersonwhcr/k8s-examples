@@ -1,0 +1,16 @@
+apiVersion: integreatly.org/v1alpha1
+kind: Grafana
+metadata:
+  name: grafana
+spec:
+  client:
+    preferService: true
+  config:
+    auth:
+      disable_login_form: false
+      disable_signout_menu: true
+    auth.anonymous:
+      enabled: true
+  dashboardNamespaceSelector: {}
+  dashboardLabelSelector:
+    - matchLabels: {}

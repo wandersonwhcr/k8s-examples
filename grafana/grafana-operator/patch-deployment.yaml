@@ -1,0 +1,5 @@
+- op: replace
+  path: /spec/template/spec/containers/1/env/1
+  value:
+    name: WATCH_NAMESPACE
+    value: grafana

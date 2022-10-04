@@ -6,4 +6,7 @@ k3d cluster create \
 
 kubectl apply \
     --kustomize ./grafana-operator
+
+kubectl apply \
+    --kustomize ./
 ```

@@ -1,0 +1,2 @@
+resources:
+  - https://github.com/grafana-operator/grafana-operator//deploy/manifests?ref=v4.6.0

@@ -11,6 +11,9 @@ spec:
       disable_signout_menu: true
     auth.anonymous:
       enabled: true
-  dashboardNamespaceSelector: {}
   dashboardLabelSelector:
-    - matchLabels: {}
+    - matchExpressions:
+        - key: app
+          operator: In
+          values:
+            - grafana

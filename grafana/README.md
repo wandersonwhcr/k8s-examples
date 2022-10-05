@@ -25,6 +25,11 @@ kubectl get secrets grafana-admin-credentials \
     | base64 --decode
 ```
 
+```sh
+kubectl apply \
+    --kustomize ./app-example
+```
+
 ## References
 
 * [Grafana Operator](https://github.com/grafana-operator/grafana-operator)

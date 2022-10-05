@@ -8,6 +8,9 @@ kubectl create \
     --kustomize ../prometheus/prometheus-operator
 
 kubectl apply \
+    --kustomize ../prometheus
+
+kubectl apply \
     --kustomize ./grafana-operator
 
 kubectl apply \

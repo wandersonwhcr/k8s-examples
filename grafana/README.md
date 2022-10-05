@@ -10,3 +10,7 @@ kubectl apply \
 kubectl apply \
     --kustomize ./
 ```
+
+## References
+
+* [Grafana Operator](https://github.com/grafana-operator/grafana-operator)

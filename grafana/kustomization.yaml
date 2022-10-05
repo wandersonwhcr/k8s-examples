@@ -2,4 +2,5 @@ namespace: grafana
 
 resources:
   - grafana.yaml
+  - grafanadatasource.yaml
   - namespace.yaml

@@ -1,37 +1,39 @@
 apiVersion: integreatly.org/v1alpha1
 kind: GrafanaDashboard
 metadata:
-  name: simple
+  name: app-example
   labels:
     app: grafana
 spec:
   json: >
     {
       "id": null,
-      "title": "Simple Dashboard",
-      "tags": [],
+      "uid": "6ef68b176e",
+      "title": "Example Application",
       "style": "dark",
       "timezone": "browser",
       "editable": true,
       "hideControls": false,
-      "graphTooltip": 1,
-      "panels": [],
+      "graphTooltip": 0,
       "time": {
-        "from": "now-6h",
+        "from": "now-1h",
         "to": "now"
       },
-      "timepicker": {
-        "time_options": [],
-        "refresh_intervals": []
-      },
-      "templating": {
-        "list": []
-      },
-      "annotations": {
-        "list": []
-      },
       "refresh": "5s",
-      "schemaVersion": 17,
-      "version": 0,
-      "links": []
+      "panels": [
+        {
+          "id": 0,
+          "type": "timeseries",
+          "title": "Up",
+          "gridPos": { "x": 0, "y": 0, "w": 12, "h": 9 },
+          "datasource": "Prometheus",
+          "targets": [
+            {
+              "refId": "Up",
+              "expr": "nginx_up",
+              "legendFormat": "{{ pod }}"
+            }
+          ]
+        }
+      ]
     }

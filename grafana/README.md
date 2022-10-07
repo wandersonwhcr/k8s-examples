@@ -21,6 +21,7 @@ kubectl apply \
 # Username: admin
 # Password
 kubectl get secrets grafana-admin-credentials \
+    --namespace grafana \
     --output 'jsonpath={.data.GF_SECURITY_ADMIN_PASSWORD}' \
     | base64 --decode
 ```
@@ -33,3 +34,4 @@ kubectl apply \
 ## References
 
 * [Grafana Operator](https://github.com/grafana-operator/grafana-operator)
+* [Grafana JSON Model](https://grafana.com/docs/grafana/v9.0/dashboards/json-model/)

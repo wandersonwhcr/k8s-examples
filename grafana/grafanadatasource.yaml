@@ -7,7 +7,6 @@ spec:
   datasources:
     - name: Prometheus
       type: prometheus
-      access: proxy #???
       url: http://prometheus-operated.prometheus.svc:9090
       jsonData:
         tlsSkipVerify: true

@@ -12,7 +12,7 @@ spec:
       "title": "Example Application",
       "style": "dark",
       "timezone": "browser",
-      "editable": true,
+      "editable": false,
       "hideControls": false,
       "graphTooltip": 0,
       "time": {
@@ -30,8 +30,8 @@ spec:
           "targets": [
             {
               "refId": "Up",
-              "expr": "nginx_up",
-              "legendFormat": "{{ pod }}"
+              "expr": "sum by (service) (nginx_up{namespace=\"app-example\"})",
+              "legendFormat": "{{ service }}"
             }
           ]
         }

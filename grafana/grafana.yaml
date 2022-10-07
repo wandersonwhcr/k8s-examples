@@ -10,7 +10,15 @@ spec:
       enabled: true
   dashboardLabelSelector:
     - matchExpressions:
-        - key: app
+        - key: grafana.com/namespace
           operator: In
           values:
             - grafana
+        - key: grafana.com/name
+          operator: In
+          values:
+            - grafana
+    # matchLabels doesn't work
+    # - matchLabels:
+    #     grafana.com/namespace: grafana
+    #     grafana.com/name: grafana

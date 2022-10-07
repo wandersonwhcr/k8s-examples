@@ -3,7 +3,9 @@ kind: GrafanaDashboard
 metadata:
   name: app-example
   labels:
-    app: grafana
+    app.kubernetes.io/name: app-example
+    grafana.com/namespace: grafana
+    grafana.com/name: grafana
 spec:
   json: >
     {

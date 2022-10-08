@@ -14,7 +14,7 @@ spec:
       "title": "Example Application",
       "style": "dark",
       "timezone": "browser",
-      "editable": false,
+      "editable": true,
       "hideControls": false,
       "graphTooltip": 0,
       "time": {
@@ -25,14 +25,24 @@ spec:
       "panels": [
         {
           "id": 0,
+          "type": "alertlist",
+          "title": "Alerts",
+          "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+          "options": {
+            "datasource": "Prometheus",
+            "alertInstanceLabelFilter": "{namespace=\"app-example\"}"
+          }
+        },
+        {
+          "id": 1,
           "type": "timeseries",
           "title": "Up",
-          "gridPos": { "x": 0, "y": 0, "w": 12, "h": 9 },
+          "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
           "datasource": "Prometheus",
           "targets": [
             {
               "refId": "Up",
-              "expr": "sum by (service) (nginx_up{namespace=\"app-example\"})",
+              "expr": "sum by (service) (up{namespace=\"app-example\"})",
               "legendFormat": "{{ service }}"
             }
           ]

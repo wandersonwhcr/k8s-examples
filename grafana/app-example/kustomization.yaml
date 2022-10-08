@@ -1,0 +1,7 @@
+namespace: app-example
+
+bases:
+  - ../../prometheus/app-example
+
+resources:
+  - grafanadashboard.yaml

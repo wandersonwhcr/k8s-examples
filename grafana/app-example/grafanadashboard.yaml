@@ -1,0 +1,51 @@
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+metadata:
+  name: app-example
+  labels:
+    app.kubernetes.io/name: app-example
+    grafana.com/namespace: grafana
+    grafana.com/name: grafana
+spec:
+  json: >
+    {
+      "id": null,
+      "uid": "6ef68b176e",
+      "title": "Example Application",
+      "style": "dark",
+      "timezone": "browser",
+      "editable": true,
+      "hideControls": false,
+      "graphTooltip": 0,
+      "time": {
+        "from": "now-1h",
+        "to": "now"
+      },
+      "refresh": "5s",
+      "panels": [
+        {
+          "id": 0,
+          "type": "alertlist",
+          "title": "Alerts",
+          "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+          "options": {
+            "datasource": "Prometheus",
+            "alertInstanceLabelFilter": "{namespace=\"app-example\"}"
+          }
+        },
+        {
+          "id": 1,
+          "type": "timeseries",
+          "title": "Up",
+          "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+          "datasource": "Prometheus",
+          "targets": [
+            {
+              "refId": "Up",
+              "expr": "sum by (service) (up{namespace=\"app-example\"})",
+              "legendFormat": "{{ service }}"
+            }
+          ]
+        }
+      ]
+    }

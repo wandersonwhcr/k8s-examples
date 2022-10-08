@@ -1,0 +1,15 @@
+- op: add
+  path: /spec/template/spec/containers/1/args/-
+  value: --scan-all
+
+- op: replace
+  path: /spec/template/spec/containers/1/env/1
+  value:
+    name: WATCH_NAMESPACE
+    value: grafana
+
+- op: add
+  path: /spec/template/spec/containers/1/env/-
+  value:
+    name: GRAFANA_IMAGE_TAG
+    value: "9.1.7"

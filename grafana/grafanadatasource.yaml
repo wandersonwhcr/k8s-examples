@@ -1,0 +1,12 @@
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDataSource
+metadata:
+  name: prometheus
+spec:
+  name: wandinho.yaml
+  datasources:
+    - name: Prometheus
+      type: prometheus
+      url: http://prometheus-operated.prometheus.svc:9090
+      jsonData:
+        tlsSkipVerify: true

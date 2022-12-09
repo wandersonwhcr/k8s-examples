@@ -34,6 +34,7 @@ k3d cluster create --config k3d-example.yaml
 * [Redis Operator](https://github.com/spotahome/redis-operator)
 * [Keycloak](https://www.keycloak.org/getting-started/getting-started-kube)
 * [SigNoz](https://signoz.io/blog/opentelemetry-apm/)
+* [Kuberhealthy](https://github.com/kuberhealthy/kuberhealthy)
 
 ## License
 

@@ -9,6 +9,13 @@ kubectl apply \
 ```
 
 ```
+kubectl port-forward service/argocd-server 8443:443 \
+    --namespace argocd
+```
+
+Argo CD UI will be available [here](https://localhost:8443).
+
+```
 # Username: admin
 # Password
 kubectl get secrets argocd-initial-admin-secret \

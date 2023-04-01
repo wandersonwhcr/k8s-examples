@@ -9,6 +9,11 @@ kubectl apply \
 ```
 
 ```
+kubectl apply \
+    --kustomize ./app-guestbook
+```
+
+```
 kubectl port-forward service/argocd-server 8443:443 \
     --namespace argocd
 ```

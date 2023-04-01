@@ -2,9 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: guestbook
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: guestbook
   source:
@@ -13,4 +10,6 @@ spec:
     path: guestbook
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: guestbook
+  syncPolicy:
+    automated: {}

@@ -22,7 +22,6 @@ k3d cluster create --config k3d-example.yaml
 * [Readiness and Liveness](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 * [Nginx Ingress Controller](https://github.com/nginxinc/kubernetes-ingress)
 * [HAProxy Ingress Controller](https://haproxy-ingress.github.io/docs/getting-started/)
-* [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
 * [Jenkins Operator](https://github.com/jenkinsci/kubernetes-operator)
 * [Flagger](https://docs.flagger.app/)
 * [Calico](https://github.com/projectcalico/calico)

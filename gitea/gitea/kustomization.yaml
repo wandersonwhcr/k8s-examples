@@ -1,4 +1,13 @@
+generatorOptions:
+  disableNameSuffixHash: true
+
 namespace: gitea
 
 resources:
-  - namespace.yaml
+- namespace.yaml
+
+secretGenerator:
+- name: gitea-admin-credentials
+  literals:
+  - username=root
+  - password=root

@@ -13,4 +13,8 @@ helm repo update
 helm install gitea gitea-charts/gitea \
     --namespace gitea \
     --values ./gitea/values.yaml
+
+kubectl port-forward \
+    service/gitea-http 8443:3000 \
+    --namespace gitea
 ```

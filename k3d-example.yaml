@@ -20,6 +20,12 @@ options:
       # - arg: --cluster-domain=example.localhost
       #   nodeFilters:
       #     - server:*
+      # - arg: --no-deploy=metrics-server
+      #   nodeFilters:
+      #     - server:*
+      # - arg: --no-deploy=servicelb
+      #   nodeFilters:
+      #     - server:*
       - arg: --node-taint=node-role.kubernetes.io/master=:NoSchedule
         nodeFilters:
           - server:*

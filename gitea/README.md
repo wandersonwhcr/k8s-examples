@@ -14,7 +14,11 @@ helm install gitea gitea-charts/gitea \
     --namespace gitea \
     --values ./gitea/values.yaml
 
+kubectl rollout status statefulset/gitea \
+    --namespace gitea \
+    --timeout 600s
+
 kubectl port-forward \
-    service/gitea-http 8443:3000 \
+    service/gitea-http 3000 \
     --namespace gitea
 ```

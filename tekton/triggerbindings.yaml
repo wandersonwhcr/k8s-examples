@@ -1,0 +1,8 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: hello-binding
+spec:
+  params:
+    - name: username
+      value: $(body.username)

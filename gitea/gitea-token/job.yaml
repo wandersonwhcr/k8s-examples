@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gitea-token
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: alpine
+          image: alpine:3.17
+          env:
+            - name: GITEA_SERVER_URL
+              value: http://gitea-http.gitea.svc:3000
+            - name: GITEA_SERVER_USER
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-admin-credentials
+                  key: username
+            - name: GITEA_SERVER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gitea-admin-credentials
+                  key: password
+          command:
+            - entrypoint.sh
+          volumeMounts:
+            - name: bin
+              mountPath: /usr/local/bin
+      volumes:
+        - name: bin
+          configMap:
+            name: gitea-token-bin
+            defaultMode: 0777
+      restartPolicy: Never

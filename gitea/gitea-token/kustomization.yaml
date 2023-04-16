@@ -1,0 +1,12 @@
+generatorOptions:
+  disableNameSuffixHash: true
+
+namespace: gitea
+
+resources:
+  - job.yaml
+
+configMapGenerator:
+  - name: gitea-token-bin
+    files:
+      - assets/entrypoint.sh

@@ -1,3 +1,6 @@
 gitea:
   admin:
     existingSecret: gitea-admin-credentials
+  config:
+    webhook:
+      ALLOWED_HOST_LIST: private

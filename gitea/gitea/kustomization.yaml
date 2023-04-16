@@ -10,4 +10,4 @@ secretGenerator:
 - name: gitea-admin-credentials
   literals:
   - username=root
-  - password=root
+  - password=root1234

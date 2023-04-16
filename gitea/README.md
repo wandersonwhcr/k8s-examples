@@ -30,3 +30,9 @@ After this, access Gitea using port forward on
 [http://localhost:3000](http://localhost:3000).
 
 You can authenticate on Gitea with username `root` and password `root1234`.
+
+## References
+
+* [Gitea](https://gitea.io/)
+* [Gitea Helm Chart](https://gitea.com/gitea/helm-chart/)
+* [Helm Dependency](https://helm.sh/docs/helm/helm_dependency/)

@@ -29,7 +29,7 @@ kubectl port-forward service/gitea-http 3000 \
 After this, access Gitea using port forward on
 [http://localhost:3000](http://localhost:3000).
 
-You can authenticate on Gitea with username `root` and password `root1234`.
+You can authenticate with username `root` and password `root1234`.
 
 ## References
 

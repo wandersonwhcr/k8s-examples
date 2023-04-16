@@ -17,7 +17,6 @@ k3d cluster create --config k3d-example.yaml
 * [Victoria Metrics](https://victoriametrics.com/products/open-source/)
 * [Certificate Exporter](https://github.com/enix/x509-certificate-exporter)
 * [Falco](https://falco.org/)
-* [Gitea](https://gitea.io/en-us/)
 * [Prometheus OOMKilled](https://songrgg.github.io/operation/how-to-alert-for-Pod-Restart-OOMKilled-in-Kubernetes/)
 * [Node Affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
 * [Readiness and Liveness](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)

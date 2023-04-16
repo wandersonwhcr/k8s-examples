@@ -31,3 +31,10 @@ tea organizations create my-org
 tea repos create \
     --owner my-org \
     --name my-app
+
+curl "${GITEA_SERVER_URL}/api/v1/orgs/my-org/hooks" \
+    --silent --fail \
+    --request POST \
+    --header 'Content-Type: application/json' \
+    --oauth2-bearer "${GITEA_SERVER_TOKEN}" \
+    --data '{ "active": true, "type": "gitea", "config": { "content_type": "json", "url": "http://echo-server" }, "events": [ "push" ] }'

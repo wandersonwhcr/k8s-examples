@@ -12,6 +12,7 @@ helm repo update
 
 helm install gitea gitea-charts/gitea \
     --namespace gitea \
+    --version v8.1.0 \
     --values ./gitea/values.yaml
 
 kubectl rollout status statefulset/gitea \

@@ -1,0 +1,9 @@
+gitea:
+  gitea:
+    config:
+      webhook:
+        ALLOWED_HOST_LIST: private
+    admin:
+      username: root
+      password: root1234
+      email: root@localhost

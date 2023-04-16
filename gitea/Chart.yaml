@@ -1,0 +1,7 @@
+name: gitea
+version: v1.0.0
+
+dependencies:
+  - name: gitea
+    version: v8.1.0
+    repository:  https://dl.gitea.io/charts/

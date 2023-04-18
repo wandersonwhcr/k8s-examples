@@ -1,9 +1,12 @@
+credentials:
+  username: root
+  password: root1234
+
 gitea:
   gitea:
     config:
       webhook:
         ALLOWED_HOST_LIST: private
     admin:
-      username: root
-      password: root1234
+      existingSecret: gitea-admin-credentials
       email: root@localhost

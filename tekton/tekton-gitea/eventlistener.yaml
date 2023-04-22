@@ -1,0 +1,12 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: tekton-gitea
+spec:
+  serviceAccountName: tekton-gitea
+  triggers:
+    - name: gitea
+      template:
+        ref: gitea
+      bindings:
+        - ref: gitea

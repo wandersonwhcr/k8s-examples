@@ -2,7 +2,9 @@ namespace: tekton-gitea
 
 resources:
   - namespace.yaml
-  - task.yaml
+  - service.yaml
+  - task-docker-build.yaml
+  - task-git-clone.yaml
 
 commonLabels:
   app.kubernetes.io/name: tekton-gitea

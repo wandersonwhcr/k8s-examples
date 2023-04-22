@@ -1,0 +1,70 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: docker-build
+spec:
+  params:
+
+    - name: tag
+      type: string
+
+  steps:
+
+# ------------------------------------------------------------------------------
+
+    - name: build
+      image: docker:23.0-cli
+      volumeMounts:
+        - name: docker-socket
+          mountPath: /var/run
+
+      script: |
+        #!/usr/bin/env sh
+
+        set -xe
+
+        docker build /src \
+          --tag docker-registry:5000/$(params.tag) \
+          --network host
+
+# ------------------------------------------------------------------------------
+
+    - name: push
+      image: docker:23.0-cli
+      volumeMounts:
+        - name: docker-socket
+          mountPath: /var/run
+
+      script: |
+        #!/usr/bin/env sh
+
+        set -xe
+
+        docker push docker-registry:5000/$(params.tag)
+
+# ------------------------------------------------------------------------------
+
+  sidecars:
+    - name: docker
+      image: docker:23.0-dind
+      args:
+        - "--insecure-registry"
+        - "docker-registry:5000"
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - name: docker-socket
+          mountPath: /var/run
+      readinessProbe:
+        exec:
+          command: ["sh", "-c", "ls /var/run/docker.sock"]
+        initialDelaySeconds: 5
+        periodSeconds: 1
+
+  volumes:
+    - name: docker-socket
+      emptyDir: {}
+
+  workspaces:
+    - name: src
+      mountPath: /src

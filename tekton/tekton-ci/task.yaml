@@ -1,12 +1,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: tekton-pipelines-ci
-  labels:
-    app.kubernetes.io/component: ci
+  name: tekton-clone
 spec:
   steps:
-    - name: ci
+    - name: clone
       image: alpine:3.17
 
       script: |

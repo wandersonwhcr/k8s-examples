@@ -1,0 +1,9 @@
+namespace: tekton-ci
+
+resources:
+  - namespace.yaml
+  - pipeline.yaml
+  - task.yaml
+
+commonLabels:
+  app.kubernetes.io/name: tekton-ci

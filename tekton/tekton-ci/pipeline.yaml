@@ -1,9 +1,9 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: tekton-pipelines-ci
+  name: tekton-ci
 spec:
   tasks:
-    - name: ci
+    - name: clone
       taskRef:
-        name: tekton-pipelines-ci
+        name: tekton-clone

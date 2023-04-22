@@ -1,8 +1,0 @@
-namespace: tekton-pipelines
-
-resources:
-  - pipeline.yaml
-  - task.yaml
-
-commonLabels:
-  app.kubernetes.io/name: tekton-pipelines

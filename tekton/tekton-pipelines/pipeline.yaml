@@ -1,0 +1,9 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: tekton-pipelines-ci
+spec:
+  tasks:
+    - name: ci
+      taskRef:
+        name: tekton-pipelines-ci

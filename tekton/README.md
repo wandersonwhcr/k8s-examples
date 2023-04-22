@@ -26,9 +26,6 @@ kubectl apply \
 
 ```
 kubectl apply \
-    --kustomize ./tea-config
-
-kubectl apply \
     --kustomize ./tea-organization
 
 kubectl apply \

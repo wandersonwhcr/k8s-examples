@@ -33,14 +33,22 @@ spec:
 
         set -xe
 
-        apk add --quiet \
-          curl \
-          tea
+        apk add curl \
+          --quiet
 
-        tea organization create "$(params.name)"
+        curl "${GITEA_SERVER_URL}/api/v1/orgs" \
+          --fail --no-progress-meter \
+          --request POST \
+          --user "${GITEA_SERVER_USER}:${GITEA_SERVER_PASSWORD}" \
+          --header 'Content-Type: application/json' \
+          --data '
+            {
+              "username": "$(params.name)"
+            }
+          '
 
         curl "${GITEA_SERVER_URL}/api/v1/orgs/$(params.name)/hooks" \
-          --silent --fail \
+          --fail --no-progress-meter \
           --request POST \
           --user "${GITEA_SERVER_USER}:${GITEA_SERVER_PASSWORD}" \
           --header 'Content-Type: application/json' \
@@ -55,7 +63,3 @@ spec:
               "events": ["push"]
             }
           '
-
-  workspaces:
-    - name: tea-config
-      mountPath: /root/.config/tea

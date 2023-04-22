@@ -10,7 +10,3 @@ spec:
   params:
     - name: name
       value: foobar
-  workspaces:
-    - name: tea-config
-      secret:
-        secretName: tea-config-tekton

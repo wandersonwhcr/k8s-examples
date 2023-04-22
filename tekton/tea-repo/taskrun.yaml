@@ -11,10 +11,5 @@ spec:
     - name: name
       value: application
 
-    - name: owner
+    - name: org
       value: foobar
-
-  workspaces:
-    - name: tea-config
-      secret:
-        secretName: tea-config-tekton

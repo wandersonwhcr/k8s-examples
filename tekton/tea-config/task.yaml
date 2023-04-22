@@ -44,8 +44,8 @@ spec:
         curl "${GITEA_SERVER_URL}/api/v1/users/${GITEA_SERVER_USER}/tokens" \
           --silent --fail \
           --request POST \
-          --header 'Content-Type: application/json' \
           --user "${GITEA_SERVER_USER}:${GITEA_SERVER_PASSWORD}" \
+          --header 'Content-Type: application/json' \
           --data '{ "name": "$(params.name)", "scopes": [ "all" ] }' \
           > "${GITEA_TOKEN_FILENAME}"
 

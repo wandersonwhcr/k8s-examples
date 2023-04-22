@@ -60,6 +60,7 @@ spec:
                 "content_type": "json",
                 "url":"http://tekton-gitea.tekton-pipelines.svc"
               },
+              "branch_filter": "main",
               "events": ["push"]
             }
           '

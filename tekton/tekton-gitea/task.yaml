@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: git-clone
+spec:
+  params:
+    - name: repository
+      type: string
+
+  steps:
+    - name: clone
+      image: alpine:3.17
+
+      script:
+        #!/usr/bin/env sh
+
+        set -xe
+
+        apk add git --quiet
+
+        git clone "$(params.repository)" /src
+
+  workspaces:
+    - name: src
+      mountPath: /src

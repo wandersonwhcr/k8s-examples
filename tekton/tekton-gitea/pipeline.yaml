@@ -1,0 +1,44 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: oci-image
+spec:
+  params:
+
+    - name: repository
+      type: string
+
+    - name: registry
+      type: string
+
+    - name: tag
+      type: string
+
+  tasks:
+
+    - name: clone
+      taskRef:
+        name: git-clone
+      params:
+        - name: repository
+          value: $(params.repository)
+      workspaces:
+        - name: git
+          workspace: src
+
+    - name: build
+      taskRef:
+        name: docker-build
+      params:
+        - name: registry
+          value: $(params.registry)
+        - name: tag
+          value: $(params.tag)
+      runAfter:
+        - clone
+      workspaces:
+        - name: app
+          workspace: src
+
+  workspaces:
+    - name: src

@@ -5,6 +5,9 @@ metadata:
 spec:
   params:
 
+    - name: registry
+      type: string
+
     - name: tag
       type: string
 
@@ -23,8 +26,8 @@ spec:
 
         set -xe
 
-        docker build /src \
-          --tag docker-registry:5000/$(params.tag) \
+        docker build /app \
+          --tag $(params.registry)/$(params.tag) \
           --network host
 
 # ------------------------------------------------------------------------------
@@ -40,7 +43,11 @@ spec:
 
         set -xe
 
-        docker push docker-registry:5000/$(params.tag)
+        docker login $(params.registry) \
+          --username root \
+          --password root1234
+
+        docker push $(params.registry)/$(params.tag)
 
 # ------------------------------------------------------------------------------
 
@@ -48,8 +55,8 @@ spec:
     - name: docker
       image: docker:23.0-dind
       args:
-        - "--insecure-registry"
-        - "docker-registry:5000"
+        - --insecure-registry
+        - $(params.registry)
       securityContext:
         privileged: true
       volumeMounts:
@@ -57,7 +64,7 @@ spec:
           mountPath: /var/run
       readinessProbe:
         exec:
-          command: ["sh", "-c", "ls /var/run/docker.sock"]
+          command: [ "sh", "-c", "ls /var/run/docker.sock" ]
         initialDelaySeconds: 5
         periodSeconds: 1
 
@@ -66,5 +73,5 @@ spec:
       emptyDir: {}
 
   workspaces:
-    - name: src
-      mountPath: /src
+    - name: app
+      mountPath: /app

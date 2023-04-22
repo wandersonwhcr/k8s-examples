@@ -2,6 +2,7 @@ namespace: tekton-gitea
 
 resources:
   - namespace.yaml
+  - pipeline.yaml
   - service.yaml
   - task-docker-build.yaml
   - task-git-clone.yaml

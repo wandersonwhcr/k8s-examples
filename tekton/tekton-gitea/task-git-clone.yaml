@@ -20,10 +20,10 @@ spec:
 
         set -xe
 
-        git clone "$(params.repository)" /src
+        git clone "$(params.repository)" /git
 
 # ------------------------------------------------------------------------------
 
   workspaces:
-    - name: src
-      mountPath: /src
+    - name: git
+      mountPath: /git

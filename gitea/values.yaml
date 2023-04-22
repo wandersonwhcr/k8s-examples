@@ -5,6 +5,8 @@ credentials:
 gitea:
   gitea:
     config:
+      server:
+        ROOT_URL: http://gitea-http.gitea.svc:3000/
       webhook:
         ALLOWED_HOST_LIST: private
     admin:

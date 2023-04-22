@@ -23,3 +23,8 @@ kubectl apply \
 kubectl apply \
   --filename https://storage.googleapis.com/tekton-releases/triggers/previous/v0.22.2/interceptors.yaml
 ```
+
+```
+kubectl apply \
+    --kustomize ./tea-config-create
+```

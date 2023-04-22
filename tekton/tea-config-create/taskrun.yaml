@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: tea-config-create-tekton
+spec:
+  serviceAccountName: tea-config-create
+  taskRef:
+    name: tea-config-create
+  params:
+    - name: name
+      value: tekton
+  workspaces:
+    - name: tea-config
+      emptyDir: {}

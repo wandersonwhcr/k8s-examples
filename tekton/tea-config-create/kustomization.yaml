@@ -1,0 +1,11 @@
+namespace: gitea
+
+resources:
+  - role.yaml
+  - rolebinding.yaml
+  - serviceaccount.yaml
+  - task.yaml
+  - taskrun.yaml
+
+commonLabels:
+  app.kubernetes.io/name: tea-config-create

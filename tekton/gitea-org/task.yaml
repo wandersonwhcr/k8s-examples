@@ -1,17 +1,13 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: tea-repo-create
+  name: gitea-org-create
   labels:
     app.kubernetes.io/component: create
 spec:
   params:
     - name: name
       type: string
-
-    - name: org
-      type: string
-
   steps:
     - name: create
       image: alpine
@@ -40,13 +36,30 @@ spec:
         apk add curl \
           --quiet
 
-        curl "${GITEA_SERVER_URL}/api/v1/orgs/$(params.org)/repos" \
+        curl "${GITEA_SERVER_URL}/api/v1/orgs" \
           --fail --no-progress-meter \
           --request POST \
           --user "${GITEA_SERVER_USER}:${GITEA_SERVER_PASSWORD}" \
           --header 'Content-Type: application/json' \
           --data '
             {
-              "name": "$(params.name)"
+              "username": "$(params.name)"
+            }
+          '
+
+        curl "${GITEA_SERVER_URL}/api/v1/orgs/$(params.name)/hooks" \
+          --fail --no-progress-meter \
+          --request POST \
+          --user "${GITEA_SERVER_USER}:${GITEA_SERVER_PASSWORD}" \
+          --header 'Content-Type: application/json' \
+          --data '
+            {
+              "type": "gitea",
+              "active":true,
+              "config": {
+                "content_type": "json",
+                "url":"http://tekton-gitea.tekton-pipelines.svc"
+              },
+              "events": ["push"]
             }
           '

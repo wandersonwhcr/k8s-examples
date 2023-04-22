@@ -1,12 +1,12 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  name: tea-organization-create-foobar
+  name: gitea-org-create-foobar
   labels:
     app.kubernetes.io/component: create
 spec:
   taskRef:
-    name: tea-organization-create
+    name: gitea-org-create
   params:
     - name: name
       value: foobar

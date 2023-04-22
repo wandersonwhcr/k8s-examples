@@ -1,12 +1,12 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  name: tea-repo-create-application
+  name: gitea-repo-create-application
   labels:
     app.kubernetes.io/component: create
 spec:
   taskRef:
-    name: tea-repo-create
+    name: gitea-repo-create
   params:
     - name: name
       value: application

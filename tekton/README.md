@@ -26,8 +26,8 @@ kubectl apply \
 
 ```
 kubectl apply \
-    --kustomize ./tea-organization
+    --kustomize ./gitea-org
 
 kubectl apply \
-    --kustomize ./tea-repo
+    --kustomize ./gitea-repo
 ```

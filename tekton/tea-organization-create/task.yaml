@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: tea-organization-create
+spec:
+  params:
+    - name: name
+      type: string
+  steps:
+    - name: create
+      image: alpine
+
+      script: |
+        #!/usr/bin/env sh
+
+        set -xe
+
+        apk add tea --quiet
+
+        tea organization create "$(params.name)"
+
+  workspaces:
+    - name: tea-config
+      mountPath: /root/.config/tea

@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: tea-organization-create-foobar
+spec:
+  taskRef:
+    name: tea-organization-create
+  params:
+    - name: name
+      value: foobar
+  workspaces:
+    - name: tea-config
+      secret:
+        secretName: tea-config-tekton

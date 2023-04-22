@@ -27,4 +27,10 @@ kubectl apply \
 ```
 kubectl apply \
     --kustomize ./tea-config-create
+
+kubectl apply \
+    --kustomize ./tea-organization-create
+
+kubectl apply \
+    --kustomize ./tea-repo-create
 ```

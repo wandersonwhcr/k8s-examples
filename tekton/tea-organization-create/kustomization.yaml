@@ -1,0 +1,8 @@
+namespace: gitea
+
+resources:
+  - task.yaml
+  - taskrun.yaml
+
+commonLabels:
+  app.kubernetes.io/name: tea-organization-create

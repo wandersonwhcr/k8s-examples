@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: tea-repo-create-application
+spec:
+  taskRef:
+    name: tea-repo-create
+  params:
+    - name: name
+      value: application
+
+    - name: owner
+      value: foobar
+
+  workspaces:
+    - name: tea-config
+      secret:
+        secretName: tea-config-tekton

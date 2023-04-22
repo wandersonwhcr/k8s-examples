@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: tea-repo-create
+spec:
+  params:
+    - name: name
+      type: string
+
+    - name: owner
+      type: string
+
+  steps:
+    - name: create
+      image: alpine
+
+      script: |
+        #!/usr/bin/env sh
+
+        set -xe
+
+        apk add tea --quiet
+
+        tea repo create \
+          --name "$(params.name)" \
+          --owner "$(params.owner)"
+
+  workspaces:
+    - name: tea-config
+      mountPath: /root/.config/tea

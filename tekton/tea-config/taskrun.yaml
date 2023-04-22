@@ -2,8 +2,10 @@ apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
   name: tea-config-create-tekton
+  labels:
+    app.kubernetes.io/component: create
 spec:
-  serviceAccountName: tea-config-create
+  serviceAccountName: tea-config
   taskRef:
     name: tea-config-create
   params:

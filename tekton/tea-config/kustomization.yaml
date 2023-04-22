@@ -8,4 +8,4 @@ resources:
   - taskrun.yaml
 
 commonLabels:
-  app.kubernetes.io/name: tea-config-create
+  app.kubernetes.io/name: tea-config

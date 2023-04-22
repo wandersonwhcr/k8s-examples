@@ -5,4 +5,4 @@ resources:
   - taskrun.yaml
 
 commonLabels:
-  app.kubernetes.io/name: tea-repo-create
+  app.kubernetes.io/name: tea-organization

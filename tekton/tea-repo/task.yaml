@@ -2,6 +2,8 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: tea-repo-create
+  labels:
+    app.kubernetes.io/component: create
 spec:
   params:
     - name: name

@@ -1,13 +1,19 @@
 apiVersion: tekton.dev/v1beta1
 kind: TaskRun
 metadata:
-  name: tea-organization-create-foobar
+  name: tea-repo-create-application
+  labels:
+    app.kubernetes.io/component: create
 spec:
   taskRef:
-    name: tea-organization-create
+    name: tea-repo-create
   params:
     - name: name
+      value: application
+
+    - name: owner
       value: foobar
+
   workspaces:
     - name: tea-config
       secret:

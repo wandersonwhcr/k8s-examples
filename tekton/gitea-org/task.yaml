@@ -58,7 +58,7 @@ spec:
               "active":true,
               "config": {
                 "content_type": "json",
-                "url":"http://tekton-gitea.tekton-pipelines.svc"
+                "url":"http://el-gitea.tekton-eventlisteners.svc:8080"
               },
               "branch_filter": "main",
               "events": ["push"]

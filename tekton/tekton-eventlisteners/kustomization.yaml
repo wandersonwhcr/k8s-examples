@@ -1,0 +1,10 @@
+namespace: tekton-eventlisteners
+
+resources:
+  - clusterrolebinding.yaml
+  - eventlistener.yaml
+  - namespace.yaml
+  - rolebinding.yaml
+  - serviceaccount.yaml
+  - triggerbinding.yaml
+  - triggertemplate.yaml

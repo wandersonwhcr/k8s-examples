@@ -13,6 +13,7 @@ spec:
       kind: PipelineRun
       metadata:
         generateName: gitea-$(tt.params.identifier)-
+        namespace: tekton-gitea
       spec:
         pipelineRef:
           name: oci-image

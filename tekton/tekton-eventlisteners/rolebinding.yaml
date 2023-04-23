@@ -1,12 +1,11 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: tekton-gitea
-subjects:
-- kind: ServiceAccount
   name: gitea
-  namespace: tekton-eventlisteners
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: tekton-triggers-eventlistener-roles
+subjects:
+  - kind: ServiceAccount
+    name: gitea

@@ -1,16 +1,16 @@
 namespace: tekton-gitea
 
 resources:
-  - clusterrolebinding.yaml
-  - eventlistener.yaml
+#  - clusterrolebinding.yaml
+#  - eventlistener.yaml
   - namespace.yaml
   - pipeline.yaml
   - rolebinding.yaml
-  - serviceaccount.yaml
+#  - serviceaccount.yaml
   - task-docker-build.yaml
   - task-git-clone.yaml
-  - triggerbinding.yaml
-  - triggertemplate.yaml
+#  - triggerbinding.yaml
+#  - triggertemplate.yaml
 
 commonLabels:
   app.kubernetes.io/name: tekton-gitea

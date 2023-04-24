@@ -12,3 +12,14 @@ helm install gitea ../gitea \
     --namespace gitea \
     --create-namespace
 ```
+
+```
+kubectl apply \
+  --filename https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.45.0/release.yaml
+
+kubectl apply \
+  --filename https://storage.googleapis.com/tekton-releases/triggers/previous/v0.22.2/release.yaml
+
+kubectl apply \
+  --filename https://storage.googleapis.com/tekton-releases/triggers/previous/v0.22.2/interceptors.yaml
+```

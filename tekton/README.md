@@ -34,3 +34,8 @@ kubectl apply \
 kubectl apply \
     --filename ./gitea/taskrun-gitea-repo-app.yaml
 ```
+
+```
+kubectl apply \
+    --kustomize ./tekton-tasks
+```

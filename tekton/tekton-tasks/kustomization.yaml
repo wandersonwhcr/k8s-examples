@@ -2,5 +2,6 @@ namespace: tekton-tasks
 
 resources:
   - namespace.yaml
+  - pipeline-oci-image.yaml
   - task-docker-build.yaml
   - task-git-clone.yaml

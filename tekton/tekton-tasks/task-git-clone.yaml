@@ -9,6 +9,9 @@ spec:
     - name: repository
       type: string
 
+    - name: revision
+      type: string
+
   steps:
 
 # ------------------------------------------------------------------------------
@@ -20,6 +23,7 @@ spec:
         #!/usr/bin/env sh
         set -xe
         git clone "$(params.repository)" /git
+        git switch --detach "$(params.revision)"
 
 # ------------------------------------------------------------------------------
 

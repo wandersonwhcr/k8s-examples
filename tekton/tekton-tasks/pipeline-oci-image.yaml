@@ -8,6 +8,9 @@ spec:
     - name: repository
       type: string
 
+    - name: revision
+      type: string
+
     - name: registry
       type: string
 
@@ -28,6 +31,8 @@ spec:
       params:
         - name: repository
           value: $(params.repository)
+        - name: revision
+          value: $(params.revision)
       workspaces:
         - name: git
           workspace: src

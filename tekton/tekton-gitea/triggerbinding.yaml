@@ -9,6 +9,8 @@ spec:
       value: $(body.repository.owner.username)-$(body.repository.name)
     - name: repository
       value: $(body.repository.clone_url)
+    - name: revision
+      value: $(body.after)
     - name: registry
       value: gitea-http.gitea.svc:3000
     - name: username

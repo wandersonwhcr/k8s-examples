@@ -7,6 +7,7 @@ spec:
   params:
     - name: identifier
     - name: repository
+    - name: revision
     - name: registry
     - name: username
     - name: password
@@ -15,7 +16,7 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        generateName: gitea-$(tt.params.identifier)-
+        generateName: oci-image-$(tt.params.identifier)-
         namespace: tekton-tasks
       spec:
         pipelineRef:
@@ -23,6 +24,8 @@ spec:
         params:
           - name: repository
             value: $(tt.params.repository)
+          - name: revision
+            value: $(tt.params.revision)
           - name: registry
             value: $(tt.params.registry)
           - name: username

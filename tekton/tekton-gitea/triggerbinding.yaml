@@ -1,0 +1,19 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: tekton-gitea
+  namespace: tekton-gitea
+spec:
+  params:
+    - name: identifier
+      value: $(body.repository.owner.username)-$(body.repository.name)
+    - name: repository
+      value: $(body.repository.clone_url)
+    - name: registry
+      value: gitea-http.gitea.svc:3000
+    - name: username
+      value: root # TODO Use Secrets
+    - name: password
+      value: root1234 # TODO Use Secrets
+    - name: tag
+      value: $(body.repository.full_name):$(body.after)

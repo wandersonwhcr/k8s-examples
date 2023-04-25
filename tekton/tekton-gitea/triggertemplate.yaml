@@ -1,0 +1,42 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: tekton-gitea
+  namespace: tekton-gitea
+spec:
+  params:
+    - name: identifier
+    - name: repository
+    - name: registry
+    - name: username
+    - name: password
+    - name: tag
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: gitea-$(tt.params.identifier)-
+        namespace: tekton-tasks
+      spec:
+        pipelineRef:
+          name: oci-image
+        params:
+          - name: repository
+            value: $(tt.params.repository)
+          - name: registry
+            value: $(tt.params.registry)
+          - name: username
+            value: $(tt.params.username)
+          - name: password
+            value: $(tt.params.password)
+          - name: tag
+            value: $(tt.params.tag)
+        workspaces:
+          - name: src
+            volumeClaimTemplate:
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 1Gi

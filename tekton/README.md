@@ -38,4 +38,7 @@ kubectl apply \
 ```
 kubectl apply \
     --kustomize ./tekton-tasks
+
+kubectl apply \
+    --kustomize ./tekton-gitea
 ```

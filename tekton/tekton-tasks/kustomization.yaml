@@ -5,3 +5,6 @@ resources:
   - pipeline-oci-image.yaml
   - task-docker-build.yaml
   - task-git-clone.yaml
+
+commonLabels:
+  app.kubernetes.io/name: tekton-tasks

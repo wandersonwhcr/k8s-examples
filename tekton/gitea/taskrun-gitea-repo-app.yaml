@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: gitea-repo-create-app
+  namespace: gitea
+spec:
+  taskRef:
+    name: gitea-repo-create
+  params:
+    - name: name
+      value: app
+    - name: org
+      value: foobar

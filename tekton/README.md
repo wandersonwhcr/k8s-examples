@@ -27,4 +27,10 @@ kubectl apply \
 ```
 kubectl apply \
     --kustomization ./gitea
+
+kubectl apply \
+    --filename ./gitea/taskrun-gitea-org-foobar.yaml
+
+kubectl apply \
+    --filename ./gitea/taskrun-gitea-repo-app.yaml
 ```

@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: gitea-org-foobar
+  namespace: gitea
+spec:
+  taskRef:
+    name: gitea-org-create
+  params:
+    - name: name
+      value: foobar

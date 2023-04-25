@@ -1,0 +1,8 @@
+namespace: gitea
+
+resources:
+  - task-gitea-org-create.yaml
+  - task-gitea-repo-create.yaml
+
+commonLabels:
+  app.kubernetes.io/name: gitea

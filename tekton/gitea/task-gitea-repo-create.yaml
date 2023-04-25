@@ -1,0 +1,50 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: gitea-repo-create
+spec:
+  params:
+    - name: name
+      type: string
+
+    - name: org
+      type: string
+
+  steps:
+    - name: create
+      image: alpine:3.17
+
+      env:
+        - name: GITEA_SERVER_URL
+          value: http://gitea-http.gitea.svc:3000
+
+        - name: GITEA_SERVER_USER
+          valueFrom:
+            secretKeyRef:
+              name: gitea-admin-credentials
+              key: username
+
+        - name: GITEA_SERVER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: gitea-admin-credentials
+              key: password
+
+      script: |
+        #!/usr/bin/env sh
+
+        set -xe
+
+        apk add curl \
+          --quiet
+
+        curl "${GITEA_SERVER_URL}/api/v1/orgs/$(params.org)/repos" \
+          --fail --no-progress-meter \
+          --request POST \
+          --user "${GITEA_SERVER_USER}:${GITEA_SERVER_PASSWORD}" \
+          --header 'Content-Type: application/json' \
+          --data '
+            {
+              "name": "$(params.name)"
+            }
+          '

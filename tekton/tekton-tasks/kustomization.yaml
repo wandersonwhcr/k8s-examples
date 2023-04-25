@@ -1,0 +1,6 @@
+namespace: tekton-tasks
+
+resources:
+  - namespace.yaml
+  - task-docker-build.yaml
+  - task-git-clone.yaml

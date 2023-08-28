@@ -1,4 +1,4 @@
-apiVersion: k3d.io/v1alpha4
+apiVersion: k3d.io/v1alpha5
 kind: Simple
 metadata:
   name: example
@@ -17,13 +17,7 @@ options:
     wait: true
   k3s:
     extraArgs:
-      # - arg: --cluster-domain=example.localhost
-      #   nodeFilters:
-      #     - server:*
-      # - arg: --no-deploy=servicelb
-      #   nodeFilters:
-      #     - server:*
-      - arg: --no-deploy=metrics-server
+      - arg: --disable=metrics-server
         nodeFilters:
           - server:*
       - arg: --node-taint=node-role.kubernetes.io/master=:NoSchedule

@@ -4,8 +4,14 @@ Another Kubernetes Example Repository
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
+```console
+$ k3d version
+k3d version v5.6.0
+k3s version v1.27.4-k3s1 (default)
 ```
-k3d cluster create --config k3d-example.yaml
+
+```console
+$ k3d cluster create --config k3d-example.yaml
 ```
 
 ## TODO

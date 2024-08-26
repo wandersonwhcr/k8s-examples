@@ -43,8 +43,6 @@ spec:
               value: etcd
             - name: ETCD_INITIAL_CLUSTER_TOKEN
               value: etcd-cluster
-            - name: ETCD_INITIAL_CLUSTER_STATE
-              value: new
             - name: ETCD_ADVERTISE_CLIENT_URLS
               value: http://$(ETCD_NAME).etcd:2379
             - name: ETCD_INITIAL_ADVERTISE_PEER_URLS

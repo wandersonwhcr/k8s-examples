@@ -1,0 +1,5 @@
+- op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: ETCD_INITIAL_CLUSTER_STATE
+    value: existing

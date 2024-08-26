@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: etcd
 resources:
   - namespace.yaml
+  - service.yaml

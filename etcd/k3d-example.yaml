@@ -1,0 +1,28 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: example
+servers: 1
+agents: 3
+ports:
+  - port: 80:80
+    nodeFilters:
+      - loadbalancer
+registries:
+  create:
+    name: k3d-example-registry
+    hostPort: "5000"
+options:
+  k3d:
+    wait: true
+  k3s:
+    extraArgs:
+      - arg: --disable=metrics-server
+        nodeFilters:
+          - server:*
+      - arg: --node-taint=node-role.kubernetes.io/master=:NoSchedule
+        nodeFilters:
+          - server:*
+  runtime:
+    serversMemory: 1G
+    agentsMemory: 1G

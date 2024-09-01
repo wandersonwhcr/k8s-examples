@@ -16,6 +16,16 @@ kubectl apply \
     --kustomize ./
 ```
 
+```
+kubectl exec etcd-0 \
+    --namespace etcd \
+    --container etcd \
+    -- \
+        etcdctl put /skydns/local/example '{"host":"222.222.222.222","ttl":60}'
+
+dig @coredns.coredns example.local +noall +answer
+```
+
 ## References
 
 * [Setting up ExternalDNS for CoreDNS with minikube](https://kubernetes-sigs.github.io/external-dns/v0.14.2/tutorials/coredns)

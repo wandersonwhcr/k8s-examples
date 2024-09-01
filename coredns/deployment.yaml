@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coredns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: coredns
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: coredns
+    spec:
+      containers:
+        - name: coredns
+          image: coredns/coredns:1.11.3
+          ports:
+            - name: dns
+              containerPort: 53
+              protocol: UDP
+          volumeMounts:
+            - name: config
+              mountPath: /home/nonroot
+      volumes:
+        - name: config
+          configMap:
+            name: coredns-config

@@ -7,6 +7,9 @@ k3d cluster create \
 
 ```
 kubectl apply \
+    --kustomize ./etcd
+
+kubectl apply \
     --kustomize ./coredns
 
 kubectl apply \

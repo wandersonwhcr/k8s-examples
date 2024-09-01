@@ -1,4 +1,10 @@
 .:53 {
+    etcd example.local {
+        stubzones
+        path /skydns
+        endpoint http://etcd.etcd:2379
+    }
+
     forward . /etc/resolv.conf
     log
     errors

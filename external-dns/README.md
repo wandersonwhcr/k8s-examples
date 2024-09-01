@@ -9,11 +9,27 @@ k3d cluster create \
 kubectl apply \
     --kustomize ./etcd
 
+kubectl rollout status statefulset/etcd \
+    --namespace etcd \
+    --timeout 600s
+```
+
+```
 kubectl apply \
     --kustomize ./coredns
 
+kubectl rollout status deployment/coredns \
+    --namespace coredns \
+    --timeout 600s
+```
+
+```
 kubectl apply \
     --kustomize ./
+
+kubectl rollout status deployment/external-dns \
+    --namespace external-dns \
+    --timeout 600s
 ```
 
 ```

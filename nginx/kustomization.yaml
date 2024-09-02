@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: nginx
 resources:
   - deployment.yaml
+  - ingress.yaml
   - namespace.yaml
   - service.yaml
 generatorOptions:

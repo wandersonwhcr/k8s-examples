@@ -18,3 +18,11 @@ spec:
           ports:
             - name: http
               containerPort: 80
+          volumeMounts:
+            - name: templates
+              mountPath: /etc/nginx/templates
+      volumes:
+        - name: templates
+          configMap:
+            name: nginx-templates
+            defaultMode: 0444

@@ -1,5 +1,5 @@
 server {
   listen 8000;
   default_type 'application/json';
-  return 200 '{"hostname": "$HOSTNAME"}';
+  return 200 '{"hostname": "$HOSTNAME"}\n';
 }

@@ -4,6 +4,7 @@ namespace: nginx
 resources:
   - deployment.yaml
   - namespace.yaml
+  - service.yaml
 generatorOptions:
   disableNameSuffixHash: true
 configMapGenerator:

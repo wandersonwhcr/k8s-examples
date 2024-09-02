@@ -4,3 +4,9 @@ namespace: nginx
 resources:
   - deployment.yaml
   - namespace.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+configMapGenerator:
+  - name: nginx-templates
+    files:
+      - assets/default.conf.template

@@ -1,14 +1,28 @@
 # nginx
 
+This example shows how to run nginx as a non root, unprivileged used.
+
+First, create a Kubernetes cluster.
+
 ```
 k3d cluster create \
     --config ./k3d-example.yaml
 ```
 
+After, apply resources on the cluster, where nginx pods are created via
+deployment `nginx` on namespace `nginx`. Also, a service `nginx` is created on
+the same namespace and a ingress `nginx` is configured to use this service.
+
 ```
 kubectl apply \
     --kustomize ./
+
+kubectl rollout status deployment/nginx \
+    --namespace nginx \
+    --timeout 600s
 ```
+
+Check if the webserver is up and running using external requests via curl.
 
 ```
 curl http://nginx.nginx.example \
@@ -36,3 +50,8 @@ curl http://nginx.nginx.example \
 {"hostname": "nginx-5c5f6cfc44-cwtrl"}
 * Connection #0 to host nginx.nginx.example left intact
 ```
+
+## References
+
+* [nginx](https://nginx.org/)
+* [Unprivileged NGINX Dockerfiles](https://github.com/nginxinc/docker-nginx-unprivileged)

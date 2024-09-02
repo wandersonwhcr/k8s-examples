@@ -23,9 +23,11 @@ spec:
               mountPath: /etc/nginx/conf.d
             - name: templates
               mountPath: /etc/nginx/templates
+            - name: tmp
+              mountPath: /tmp
           securityContext:
             allowPrivilegeEscalation: false
-            # readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: true
       volumes:
         - name: confd
           emptyDir: {}
@@ -33,6 +35,8 @@ spec:
           configMap:
             name: nginx-templates
             defaultMode: 0444
+        - name: tmp
+          emptyDir: {}
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000

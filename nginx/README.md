@@ -25,18 +25,18 @@ kubectl rollout status deployment/nginx \
 Check if the webserver is up and running using external requests via curl.
 
 ```
-curl http://nginx.nginx.example \
-    --resolve nginx.nginx.example:80:127.0.0.1 \
+curl http://nginx.nginx.example.localhost \
+    --resolve nginx.nginx.example.localhost:80:127.0.0.1 \
     --verbose
 ```
 
 ```
-* Added nginx.nginx.example:80:127.0.0.1 to DNS cache
-* Hostname nginx.nginx.example was found in DNS cache
+* Added nginx.nginx.example.localhost:80:127.0.0.1 to DNS cache
+* Hostname nginx.nginx.example.localhost was found in DNS cache
 *   Trying 127.0.0.1:80...
-* Connected to nginx.nginx.example (127.0.0.1) port 80 (#0)
+* Connected to nginx.nginx.example.localhost (127.0.0.1) port 80 (#0)
 > GET / HTTP/1.1
-> Host: nginx.nginx.example
+> Host: nginx.nginx.example.localhost
 > User-Agent: curl/7.81.0
 > Accept: */*
 >
@@ -44,11 +44,11 @@ curl http://nginx.nginx.example \
 < HTTP/1.1 200 OK
 < Content-Length: 39
 < Content-Type: application/json
-< Date: Mon, 02 Sep 2024 02:17:51 GMT
+< Date: Thu, 05 Sep 2024 01:45:38 GMT
 < Server: nginx/1.26.2
 <
-{"hostname": "nginx-5c5f6cfc44-cwtrl"}
-* Connection #0 to host nginx.nginx.example left intact
+{"hostname": "nginx-6d49f9dc64-r5mrr"}
+* Connection #0 to host nginx.nginx.example.localhost left intact
 ```
 
 ## References

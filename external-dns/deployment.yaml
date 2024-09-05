@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: external-dns
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: external-dns
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: external-dns
+          image: registry.k8s.io/external-dns/external-dns:v0.14.2
+          args:
+            - --source=ingress
+            - --domain-filter=example.localhost
+            - --provider=coredns
+            - --coredns-prefix=/external-dns/
+            - --log-level=debug
+          env:
+            - name: ETCD_URLS
+              value: http://etcd.etcd:2379

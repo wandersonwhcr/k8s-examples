@@ -4,7 +4,7 @@ metadata:
   name: nginx
 spec:
   rules:
-    - host: nginx.nginx.example
+    - host: nginx.nginx.example.localhost
       http:
         paths:
           - pathType: Prefix

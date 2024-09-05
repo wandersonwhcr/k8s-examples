@@ -1,7 +1,7 @@
 .:53 {
-    etcd example.local {
+    etcd example.localhost {
         stubzones
-        path /skydns
+        path /external-dns
         endpoint http://etcd.etcd:2379
     }
 

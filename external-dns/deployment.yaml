@@ -17,7 +17,9 @@ spec:
           image: registry.k8s.io/external-dns/external-dns:v0.14.2
           args:
             - --source=ingress
+            - --domain-filter=example.localhost
             - --provider=coredns
+            - --coredns-prefix=/external-dns/
             - --log-level=debug
           env:
             - name: ETCD_URLS

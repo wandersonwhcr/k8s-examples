@@ -6,7 +6,8 @@ metadata:
     istio: istiod
     istio.io/rev: default
     release: istio
-  name: istio-validator-istio-system
+  # name: istio-validator-istio-system
+  name: istiod-default-validator
 webhooks:
 - admissionReviewVersions:
   - v1beta1

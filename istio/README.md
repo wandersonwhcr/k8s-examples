@@ -13,3 +13,12 @@ helm upgrade istio-base istio/base \
     --create-namespace \
     --values ./istio-base/values.yaml
 ```
+
+```
+helm upgrade istiod istio/istiod \
+    --install \
+    --version 1.22.5 \
+    --namespace istio-system \
+    --create-namespace \
+    --values ./istiod/values.yaml
+```

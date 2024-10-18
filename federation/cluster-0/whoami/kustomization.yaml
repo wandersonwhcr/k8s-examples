@@ -1,0 +1,4 @@
+namespace: whoami
+
+resources:
+  - namespace.yaml

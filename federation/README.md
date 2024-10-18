@@ -85,6 +85,12 @@ kubectl apply \
     --context k3d-cluster-1
 ```
 
+```
+kubectl apply \
+    --kustomize ./cluster-0/whoami \
+    --context k3d-cluster-0
+```
+
 ## References
 
 * [Federation](https://en.wikipedia.org/wiki/Federation_(information_technology))

@@ -86,6 +86,22 @@ kubectl apply \
 ```
 
 ```
+K3D_CLUSTER_0_SERVER_IP=`
+    k3d cluster get cluster-0 --output json \
+        | jq '.[].nodes[]' \
+        | jq 'select(.role == "server")' \
+        | jq '.IP.IP' --raw-output
+`
+
+K3D_CLUSTER_1_SERVER_IP=`
+    k3d cluster get cluster-1 --output json \
+        | jq '.[].nodes[]' \
+        | jq 'select(.role == "server")' \
+        | jq '.IP.IP' --raw-output
+`
+```
+
+```
 kubectl apply \
     --kustomize ./cluster-0/whoami \
     --context k3d-cluster-0

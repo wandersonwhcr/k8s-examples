@@ -36,6 +36,25 @@ k3d cluster create \
     --config ./k3d-cluster-1.yaml
 ```
 
+```
+helm install istio-base istio/base \
+    --namespace istio-system \
+    --create-namespace \
+    --version 1.23.2 \
+    --kube-context k3d-cluster-1
+```
+
+```
+kubectl get secrets istio-ca-secret \
+    --namespace istio-system \
+    --output yaml \
+    --context k3d-cluster-0 \
+    | kubectl create \
+        --namespace istio-system \
+        --filename - \
+        --context k3d-cluster-1
+```
+
 ## References
 
 * [Federation](https://en.wikipedia.org/wiki/Federation_(information_technology))

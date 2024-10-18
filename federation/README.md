@@ -73,6 +73,18 @@ helm install istio-eastwestgateway istio/gateway \
     --wait
 ```
 
+```
+kubectl apply \
+    --filename ./cluster-0/gateway-istio-eastwestgateway.yaml \
+    --context k3d-cluster-0
+```
+
+```
+kubectl apply \
+    --filename ./cluster-1/gateway-istio-eastwestgateway.yaml \
+    --context k3d-cluster-1
+```
+
 ## References
 
 * [Federation](https://en.wikipedia.org/wiki/Federation_(information_technology))

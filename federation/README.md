@@ -102,6 +102,32 @@ K3D_CLUSTER_1_SERVER_IP=`
 ```
 
 ```
+istioctl create-remote-secret \
+    --name cluster-0 \
+    --server "https://${K3D_CLUSTER_0_SERVER_IP}:6443" \
+    --context k3d-cluster-0 \
+    | kubectl apply \
+        --filename - \
+        --context k3d-cluster-1
+
+istioctl create-remote-secret \
+    --name cluster-1 \
+    --server "https://${K3D_CLUSTER_1_SERVER_IP}:6443" \
+    --context k3d-cluster-1 \
+    | kubectl apply \
+        --filename - \
+        --context k3d-cluster-0
+```
+
+```
+istioctl remote-clusters \
+    --context k3d-cluster-0
+
+istioctl remote-clusters \
+    --context k3d-cluster-1
+```
+
+```
 kubectl apply \
     --kustomize ./cluster-0/whoami \
     --context k3d-cluster-0

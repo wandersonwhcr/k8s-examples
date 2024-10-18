@@ -64,6 +64,15 @@ helm install istiod istio/istiod \
     --wait
 ```
 
+```
+helm install istio-eastwestgateway istio/gateway \
+    --namespace istio-system \
+    --version 1.23.2 \
+    --values ./cluster-1/istio-eastwestgateway/values.yaml \
+    --kube-context k3d-cluster-1 \
+    --wait
+```
+
 ## References
 
 * [Federation](https://en.wikipedia.org/wiki/Federation_(information_technology))

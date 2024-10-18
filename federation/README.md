@@ -140,3 +140,4 @@ kubectl apply \
 * [Istio: Install Multi-Primary on different networks](https://istio.io/latest/docs/setup/install/multicluster/multi-primary_multi-network/)
 * [East-west Traffic](https://en.wikipedia.org/wiki/East-west_traffic)
 * [Istio: Plug in CA Certificates](https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/)
+* [Traefik: whoami](https://hub.docker.com/r/traefik/whoami)

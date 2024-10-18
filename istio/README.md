@@ -22,3 +22,12 @@ helm upgrade istiod istio/istiod \
     --create-namespace \
     --values ./istiod/values.yaml
 ```
+
+```
+helm upgrade istio-ingressgateway istio/gateway \
+    --install \
+    --version 1.22.5 \
+    --namespace istio-ingress \
+    --create-namespace \
+    --values ./istio-ingressgateway/values.yaml
+```

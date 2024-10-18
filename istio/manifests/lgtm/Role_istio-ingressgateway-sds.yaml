@@ -6,8 +6,10 @@ metadata:
     istio.io/rev: default
     operator.istio.io/component: IngressGateways
     release: istio
-  name: istio-ingressgateway-sds
-  namespace: istio-system
+  # name: istio-ingressgateway-sds
+  name: istio-ingressgateway
+  # namespace: istio-system
+  namespace: istio-ingress
 rules:
 - apiGroups:
   - ""

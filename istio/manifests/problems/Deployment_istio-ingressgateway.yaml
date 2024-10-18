@@ -9,7 +9,8 @@ metadata:
     operator.istio.io/component: IngressGateways
     release: istio
   name: istio-ingressgateway
-  namespace: istio-system
+  # namespace: istio-system
+  namespace: istio-ingress
 spec:
   selector:
     matchLabels:

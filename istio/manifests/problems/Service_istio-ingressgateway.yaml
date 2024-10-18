@@ -9,8 +9,10 @@ metadata:
     istio.io/rev: default
     operator.istio.io/component: IngressGateways
     release: istio
+  # name: istio-ingressgateway
   name: istio-ingressgateway
-  namespace: istio-system
+  # namespace: istio-system
+  namespace: istio-ingress
 spec:
   ports:
   - name: status-port

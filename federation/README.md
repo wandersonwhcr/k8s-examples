@@ -139,6 +139,14 @@ kubectl apply \
     --context k3d-cluster-1
 ```
 
+```
+kubectl logs \
+    --namespace http-client \
+    --selector app.kubernetes.io/name=http-client \
+    --follow \
+    --context k3d-cluster-1
+```
+
 ## References
 
 * [Federation](https://en.wikipedia.org/wiki/Federation_(information_technology))

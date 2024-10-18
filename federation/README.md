@@ -155,3 +155,4 @@ kubectl logs \
 * [East-west Traffic](https://en.wikipedia.org/wiki/East-west_traffic)
 * [Istio: Plug in CA Certificates](https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/)
 * [Traefik: whoami](https://hub.docker.com/r/traefik/whoami)
+* [Istio: Verify the installation](https://istio.io/latest/docs/setup/install/multicluster/verify/)

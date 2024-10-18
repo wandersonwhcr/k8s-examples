@@ -133,6 +133,12 @@ kubectl apply \
     --context k3d-cluster-0
 ```
 
+```
+kubectl apply \
+    --kustomize ./cluster-1/http-client \
+    --context k3d-cluster-1
+```
+
 ## References
 
 * [Federation](https://en.wikipedia.org/wiki/Federation_(information_technology))

@@ -4,10 +4,14 @@ This example shows how to create two kubernetes clusters using federation via
 Istio multicluster deployment model, where a client running on `cluster-1` can
 connect on a server running on `cluster-0` transparently.
 
+First, create `cluster-0`.
+
 ```
 k3d cluster create \
     --config ./k3d-cluster-0.yaml
 ```
+
+After, using Helm, install `istio-base` and `istiod` on `cluster-0`.
 
 ```
 helm install istio-base istio/base \

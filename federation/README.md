@@ -11,7 +11,9 @@ k3d cluster create \
     --config ./k3d-cluster-0.yaml
 ```
 
-After, using Helm, install `istio-base` and `istiod` on `cluster-0`.
+After, using Helm, install `istio-base` and `istiod` on `cluster-0`. In this
+installation, `istiod` is configured with a multicluster approach, where cluster
+is named as`cluster-0`, using mesh `federation-0` and network `network-0`.
 
 ```
 helm install istio-base istio/base \
@@ -30,19 +32,14 @@ helm install istiod istio/istiod \
     --wait
 ```
 
-```
-helm install istio-eastwestgateway istio/gateway \
-    --namespace istio-system \
-    --version 1.23.2 \
-    --values ./cluster-0/istio-eastwestgateway/values.yaml \
-    --kube-context k3d-cluster-0 \
-    --wait
-```
+Next, create `cluster-1`.
 
 ```
 k3d cluster create \
     --config ./k3d-cluster-1.yaml
 ```
+
+And, using Helm, install `istio-base` on `cluster-1`.
 
 ```
 helm install istio-base istio/base \
@@ -51,6 +48,14 @@ helm install istio-base istio/base \
     --version 1.23.2 \
     --kube-context k3d-cluster-1
 ```
+
+Before installing `istiod` on `cluster-1`, copy `istio-ca-secret` from
+`cluster-0` to `cluster-1`, because Istio uses mTLS to transfer data between
+clusters.
+
+> [!CAUTION]
+> This approach is used just to demonstration and must not be used on production
+> environment.
 
 ```
 kubectl get secrets istio-ca-secret \
@@ -73,6 +78,13 @@ helm install istiod istio/istiod \
 ```
 
 ```
+helm install istio-eastwestgateway istio/gateway \
+    --namespace istio-system \
+    --version 1.23.2 \
+    --values ./cluster-0/istio-eastwestgateway/values.yaml \
+    --kube-context k3d-cluster-0 \
+    --wait
+
 helm install istio-eastwestgateway istio/gateway \
     --namespace istio-system \
     --version 1.23.2 \

@@ -4,6 +4,8 @@ This example shows how to create two kubernetes clusters using federation via
 Istio multicluster deployment model, where a client running on `cluster-1` can
 connect on a server running on `cluster-0` transparently.
 
+## Install Istio
+
 First, create `cluster-0`.
 
 ```
@@ -13,7 +15,7 @@ k3d cluster create \
 
 After, using Helm, install `istio-base` and `istiod` on `cluster-0`. In this
 installation, `istiod` is configured with a multicluster approach, where cluster
-is named as`cluster-0`, using mesh `federation-0` and network `network-0`.
+is named as `cluster-0`, using mesh `federation-0` and network `network-0`.
 
 ```
 helm install istio-base istio/base \
@@ -54,8 +56,8 @@ Before installing `istiod` on `cluster-1`, copy `istio-ca-secret` from
 clusters.
 
 > [!CAUTION]
-> This approach is used just to demonstration and must not be used on production
-> environment.
+> This copy must be used just for demonstration and must not be used on
+> production environment.
 
 ```
 kubectl get secrets istio-ca-secret \
@@ -68,6 +70,10 @@ kubectl get secrets istio-ca-secret \
         --context k3d-cluster-1
 ```
 
+Finally, install `istiod` on `cluster-1`. Also, this `istiod` installation is
+configured with a multicluster approach, where cluster is named as `cluster-1`,
+using same mesh `federation-0` and different network `network-1`.
+
 ```
 helm install istiod istio/istiod \
     --namespace istio-system \
@@ -76,6 +82,12 @@ helm install istiod istio/istiod \
     --kube-context k3d-cluster-1 \
     --wait
 ```
+
+## Install Istio East-West Gateway
+
+The connection between clusters must be done using `istio-eastwestgateway`.
+Clusters `cluster-0` and `cluster-1` must receive a deployment of this resource,
+each one with its own network.
 
 ```
 helm install istio-eastwestgateway istio/gateway \
@@ -93,6 +105,8 @@ helm install istio-eastwestgateway istio/gateway \
     --wait
 ```
 
+After, expose all services on these gateways in both clusters.
+
 ```
 kubectl apply \
     --filename ./cluster-0/gateway-istio-eastwestgateway.yaml \
@@ -104,6 +118,12 @@ kubectl apply \
     --filename ./cluster-1/gateway-istio-eastwestgateway.yaml \
     --context k3d-cluster-1
 ```
+
+## Configure Endpoint Discovery
+
+Each `istiod` must be able to connect on kubernetes API from other cluster. To
+accomplish this, create a Istio remote secret from `cluster-0` on `cluster-1`
+and vice-versa.
 
 ```
 istioctl create-remote-secret \
@@ -122,6 +142,8 @@ istioctl create-remote-secret \
         --filename - \
         --context k3d-cluster-0
 ```
+
+Check if clusters are _synced_.
 
 ```
 istioctl remote-clusters \

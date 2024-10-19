@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: http-client
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: http-client
+    spec:
+      containers:
+        - name: http-client
+          image: alpine:3.20
+          command:
+            - entrypoint.sh
+          volumeMounts:
+            - name: bin
+              mountPath: /usr/local/bin
+      volumes:
+        - name: bin
+          configMap:
+            name: http-client-bin
+            defaultMode: 0777

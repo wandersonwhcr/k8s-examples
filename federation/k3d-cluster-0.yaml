@@ -1,0 +1,21 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: cluster-0
+network: k3d-cluster
+servers: 1
+agents: 1
+options:
+  k3d:
+    wait: true
+  k3s:
+    extraArgs:
+      - arg: --disable=traefik
+        nodeFilters:
+          - server:*
+      - arg: --node-taint=node-role.kubernetes.io/master=:NoSchedule
+        nodeFilters:
+          - server:*
+  runtime:
+    serversMemory: 1G
+    agentsMemory: 1G

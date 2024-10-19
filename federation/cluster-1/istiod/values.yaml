@@ -1,0 +1,12 @@
+global:
+  meshID: federation-0
+  multiCluster:
+    enabled: true
+    clusterName: cluster-1
+  network: network-1
+
+pilot:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi

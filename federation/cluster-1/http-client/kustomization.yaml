@@ -1,0 +1,13 @@
+namespace: http-client
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+resources:
+  - deployment.yaml
+  - namespace.yaml
+
+configMapGenerator:
+  - name: http-client-bin
+    files:
+      - ./assets/entrypoint.sh

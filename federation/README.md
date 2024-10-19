@@ -153,17 +153,26 @@ istioctl remote-clusters \
     --context k3d-cluster-1
 ```
 
+## Deploy Services
+
+Deploy a `whoami` HTTP service on `cluster-0` that outputs request headers.
+
 ```
 kubectl apply \
     --kustomize ./cluster-0/whoami \
     --context k3d-cluster-0
 ```
 
+After, deploy a `http-client` HTTP client on `cluster-1` that make requests to
+`whoami` installed on `cluster-0`.
+
 ```
 kubectl apply \
     --kustomize ./cluster-1/http-client \
     --context k3d-cluster-1
 ```
+
+Check `http-client` logs.
 
 ```
 kubectl logs \
@@ -172,6 +181,8 @@ kubectl logs \
     --follow \
     --context k3d-cluster-1
 ```
+
+Voilà.
 
 ## References
 

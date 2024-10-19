@@ -86,25 +86,9 @@ kubectl apply \
 ```
 
 ```
-K3D_CLUSTER_0_SERVER_IP=`
-    k3d cluster get cluster-0 --output json \
-        | jq '.[].nodes[]' \
-        | jq 'select(.role == "server")' \
-        | jq '.IP.IP' --raw-output
-`
-
-K3D_CLUSTER_1_SERVER_IP=`
-    k3d cluster get cluster-1 --output json \
-        | jq '.[].nodes[]' \
-        | jq 'select(.role == "server")' \
-        | jq '.IP.IP' --raw-output
-`
-```
-
-```
 istioctl create-remote-secret \
     --name cluster-0 \
-    --server "https://${K3D_CLUSTER_0_SERVER_IP}:6443" \
+    --server 'https://k3d-cluster-0-serverlb:6443' \
     --context k3d-cluster-0 \
     | kubectl apply \
         --filename - \
@@ -112,7 +96,7 @@ istioctl create-remote-secret \
 
 istioctl create-remote-secret \
     --name cluster-1 \
-    --server "https://${K3D_CLUSTER_1_SERVER_IP}:6443" \
+    --server 'https://k3d-cluster-1-serverlb:6443' \
     --context k3d-cluster-1 \
     | kubectl apply \
         --filename - \

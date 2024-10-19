@@ -70,7 +70,7 @@ kubectl get secrets istio-ca-secret \
         --context k3d-cluster-1
 ```
 
-Finally, install `istiod` on `cluster-1`. Also, this `istiod` installation is
+Finally, install `istiod` on `cluster-1`. This `istiod` installation is
 configured with a multicluster approach, where cluster is named as `cluster-1`,
 using same mesh `federation-0` and different network `network-1`.
 
@@ -119,7 +119,7 @@ kubectl apply \
     --context k3d-cluster-1
 ```
 
-## Configure Endpoint Discovery
+## Configure Istio Endpoint Discovery
 
 Each `istiod` must be able to connect on kubernetes API from other cluster. To
 accomplish this, create a Istio remote secret from `cluster-0` on `cluster-1`

@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: grpc-hostname-server
 spec:
+  clusterIP: None
   selector:
     app: grpc-hostname-server
   ports:

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-hostname-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: grpc-hostname-server
+  template:
+    metadata:
+      labels:
+        app: grpc-hostname-server
+    spec:
+      containers:
+        - name: server
+          image: ghcr.io/wandersonwhcr/grpc-hostname:v1.0.0-rc.1
+          env:
+            - name: HOSTNAME_CMD
+              value: server
+            - name: HOSTNAME_SERVER_ADDR
+              value: 0.0.0.0:50051

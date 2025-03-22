@@ -8,11 +8,25 @@ k3d cluster create \
 ```
 kubectl apply \
     --kustomize ./grpc-hostname-server
+
+kubectl rollout status deployment/grpc-hostname-server \
+    --namespace grpc-hostname-server \
+    --timeout 600s
 ```
 
 ```
 kubectl apply \
     --kustomize ./grpc-hostname-client
+
+kubectl rollout status deployment/grpc-hostname-client \
+    --namespace grpc-hostname-client \
+    --timeout 600s
+```
+
+```
+kubectl logs \
+    --selector app=grpc-hostname-client \
+    --namespace grpc-hostname-client
 ```
 
 ## References

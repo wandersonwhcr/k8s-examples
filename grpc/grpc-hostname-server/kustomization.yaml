@@ -3,3 +3,4 @@ namespace: grpc-hostname-server
 resources:
   - deployment.yaml
   - namespace.yaml
+  - service.yaml

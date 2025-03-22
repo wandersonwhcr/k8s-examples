@@ -20,3 +20,6 @@ spec:
               value: server
             - name: HOSTNAME_SERVER_ADDR
               value: 0.0.0.0:50051
+          ports:
+            - name: grpc
+              containerPort: 50051

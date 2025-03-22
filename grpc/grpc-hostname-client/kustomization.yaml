@@ -1,0 +1,5 @@
+namespace: grpc-hostname-client
+
+resources:
+  - deployment.yaml
+  - namespace.yaml

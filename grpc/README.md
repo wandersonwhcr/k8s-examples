@@ -56,7 +56,7 @@ headless. When a client resolves the server address, it retrieves all pod IPs
 directly, rather than a single cluster IP.
 
 ```
-$ grep -rin --context 2 'clusterIP: None'
+$ grep -rn --context 2 clusterIP
 grpc-hostname-server/service.yaml-4-  name: grpc-hostname-server
 grpc-hostname-server/service.yaml-5-spec:
 grpc-hostname-server/service.yaml:6:  clusterIP: None
@@ -68,7 +68,7 @@ Subsequently, the `grpc-hostname-client` is configured in its source code to
 load balance requests using a round-robin algorithm with all resolved IPs.
 
 ```
-$ grep -rin --context 3 loadBalancing
+$ grep -rn --context 3 loadBalancingConfig
 client/main.go-20-	conn, err := grpc.NewClient(
 client/main.go-21-		os.Getenv("HOSTNAME_SERVER_ADDR"),
 client/main.go-22-		grpc.WithInsecure(),

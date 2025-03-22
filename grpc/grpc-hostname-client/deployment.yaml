@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: ghcr.io/wandersonwhcr/grpc-hostname:v1.0.0-rc.1
+          image: ghcr.io/wandersonwhcr/grpc-hostname:v1.0.0-rc.2
           env:
             - name: HOSTNAME_CMD
               value: client

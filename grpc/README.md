@@ -9,3 +9,8 @@ k3d cluster create \
 kubectl apply \
     --kustomize ./grpc-hostname-server
 ```
+
+```
+kubectl apply \
+    --kustomize ./grpc-hostname-client
+```

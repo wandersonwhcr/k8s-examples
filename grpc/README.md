@@ -49,11 +49,34 @@ kubectl logs \
 2025/03/22 18:33:03 Client: grpc-hostname-client-5bd7777d44-9s5nd, Server: grpc-hostname-server-5d8446889b-6fnpn
 ```
 
+## How?
+
 This behavior occurs because the `grpc-hostname-server` service is configured as
 headless. When a client resolves the server address, it retrieves all pod IPs
-directly, rather than a single cluster IP. Subsequently, the
-`grpc-hostname-client` is configured in its source code to load balance requests
-using a round-robin algorithm with all resolved IPs.
+directly, rather than a single cluster IP.
+
+```
+$ grep -rin --context 2 'clusterIP: None'
+grpc-hostname-server/service.yaml-4-  name: grpc-hostname-server
+grpc-hostname-server/service.yaml-5-spec:
+grpc-hostname-server/service.yaml:6:  clusterIP: None
+grpc-hostname-server/service.yaml-7-  selector:
+grpc-hostname-server/service.yaml-8-    app: grpc-hostname-server
+```
+
+Subsequently, the `grpc-hostname-client` is configured in its source code to
+load balance requests using a round-robin algorithm with all resolved IPs.
+
+```
+$ grep -rin --context 3 loadBalancing
+client/main.go-20-	conn, err := grpc.NewClient(
+client/main.go-21-		os.Getenv("HOSTNAME_SERVER_ADDR"),
+client/main.go-22-		grpc.WithInsecure(),
+client/main.go:23:		grpc.WithDefaultServiceConfig(`{"loadBalancingConfig":[{"round_robin":{}}]}`),
+client/main.go-24-	)
+client/main.go-25-
+client/main.go-26-	if err != nil {
+```
 
 ## References
 

@@ -1,6 +1,6 @@
 # grpc
 
-This example shows how to load balancing gRPC services using Kubernetes.
+This example shows how to load balancing gRPC requests using Kubernetes.
 
 First, create our example cluster.
 
@@ -21,7 +21,7 @@ kubectl rollout status deployment/grpc-hostname-server \
 ```
 
 After, create a gRPC client that connects to server and requests its hostname,
-printing client and server hostnames ou standard output.
+printing client and server hostnames on standard output.
 
 ```
 kubectl apply \
@@ -53,7 +53,7 @@ This behavior occurs because the `grpc-hostname-server` service is configured as
 headless. When a client resolves the server address, it retrieves all pod IPs
 directly, rather than a single cluster IP. Subsequently, the
 `grpc-hostname-client` is configured in its source code to load balance requests
-using a round-robin algorithm.
+using a round-robin algorithm with all resolved IPs.
 
 ## References
 

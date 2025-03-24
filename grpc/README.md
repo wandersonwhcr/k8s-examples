@@ -81,4 +81,6 @@ client/main.go-26-	if err != nil {
 ## References
 
 * [grpc-hostname: A Simple gRPC Toy Server to Retrieve Hostnames](https://github.com/wandersonwhcr/grpc-hostname)
-* [gRPC: Load Balancing](https://github.com/grpc/grpc-go/tree/b0d120384670bde5a2fa830d65e43b250c24d8fd/examples/features/load_balancing)
+* [gRPC: Load Balancing](https://grpc.io/blog/grpc-load-balancing/)
+* [Load Balancing in gRPC](https://github.com/grpc/grpc/blob/00df46f77d4d79bc45da07916d141d4e2d50f652/doc/load-balancing.md)
+* [gRPC: Load Balancing Example](https://github.com/grpc/grpc-go/tree/b0d120384670bde5a2fa830d65e43b250c24d8fd/examples/features/load_balancing)
